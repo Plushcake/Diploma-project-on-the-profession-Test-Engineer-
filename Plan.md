@@ -17,65 +17,65 @@
 
 Раздел Главная (Main) с разделами News и Claims.
 
-![1](E:\Git\DiplomProect\fmh-android\screenshot\1.png)
+![1](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/1.png)
 
 ​ Меню со списком функций.
 
-![2](E:\Git\DiplomProect\fmh-android\screenshot\2.png)
+![2](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/2.png)
 
 ​ Тематические цитаты.
 
-![3](E:\Git\DiplomProect\fmh-android\screenshot\3.png)
+![3](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/3.png)
 
 ​ Личный кабинет.
 
-![4](E:\Git\DiplomProect\fmh-android\screenshot\4.png)
+![4](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/4.png)
 
 Раздел Претензии (Claims).
 
-![5](E:\Git\DiplomProect\fmh-android\screenshot\5.png)
+![5](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/5.png)
 
 ​ Фильтрация.
 
-![8](E:\Git\DiplomProect\fmh-android\screenshot\8.png)
+![8](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/8.png)
 
-![9](E:\Git\DiplomProect\fmh-android\screenshot\9.png)
+![9](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/9.png)
 
 ​ Создание претензии.
 
-![10](E:\Git\DiplomProect\fmh-android\screenshot\10.png)
+![10](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/10.png)
 
-![11](E:\Git\DiplomProect\fmh-android\screenshot\11.png)
+![11](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/11.png)
 
 Раздел Новости (News).
 
-![6](E:\Git\DiplomProect\fmh-android\screenshot\6.png)
+![6](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/6.png)
 
 ​ Переключение на последнее созданное сообщение.
 
-![12](E:\Git\DiplomProect\fmh-android\screenshot\12.png)
+![12](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/12.png)
 
 ​ Фильтрация Новостей.
 
-![13](E:\Git\DiplomProect\fmh-android\screenshot\13.png)
+![13](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/13.png)
 
-![14](E:\Git\DiplomProect\fmh-android\screenshot\14.png)
+![14](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/14.png)
 
 ​ Редактирование Новостей.
 
-![17](E:\Git\DiplomProect\fmh-android\screenshot\17.png)
+![17](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/17.png)
 
-![18](E:\Git\DiplomProect\fmh-android\screenshot\18.png)
+![18](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/18.png)
 
 ​ Создание Новостей.
 
-![15](E:\Git\DiplomProect\fmh-android\screenshot\15.png)
+![15](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/15.png)
 
-![16](E:\Git\DiplomProect\fmh-android\screenshot\16.png)
+![16](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/16.png)
 
 Раздел правовой и технической информации (About).
 
-![7](E:\Git\DiplomProect\fmh-android\screenshot\7.png)
+![7](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/7.png)
 
 ---
 
