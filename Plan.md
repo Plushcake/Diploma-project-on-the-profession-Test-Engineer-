@@ -13,7 +13,7 @@
 
 Раздел Авторизации (Authorization).
 
-![19](screenshot\19.png)
+![19](https://photos.app.goo.gl/msENVW8w4EHkz7TE7)
 
 Раздел Главная (Main) с разделами News и Claims.
 
