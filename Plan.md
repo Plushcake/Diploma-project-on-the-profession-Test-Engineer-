@@ -19,15 +19,15 @@
 
 ![1](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/1.png)
 
-​ Меню со списком функций.
+ Меню со списком функций.
 
 ![2](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/2.png)
 
-​ Тематические цитаты.
+ Тематические цитаты.
 
 ![3](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/3.png)
 
-​ Личный кабинет.
+ Личный кабинет.
 
 ![4](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/4.png)
 
@@ -35,13 +35,13 @@
 
 ![5](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/5.png)
 
-​ Фильтрация.
+ Фильтрация.
 
 ![8](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/8.png)
 
 ![9](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/9.png)
 
-​ Создание претензии.
+ Создание претензии.
 
 ![10](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/10.png)
 
@@ -51,23 +51,23 @@
 
 ![6](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/6.png)
 
-​ Переключение на последнее созданное сообщение.
+ Переключение на последнее созданное сообщение.
 
 ![12](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/12.png)
 
-​ Фильтрация Новостей.
+ Фильтрация Новостей.
 
 ![13](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/13.png)
 
 ![14](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/14.png)
 
-​ Редактирование Новостей.
+ Редактирование Новостей.
 
 ![17](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/17.png)
 
 ![18](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/18.png)
 
-​ Создание Новостей.
+ Создание Новостей.
 
 ![15](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/15.png)
 
@@ -132,14 +132,31 @@
 #### План автоматизации приложения:
 
 1. Тестирование авторизации. Вход и выход из аккаунта.
-
 2. Тестирование открытие и закрытие всплывающих меню.
-
 3. Тестирования перехода по разделам.
-
 4. Тестирование создания сообщения и заполнение комментариев. Проверка на их создание.
-
 5. Тестирование About. Переход по ссылкам на сторонние ресурсы.
+
+#### Потенциальные риски при автоматизации:
+
+1. Изменения требований в проекте
+2. Переработка интерфейса
+3. Не значительные или значительные технические изменения в проекте.
+4. Ошибка в планировании стратегии.
+
+> Необходимо заново писать автоматизированный тест. Потеря времени, человеческих ресурсов, бюджета.
+
+#### Список аппаратуры используемой при автоматизации:
+
+Персональный компьютер на базе операционной системы Windows 10.
+
+Системные характеристики:
+
+CPU: Intel Pentium не ниже 12 поколения.
+
+Memory: Не меньше 32 гигабайт.
+
+Хранение информации: 500 гигабайт НDD или SSD.
 
 #### Список инструментов используемых при автоматизации:
 
@@ -157,18 +174,13 @@ Layout Inspector - для просмотра уникальных идентиф
 
 Allure Framework - отчет о тестировании.
 
-GitHub - Хранение репозиторий.
+GitHub - Хранение и демонстрация репозиторий.
 
 JUnit - фреймворк для Java.
 
-#### Потенциальные риски при автоматизации:
+#### Список специалистов работающих над проектом:
 
-1. Изменения требований в проекте
-2. Переработка интерфейса
-3. Не значительные или значительные технические изменения в проекте.
-4. Ошибка в планировании стратегии.
-
-> Необходимо заново писать автоматизированный тест. Потеря времени, человеческих ресурсов, бюджета.
+Тестировщик по автоматизированному тестированию.
 
 #### Интервальная оценка затрат в часах + поэтапные сроки выполнения работ:
 
@@ -176,4 +188,4 @@ JUnit - фреймворк для Java.
 
 Не будем приуменьшать количество часов, возьмем с запасом. Затраты в часах 200 часов и прибавим 60 часов на непредвиденные ситуации.
 
-Итог примерно 260 часов на проект.
+##### Итог: 260 часов на проект.
