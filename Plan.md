@@ -13,7 +13,7 @@
 
 Раздел Авторизации (Authorization).
 
-![19](https://photos.app.goo.gl/msENVW8w4EHkz7TE7)
+![19](https://github.com/Plushcake/Diploma-project-on-the-profession-Test-Engineer-/blob/main/screenshot/19.png)
 
 Раздел Главная (Main) с разделами News и Claims.
 
