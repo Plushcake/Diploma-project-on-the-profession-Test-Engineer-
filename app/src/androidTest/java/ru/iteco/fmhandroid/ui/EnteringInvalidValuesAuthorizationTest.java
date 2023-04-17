@@ -32,7 +32,7 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AppActivityTest {
+public class EnteringInvalidValuesAuthorizationTest {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
