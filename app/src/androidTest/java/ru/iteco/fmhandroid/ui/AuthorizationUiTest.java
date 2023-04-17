@@ -4,14 +4,14 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
@@ -19,9 +19,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -33,15 +31,16 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AppActivityTest {
+public class AuthorizationUiTest {
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-    public void registerIdlingResources() {
+    public void registerIdlingResources() throws InterruptedException {
         IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+        Thread.sleep(10000);
     }
 
     @After
@@ -50,8 +49,7 @@ public class AppActivityTest {
     }
 
     @Test
-    public void appActivityTest() throws InterruptedException {
-        Thread.sleep(10000);
+    public void Authorization() {
         ViewInteraction textView = onView(
                 allOf(withText("Authorization"),
                         withParent(withParent(withId(R.id.nav_host_fragment)))));
@@ -59,22 +57,31 @@ public class AppActivityTest {
         textView.check(matches(withText("Authorization")));
     }
 
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
+    @Test
+    public void Login() {
+        ViewInteraction editText1 = onView(
+                allOf(withHint("Login"),
+                        withParent(withParent(withId(R.id.login_text_input_layout)))));
+        editText1.check(matches(isDisplayed()));
+        editText1.check(matches(withHint("Login")));
     }
+
+    @Test
+    public void Password() {
+        ViewInteraction editText2 = onView(
+                allOf(withHint("Password"),
+                        withParent(withParent(withId(R.id.password_text_input_layout)))));
+        editText2.check(matches(isDisplayed()));
+        editText2.check(matches(withHint("Password")));
+    }
+
+    @Test
+    public void SignIn() {
+        ViewInteraction button = onView(
+                allOf(withId(R.id.enter_button), withText("SIGN IN"), withContentDescription("Save"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class)))));
+        button.check(matches(isDisplayed()));
+        button.check(matches(withText("SIGN IN")));
+    }
+
 }
