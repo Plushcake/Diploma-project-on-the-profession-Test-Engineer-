@@ -59,6 +59,20 @@ public class AuthorizationTest {
                         withParent(withParent(withId(R.id.container_list_news_include_on_fragment_main)))));
         textView.check(matches(isDisplayed()));
         textView.check(matches(withText("News")));
+
+        Thread.sleep(1000);
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.authorization_image_button)));
+        appCompatImageButton.check(matches(isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        Thread.sleep(1000);
+
+        ViewInteraction materialTextView = onView(
+                allOf(withId(android.R.id.title), withText("Log out")));
+        materialTextView.check(matches(isDisplayed()));
+        materialTextView.perform(click());
     }
 
 }
