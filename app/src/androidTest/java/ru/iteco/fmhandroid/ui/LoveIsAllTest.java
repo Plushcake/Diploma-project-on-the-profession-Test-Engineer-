@@ -58,6 +58,9 @@ public class LoveIsAllTest {
                 allOf(withId(R.id.our_mission_image_button)));
         clickButtonLoveIsAll.perform(click());
 
+        ViewInteraction checkTextLoveIsAll = onView(
+                anyOf(withText("Love is all"), withText("Главное - жить любя")));
+        checkTextLoveIsAll.check(matches(isDisplayed()));
 
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.our_mission_item_list_recycler_view)));
@@ -68,9 +71,9 @@ public class LoveIsAllTest {
         recyclerView2.perform(actionOnItemAtPosition(0, click()));
 
 
-        ViewInteraction checkText = onView(
+        ViewInteraction checkTextID = onView(
                 allOf(withId(R.id.our_mission_title_text_view)));
-        checkText.check(matches(isDisplayed()));
+        checkTextID.check(matches(isDisplayed()));
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));

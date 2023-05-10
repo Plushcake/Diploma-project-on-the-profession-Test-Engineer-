@@ -5,6 +5,7 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -74,20 +75,29 @@ public class EditTheMessageGearDocumentNotValid {
         ViewInteraction inputTextTitle = onView(
                 allOf(withId(R.id.title_edit_text)));
         inputTextTitle.perform(click());
-        inputTextTitle.perform(replaceText("ClaimsAddComment"), closeSoftKeyboard());
+        inputTextTitle.perform(typeText("ClaimsAddComment"), closeSoftKeyboard());
         inputTextTitle.check(matches(withText("ClaimsAddComment")));
 
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.perform(click());
-        clickExecutor.perform(replaceText("Ivanov Ivan Ivanovich"));
-        clickExecutor.check(matches(withText("Ivanov Ivan Ivanovich")));
-        clickExecutor.perform(click());
+        clickExecutor.perform(click(), closeSoftKeyboard());
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(22));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(66));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(20));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(66));
+        Thread.sleep(1000);
+
 
         ViewInteraction inputData = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
         inputData.perform(replaceText("15.11.2010"), closeSoftKeyboard());
         inputData.check(matches(withText("15.11.2010")));
+
+        Thread.sleep(2000);
 
         ViewInteraction inputTime = onView(
                 allOf(withId(R.id.time_in_plan_text_input_edit_text)));
@@ -97,7 +107,7 @@ public class EditTheMessageGearDocumentNotValid {
         ViewInteraction inputDescription = onView(
                 allOf(withId(R.id.description_edit_text)));
         inputDescription.perform(click());
-        inputDescription.perform(replaceText("AddComment"), closeSoftKeyboard());
+        inputDescription.perform(typeText("AddComment"), closeSoftKeyboard());
         inputDescription.check(matches(withText("AddComment")));
 
         ViewInteraction clickSave = onView(
@@ -111,15 +121,6 @@ public class EditTheMessageGearDocumentNotValid {
         clickClaimListRecycler.check(matches(isDisplayed()));
         clickClaimListRecycler.perform(actionOnItemAtPosition(0, click()));
 
-        ViewInteraction clickStatusButton = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        clickStatusButton.check(matches(isDisplayed()));
-        clickStatusButton.perform(click());
-
-        ViewInteraction clickStatusTakeTOWork = onView(
-                anyOf(withText("take to work"), withText("В работу")));
-        clickStatusTakeTOWork.check(matches(isDisplayed()));
-        clickStatusTakeTOWork.perform(click());
 
         ViewInteraction clickStatusButton2 = onView(
                 allOf(withId(R.id.status_processing_image_button)));
@@ -133,9 +134,8 @@ public class EditTheMessageGearDocumentNotValid {
 
         ViewInteraction inputTextComment = onView(
                 allOf(withId(R.id.editText)));
-        inputTextComment.perform(replaceText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
-        inputTextComment.check(matches(withText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072")));
-        inputTextComment.check(matches(withText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072")));
+        inputTextComment.perform(typeText("HelloWorld:12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
+        inputTextComment.check(matches(withText("HelloWorld:12345678901234567890123456789012345678901234567890123456789072")));
 
         ViewInteraction clickOk = onView(
                 allOf(withId(android.R.id.button1)));
@@ -165,8 +165,8 @@ public class EditTheMessageGearDocumentNotValid {
         ViewInteraction inputTextComment2 = onView(
                 allOf(withId(R.id.editText)));
         inputTextComment2.perform(click());
-        inputTextComment2.perform(replaceText("ПриветМир:1234567890123456789012345678901234567890123456789012345678907274"), closeSoftKeyboard());
-        inputTextComment2.check(matches(withText("ПриветМир:1234567890123456789012345678901234567890123456789012345678907274")));
+        inputTextComment2.perform(typeText("HelloWorld:1234567890123456789012345678901234567890123456789012345678907274"), closeSoftKeyboard());
+        inputTextComment2.check(matches(withText("HelloWorld:1234567890123456789012345678901234567890123456789012345678907274")));
 
         ViewInteraction clickOk2 = onView(
                 allOf(withId(android.R.id.button1)));

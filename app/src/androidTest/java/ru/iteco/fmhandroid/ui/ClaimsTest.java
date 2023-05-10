@@ -5,8 +5,8 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -41,11 +41,11 @@ public class ClaimsTest {
 
         ViewInteraction EnteringLogin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
-        EnteringLogin.perform(typeText("login2"), closeSoftKeyboard());
+        EnteringLogin.perform(replaceText("login2"), closeSoftKeyboard());
 
         ViewInteraction EnteringPassword = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
-        EnteringPassword.perform(typeText("password2"), closeSoftKeyboard());
+        EnteringPassword.perform(replaceText("password2"), closeSoftKeyboard());
 
         ViewInteraction clickButton = onView(
                 allOf(withId(R.id.enter_button)));
@@ -66,21 +66,20 @@ public class ClaimsTest {
         clickClaims.perform(click());
         Thread.sleep(2000);
 
-//        ViewInteraction checkTextClaim = onView(
-//                allOf(withText("Claims"),
-//                        withParent(withParent(withId(R.id.container_list_claim_include)))));
-//        checkTextClaim.check(matches(isDisplayed()));
-//        checkTextClaim.check(matches(withText("Claims")));
+        ViewInteraction checkClaim = onView(
+                allOf(withId(R.id.container_list_claim_include)));
+        checkClaim.check(matches(isDisplayed()));
+
 
         ViewInteraction clickButtonFilter = onView(
                 allOf(withId(R.id.filters_material_button)));
         clickButtonFilter.check(matches(isDisplayed()));
         clickButtonFilter.perform(click());
 
-//        ViewInteraction checkTextFiltering = onView(
-//                allOf(withId(R.id.claim_filter_dialog_title)));
-//        checkTextFiltering.check(matches(isDisplayed()));
-//        checkTextFiltering.check(matches(withText("Filtering")));
+        ViewInteraction checkTextFiltering = onView(
+                anyOf(withText("Filtering"), withText("Фильтрация")));
+        checkTextFiltering.check(matches(isDisplayed()));
+
 
         ViewInteraction clickCancel1 = onView(
                 allOf(withId(R.id.claim_filter_cancel_material_button)));
@@ -96,12 +95,10 @@ public class ClaimsTest {
         Thread.sleep(2000);
 
 
-//        ViewInteraction checkTextCreating = onView(
-//                allOf(withId(R.id.custom_app_bar_title_text_view), withText("Creating"),
-//                        withParent(allOf(withId(R.id.container_custom_app_bar_include_on_fragment_create_edit_claim),
-//                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))))));
-//        checkTextCreating.check(matches(isDisplayed()));
-//        checkTextCreating.check(matches(withText("Creating")));
+        ViewInteraction checkTextCreating = onView(
+                anyOf(withText("Creating"), withText("Создание")));
+        checkTextCreating.check(matches(isDisplayed()));
+        checkTextCreating.check(matches(withText("Creating")));
 
 
         ViewInteraction clickCancel2 = onView(
@@ -119,11 +116,9 @@ public class ClaimsTest {
         clickClaimsList.check(matches(isDisplayed()));
         clickClaimsList.perform(actionOnItemAtPosition(0, click()));
 
-//        ViewInteraction checkButtonChangeStatus = onView(
-//                allOf(withId(R.id.status_processing_image_button), withContentDescription("button change status"),
-//                        withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class)))));
-//        checkButtonChangeStatus.check(matches(isDisplayed()));
-//        checkButtonChangeStatus.check(matches(isDisplayed()));
+        ViewInteraction checkButtonChangeStatus = onView(
+                allOf(withId(R.id.status_processing_image_button)));
+        checkButtonChangeStatus.check(matches(isDisplayed()));
 
 
         ViewInteraction clickAuthorization = onView(

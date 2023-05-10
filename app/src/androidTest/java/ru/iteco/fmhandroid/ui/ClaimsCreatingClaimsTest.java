@@ -109,7 +109,8 @@ public class ClaimsCreatingClaimsTest {
         ViewInteraction textInputEditDescription = onView(
                 allOf(withId(R.id.description_edit_text)));
         textInputEditDescription.check(matches(isDisplayed()));
-        textInputEditDescription.perform(typeText("HelloTest&1*5%2@"), closeSoftKeyboard());
+        textInputEditDescription.perform(typeText("Title:Description123456789Qwertyuiopasdfghjklzx!50"), closeSoftKeyboard());
+        textInputEditDescription.check(matches(withText("Title:Description123456789Qwertyuiopasdfghjklzx!50")));
 
 
         ViewInteraction clickSave = onView(

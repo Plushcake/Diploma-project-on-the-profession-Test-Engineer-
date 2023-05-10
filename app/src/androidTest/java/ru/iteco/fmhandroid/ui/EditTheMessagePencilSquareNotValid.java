@@ -1,10 +1,12 @@
 package ru.iteco.fmhandroid.ui;
 
 //Пункт в тест кейсе № 18
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -74,15 +76,22 @@ public class EditTheMessagePencilSquareNotValid {
         ViewInteraction inputTextTitle = onView(
                 allOf(withId(R.id.title_edit_text)));
         inputTextTitle.perform(click());
-        inputTextTitle.perform(replaceText("ClaimsAddComment"), closeSoftKeyboard());
+        inputTextTitle.perform(typeText("ClaimsAddComment"), closeSoftKeyboard());
         inputTextTitle.check(matches(withText("ClaimsAddComment")));
+        Thread.sleep(1000);
 
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.perform(click());
-        clickExecutor.perform(replaceText("Ivanov Ivan Ivanovich"));
-        clickExecutor.check(matches(withText("Ivanov Ivan Ivanovich")));
-        clickExecutor.perform(click());
+        clickExecutor.perform(click(), closeSoftKeyboard());
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(22));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(66));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(20));
+        Thread.sleep(1000);
+        clickExecutor.perform(pressKey(66));
+        Thread.sleep(1000);
 
         ViewInteraction inputData = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
@@ -97,7 +106,7 @@ public class EditTheMessagePencilSquareNotValid {
         ViewInteraction inputDescription = onView(
                 allOf(withId(R.id.description_edit_text)));
         inputDescription.perform(click());
-        inputDescription.perform(replaceText("AddComment"), closeSoftKeyboard());
+        inputDescription.perform(typeText("AddComment"), closeSoftKeyboard());
         inputDescription.check(matches(withText("AddComment")));
 
         ViewInteraction clickSave = onView(
@@ -105,56 +114,72 @@ public class EditTheMessagePencilSquareNotValid {
         clickSave.perform(scrollTo(), click());
         Thread.sleep(2000);
 
-        ViewInteraction clickFilter = onView(
-                allOf(withId(R.id.filters_material_button)));
-        clickFilter.check(matches(isDisplayed()));
-        clickFilter.perform(click());
-
-//        ViewInteraction checkTextFiltering = onView(
-//                allOf(withId(R.id.claim_filter_dialog_title)));
-//        checkTextFiltering.check(matches(isDisplayed()));
-//        checkTextFiltering.check(matches(withText("Filtering")));
-
-        ViewInteraction clickInProgress = onView(
-                allOf(withId(R.id.item_filter_in_progress)));
-        clickInProgress.check(matches(isDisplayed()));
-        clickInProgress.perform(scrollTo(), click());
-
-        ViewInteraction clickOk = onView(
-                allOf(withId(R.id.claim_list_filter_ok_material_button)));
-        clickOk.check(matches(isDisplayed()));
-        clickOk.perform(scrollTo(), click());
-
         ViewInteraction clickListRecycler = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
         clickListRecycler.check(matches(isDisplayed()));
         clickListRecycler.perform(actionOnItemAtPosition(0, click()));
 
-//        ViewInteraction checkTextOpen = onView(
-//                allOf(withId(R.id.status_label_text_view)));
-//        checkTextOpen.check(matches(withText("Open")));
+        ViewInteraction clickStatusProcessing1 = onView(
+                allOf(withId(R.id.status_processing_image_button)));
+        clickStatusProcessing1.check(matches(isDisplayed()));
+        clickStatusProcessing1.perform(click());
+
+        ViewInteraction clickCancel = onView(
+                anyOf(withText("Throw off"), withText("Сбросить")));
+        clickCancel.check(matches(isDisplayed()));
+        clickCancel.perform(click());
+
+        ViewInteraction inputComment = onView(
+                anyOf(withHint("Comment"), withHint("Комментарий")));
+        inputComment.check(matches(isDisplayed()));
+        inputComment.perform(click());
+        inputComment.perform(typeText("CommentTest"), closeSoftKeyboard());
+
+        ViewInteraction clickOk = onView(
+                allOf(withId(android.R.id.button1)));
+        clickOk.check(matches(isDisplayed()));
+        clickOk.perform(scrollTo(), click());
+
+        Thread.sleep(1000);
 
         ViewInteraction clickEditProcessing = onView(
                 allOf(withId(R.id.edit_processing_image_button)));
         clickEditProcessing.check(matches(isDisplayed()));
+        clickEditProcessing.perform(scrollTo());
         clickEditProcessing.perform(click());
+
+        Thread.sleep(1000);
 
         ViewInteraction textInputTitle = onView(
                 allOf(withId(R.id.title_edit_text)));
         textInputTitle.check(matches(isDisplayed()));
         textInputTitle.perform(click());
         textInputTitle.perform(clearText());
-        textInputTitle.perform(replaceText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
-        textInputTitle.check(matches(withText("ПриветМир:1234567890123456789012345678901234567890")));
+        textInputTitle.perform(typeText("HelloWorld:Title12345678901234567890123456789012345678901234567890123456789078"), closeSoftKeyboard());
+        textInputTitle.check(matches(withText("Hello world:Title123456789012345678901234567890123")));
+        Thread.sleep(2000);
+
+        ViewInteraction clickExecutor2 = onView(
+                allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
+        clickExecutor2.perform(click(), closeSoftKeyboard());
+        Thread.sleep(1000);
+        clickExecutor2.perform(pressKey(22));
+        Thread.sleep(1000);
+        clickExecutor2.perform(pressKey(66));
+        Thread.sleep(1000);
+        clickExecutor2.perform(pressKey(20));
+        Thread.sleep(1000);
+        clickExecutor2.perform(pressKey(66));
+        Thread.sleep(1000);
 
         ViewInteraction textInputDescription = onView(
                 allOf(withId(R.id.description_edit_text)));
         textInputDescription.check(matches(isDisplayed()));
         textInputDescription.perform(click());
         textInputDescription.perform(clearText());
-        textInputDescription.perform(replaceText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
-        textInputDescription.check(matches(withText("ПриветМир:12345678901234567890123456789012345678901234567890123456789072")));
-        ;
+        textInputDescription.perform(typeText("HelloWorld:Description12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
+        textInputDescription.check(matches(withText("Hello world:Description12345678901234567890123456789012345678901234567890123456789072")));
+        Thread.sleep(2000);
 
         ViewInteraction clickSave2 = onView(
                 allOf(withId(R.id.save_button)));
@@ -164,20 +189,31 @@ public class EditTheMessagePencilSquareNotValid {
         ViewInteraction clickStatusProcessing = onView(
                 allOf(withId(R.id.status_processing_image_button)));
         clickStatusProcessing.check(matches(isDisplayed()));
+        clickStatusProcessing.perform(scrollTo());
         clickStatusProcessing.perform(click());
 
-        ViewInteraction clickCancel = onView(
-                anyOf(withText("Cancel"), withText("Отменить")));
-        clickCancel.check(matches(isDisplayed()));
-        clickCancel.perform(click());
+        ViewInteraction clickCancel1 = onView(
+                anyOf(withText("To execute"), withText("Исполнить")));
+        clickCancel1.check(matches(isDisplayed()));
+        clickCancel1.perform(click());
 
-//        ViewInteraction checkTextCanceled = onView(
-//                allOf(withId(R.id.status_label_text_view)));
-//        checkTextCanceled.check(matches(isDisplayed()));
-//        checkTextCanceled.check(matches(withText("Canceled")));
+        ViewInteraction inputComment2 = onView(
+                anyOf(withHint("Comment"), withHint("Комментарий")));
+        inputComment2.check(matches(isDisplayed()));
+        inputComment2.perform(click());
+        inputComment2.perform(typeText("To execute"), closeSoftKeyboard());
+        inputComment2.check(matches(withText("To execute")));
+
+        ViewInteraction clickOk2 = onView(
+                allOf(withId(android.R.id.button1)));
+        clickOk2.check(matches(isDisplayed()));
+        clickOk2.perform(scrollTo(), click());
+
+        Thread.sleep(1000);
 
         ViewInteraction clickBack = onView(
                 allOf(withId(R.id.close_image_button)));
+        clickBack.perform(scrollTo());
         clickBack.check(matches(isDisplayed()));
         clickBack.perform(click());
         Thread.sleep(2000);

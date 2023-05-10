@@ -5,8 +5,8 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
@@ -41,11 +41,11 @@ public class ClaimsFilteringTest {
 
         ViewInteraction EnteringLogin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
-        EnteringLogin.perform(typeText("login2"), closeSoftKeyboard());
+        EnteringLogin.perform(replaceText("login2"), closeSoftKeyboard());
 
         ViewInteraction EnteringPassword = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
-        EnteringPassword.perform(typeText("password2"), closeSoftKeyboard());
+        EnteringPassword.perform(replaceText("password2"), closeSoftKeyboard());
 
         ViewInteraction clickButton = onView(
                 allOf(withId(R.id.enter_button)));
@@ -126,13 +126,6 @@ public class ClaimsFilteringTest {
 
         Thread.sleep(3000);
 
-//        ViewInteraction textCheck3 = onView(
-//                allOf(withText("Claims"),
-//                        withParent(withParent(withId(R.id.container_list_claim_include)))));
-//        textCheck3.check(matches(isDisplayed()));
-//        textCheck3.check(matches(withText("Claims")));
-
-
         ViewInteraction clickButtonFilters3 = onView(
                 allOf(withId(R.id.filters_material_button)));
         clickButtonFilters3.check(matches(isDisplayed()));
@@ -146,12 +139,6 @@ public class ClaimsFilteringTest {
                 allOf(withId(R.id.claim_filter_cancel_material_button)));
         clickCancel.check(matches(isDisplayed()));
         clickCancel.perform(scrollTo(), click());
-
-//        ViewInteraction textCheck2 = onView(
-//                allOf(withText("Claims"),
-//                        withParent(withParent(withId(R.id.container_list_claim_include)))));
-//        textCheck2.check(matches(isDisplayed()));
-//        textCheck2.check(matches(withText("Claims")));
 
 
         ViewInteraction clickAuthorization = onView(

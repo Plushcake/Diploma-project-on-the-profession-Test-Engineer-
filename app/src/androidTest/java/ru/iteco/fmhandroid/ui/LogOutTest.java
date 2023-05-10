@@ -77,8 +77,8 @@ public class LogOutTest {
 
         ViewInteraction clickAuthorization2 = onView(
                 allOf(withId(R.id.authorization_image_button)));
-        clickAuthorization.check(matches(isDisplayed()));
-        clickAuthorization.perform(click());
+        clickAuthorization2.check(matches(isDisplayed()));
+        clickAuthorization2.perform(click());
 
 
         ViewInteraction textViewLogOutTest2 = onView(
