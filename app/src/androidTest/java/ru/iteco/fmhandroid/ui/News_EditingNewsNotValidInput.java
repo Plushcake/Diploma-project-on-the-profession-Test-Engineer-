@@ -96,7 +96,7 @@ public class News_EditingNewsNotValidInput {
         ViewInteraction inputPublishDate = onView(
                 allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
         inputPublishDate.perform(clearText());
-        inputPublishDate.perform(replaceText("01.01.2010"));
+        inputPublishDate.perform(replaceText("01.01.1990"));
 
 
         ViewInteraction inputPublishTime = onView(
@@ -162,7 +162,7 @@ public class News_EditingNewsNotValidInput {
         ViewInteraction inputPublishDate1 = onView(
                 allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
         inputPublishDate1.perform(clearText());
-        inputPublishDate1.perform(replaceText("02.02.2012"));
+        inputPublishDate1.perform(replaceText("02.02.1992"));
 
         ViewInteraction clickSave1_1 = onView(
                 allOf(withId(R.id.save_button)));

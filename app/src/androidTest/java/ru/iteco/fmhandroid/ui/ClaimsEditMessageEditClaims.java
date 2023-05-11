@@ -6,7 +6,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -20,6 +19,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -81,18 +81,18 @@ public class ClaimsEditMessageEditClaims {
 
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.perform(click());
-        clickExecutor.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(20), pressKey(66), closeSoftKeyboard());
+        clickExecutor.check(matches(isDisplayed()));
+        clickExecutor.perform(click(), closeSoftKeyboard());
         Thread.sleep(2000);
-        clickExecutor.check(matches(withText("Ivanov Ivan Ivanovich")));
+
+        ViewInteraction selectFromTheList =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction inputData = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
-        inputData.perform(replaceText("15.11.2010"), closeSoftKeyboard());
+        inputData.perform(replaceText("15.11.1990"), closeSoftKeyboard());
 
         ViewInteraction inputTime = onView(
                 allOf(withId(R.id.time_in_plan_text_input_edit_text)));
@@ -159,22 +159,22 @@ public class ClaimsEditMessageEditClaims {
         inputTittleText.perform(typeText("Claims:123456789!@#$%^&*()"));
         inputTittleText.check(matches(withText("Claims:123456789!@#$%^&*()")));
 
-        ViewInteraction clickExecutor1 = onView(
+        ViewInteraction clickExecutor2 = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor1.perform(click());
-        clickExecutor1.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor1.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor1.perform(pressKey(20), pressKey(66), closeSoftKeyboard());
+        clickExecutor2.check(matches(isDisplayed()));
+        clickExecutor2.perform(click(), closeSoftKeyboard());
         Thread.sleep(2000);
-        clickExecutor1.check(matches(withText("Ivanov Ivan Ivanovich")));
+
+        ViewInteraction selectFromTheList2 =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction inputDate = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
         inputDate.perform(clearText());
-        inputDate.perform(replaceText("25.11.2011"), closeSoftKeyboard());
-        inputDate.check(matches(withText("25.11.2011")));
+        inputDate.perform(replaceText("25.11.1992"), closeSoftKeyboard());
+        inputDate.check(matches(withText("25.11.1992")));
 
         ViewInteraction inputTime1 = onView(
                 allOf(withId(R.id.time_in_plan_text_input_edit_text)));

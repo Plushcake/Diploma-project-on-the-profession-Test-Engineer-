@@ -5,7 +5,6 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -19,6 +18,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -84,18 +84,18 @@ public class ClaimsEditMessageChangeStatusOpen {
 
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.perform(click());
-        clickExecutor.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(20), pressKey(66), closeSoftKeyboard());
+        clickExecutor.check(matches(isDisplayed()));
+        clickExecutor.perform(click(), closeSoftKeyboard());
         Thread.sleep(2000);
-        clickExecutor.check(matches(withText("Ivanov Ivan Ivanovich")));
+
+        ViewInteraction selectFromTheList =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction inputDate = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
-        inputDate.perform(replaceText("01.01.2011"), closeSoftKeyboard());
+        inputDate.perform(replaceText("01.01.1990"), closeSoftKeyboard());
         Thread.sleep(1000);
 
         ViewInteraction inputTime = onView(

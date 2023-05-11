@@ -143,7 +143,7 @@ public class News_CreatingNewsNotValidInput {
 
         ViewInteraction inputPublishDate = onView(
                 allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
-        inputPublishDate.perform(replaceText("11.11.2011"));
+        inputPublishDate.perform(replaceText("11.11.1990"));
 
         ViewInteraction inputPublishTime = onView(
                 allOf(withId(R.id.news_item_publish_time_text_input_edit_text)));
@@ -183,7 +183,7 @@ public class News_CreatingNewsNotValidInput {
 
         ViewInteraction inputPublishDateFull = onView(
                 allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
-        inputPublishDateFull.perform(replaceText("11.11.2011"));
+        inputPublishDateFull.perform(replaceText("11.11.1991"));
 
         Thread.sleep(1000);
 

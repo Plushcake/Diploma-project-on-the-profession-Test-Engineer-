@@ -5,7 +5,6 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -19,6 +18,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -79,24 +79,20 @@ public class ClaimsCreatingClaimsTest {
         textInputTitle.perform(typeText("Title:123456789Qwertyuiopasdfghjklzxcvbnm%$&^*#!50"));
         textInputTitle.check(matches(withText("Title:123456789Qwertyuiopasdfghjklzxcvbnm%$&^*#!50")));
 
-        ViewInteraction clickShowDropDownMenu = onView(
-                allOf(withId(R.id.executor_drop_menu_text_input_layout)));
-        clickShowDropDownMenu.perform(click());
-
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.perform(click());
-        clickExecutor.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(20), pressKey(66), closeSoftKeyboard());
-        Thread.sleep(4000);
-        clickExecutor.check(matches(withText("Ivanov Ivan Ivanovich")));
+        clickExecutor.check(matches(isDisplayed()));
+        clickExecutor.perform(click(), closeSoftKeyboard());
+        Thread.sleep(2000);
+
+        ViewInteraction selectFromTheList =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction editDate = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
-        editDate.perform(replaceText("01.09.2010"));
+        editDate.perform(replaceText("01.09.1990"));
         editDate.check(matches(isDisplayed()));
 
 
@@ -119,7 +115,6 @@ public class ClaimsCreatingClaimsTest {
         clickSave.perform(scrollTo(), click());
         Thread.sleep(2000);
 
-
         ViewInteraction clickRecyclerView = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
         clickRecyclerView.check(matches(isDisplayed()));
@@ -127,6 +122,7 @@ public class ClaimsCreatingClaimsTest {
 
         ViewInteraction clickStatusProcessing = onView(
                 allOf(withId(R.id.status_processing_image_button)));
+        clickStatusProcessing.perform(scrollTo());
         clickStatusProcessing.check(matches(isDisplayed()));
         clickStatusProcessing.perform(click());
         ViewInteraction clickStatusThrowOff = onView(
@@ -153,6 +149,7 @@ public class ClaimsCreatingClaimsTest {
 
         ViewInteraction clickButtonBack2 = onView(
                 allOf(withId(R.id.close_image_button)));
+        clickButtonBack2.perform(scrollTo());
         clickButtonBack2.check(matches(isDisplayed()));
         clickButtonBack2.perform(click());
 

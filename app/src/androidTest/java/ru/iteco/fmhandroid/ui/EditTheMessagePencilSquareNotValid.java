@@ -6,7 +6,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -20,6 +19,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -82,21 +82,19 @@ public class EditTheMessagePencilSquareNotValid {
 
         ViewInteraction clickExecutor = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
+        clickExecutor.check(matches(isDisplayed()));
         clickExecutor.perform(click(), closeSoftKeyboard());
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(20));
-        Thread.sleep(1000);
-        clickExecutor.perform(pressKey(66));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+
+        ViewInteraction selectFromTheList =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction inputData = onView(
                 allOf(withId(R.id.date_in_plan_text_input_edit_text)));
-        inputData.perform(replaceText("15.11.2010"), closeSoftKeyboard());
-        inputData.check(matches(withText("15.11.2010")));
+        inputData.perform(replaceText("15.11.1990"), closeSoftKeyboard());
+        inputData.check(matches(withText("15.11.1990")));
 
         ViewInteraction inputTime = onView(
                 allOf(withId(R.id.time_in_plan_text_input_edit_text)));
@@ -156,21 +154,19 @@ public class EditTheMessagePencilSquareNotValid {
         textInputTitle.perform(click());
         textInputTitle.perform(clearText());
         textInputTitle.perform(typeText("HelloWorld:Title12345678901234567890123456789012345678901234567890123456789078"), closeSoftKeyboard());
-        textInputTitle.check(matches(withText("Hello world:Title123456789012345678901234567890123")));
+        textInputTitle.check(matches(withText("HelloWorld:Title1234567890123456789012345678901234")));
         Thread.sleep(2000);
 
         ViewInteraction clickExecutor2 = onView(
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
+        clickExecutor2.check(matches(isDisplayed()));
         clickExecutor2.perform(click(), closeSoftKeyboard());
-        Thread.sleep(1000);
-        clickExecutor2.perform(pressKey(22));
-        Thread.sleep(1000);
-        clickExecutor2.perform(pressKey(66));
-        Thread.sleep(1000);
-        clickExecutor2.perform(pressKey(20));
-        Thread.sleep(1000);
-        clickExecutor2.perform(pressKey(66));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+
+        ViewInteraction selectFromTheList2 =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
         ViewInteraction textInputDescription = onView(
                 allOf(withId(R.id.description_edit_text)));
@@ -178,7 +174,7 @@ public class EditTheMessagePencilSquareNotValid {
         textInputDescription.perform(click());
         textInputDescription.perform(clearText());
         textInputDescription.perform(typeText("HelloWorld:Description12345678901234567890123456789012345678901234567890123456789072"), closeSoftKeyboard());
-        textInputDescription.check(matches(withText("Hello world:Description12345678901234567890123456789012345678901234567890123456789072")));
+        textInputDescription.check(matches(withText("HelloWorld:Description12345678901234567890123456789012345678901234567890123456789072")));
         Thread.sleep(2000);
 
         ViewInteraction clickSave2 = onView(
