@@ -19,25 +19,29 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class EditTheMessageGearDocumentNotValid {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("Раздел Claims. Сообщение. Статус процесса Throw off и To execute ввод не валидных згачений.  ")
+    @Description("Ввод не валидных значений в поля для комментариев")
     public void editTheMessageGearDocumentNotValid() throws InterruptedException {
         Thread.sleep(7000);
 

@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверяем раздел Editing Claims",
+    "start": 1684428512384,
+    "stop": 1684428561986,
+    "stage": "finished",
+    "description": "Ввод в поля валидные значения",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "3f749231-472c-4c32-8a15-e3249c5b7332",
+    "historyId": "332ff8ba46d9af3aa17faa1e08673db6",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimsEditMessageEditClaims.claimsEditMessageEditClaims",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageEditClaims"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsEditMessageEditClaims"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageEditClaims"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1076)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

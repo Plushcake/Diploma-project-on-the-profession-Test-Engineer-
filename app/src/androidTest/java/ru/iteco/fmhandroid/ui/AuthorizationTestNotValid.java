@@ -17,24 +17,27 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class AuthorizationTestNotValid {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void ThreadSleep() throws InterruptedException {
@@ -43,6 +46,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Цифры введены успешно")
+    @DisplayName("Ввод в поле логин цифр")
     public void LoginEditTextNumber() {
         ViewInteraction textInputEditTextNumber = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -55,6 +60,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле логин символы на латиницев")
     public void LoginEditTextLatin() {
         ViewInteraction textInputEditTextLatin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -67,6 +74,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле логин специальных символов")
     public void LoginEditTextSpecialCharacters() {
         ViewInteraction textInputEditTextSpecialCharacters = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -79,6 +88,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле логин символы на латиницев")
     public void LoginEditTextMoreThan30Characters() {
         ViewInteraction textInputEditTextMoreThan30Characters = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -91,6 +102,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Поле пустое")
+    @DisplayName("Поле логин пустое")
     public void LoginEditTextTheFieldIsEmpty() {
         ViewInteraction textInputEditTextTheFieldIsEmpty = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -103,11 +116,13 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле логин символы на кириллице")
     public void LoginEditTextCyrillic() {
         ViewInteraction editTextCyrillic = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
         editTextCyrillic.check(matches(isDisplayed()));
-        editTextCyrillic.perform(typeText("Привет"), closeSoftKeyboard());
+        editTextCyrillic.perform(replaceText("Привет"), closeSoftKeyboard());
 
         editTextCyrillic.check(matches(withText("Привет")));
         editTextCyrillic.perform(clearText());
@@ -115,6 +130,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Вход в аккаунт не успешный")
+    @DisplayName("Поле логин заполнено, поле пароль пустое с нажатие на кнопку войти")
     public void LoginTestError() {
         ViewInteraction testErrorLogin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -132,6 +149,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Вход в аккаунт не успешный")
+    @DisplayName("Поле логин пустое, поле пароль заполнено с нажатие на кнопку войти")
     public void PasswordEditTextNumber() {
         ViewInteraction textInputEditTextNumber = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -144,6 +163,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле пароль символы на латинице")
     public void PasswordEditTextLatin() {
         ViewInteraction textInputEditTextLatin = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -157,6 +178,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле пароль специальные символы")
     public void PasswordEditTextSpecialCharacters() {
         ViewInteraction textInputEditTextSpecialCharacters = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -170,6 +193,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле пароль символы на латинице, специальные символы и цифры")
     public void PasswordEditTextMoreThan30Characters() {
         ViewInteraction textInputEditTextMoreThan30Characters = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -183,6 +208,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Поле пустое")
+    @DisplayName("Поле пароль пустое")
     public void PasswordEditTextTheFieldIsEmpty() {
         ViewInteraction textInputEditTextTheFieldIsEmpty = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -196,16 +223,20 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Символы введены успешно")
+    @DisplayName("Ввод в поле пароль символы на кириллице")
     public void PasswordEditTextCyrillic() {
         ViewInteraction editTextCyrillic = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
         editTextCyrillic.check(matches(isDisplayed()));
-        editTextCyrillic.perform(typeText("Привет"), closeSoftKeyboard());
+        editTextCyrillic.perform(replaceText("Привет"), closeSoftKeyboard());
         editTextCyrillic.check(matches(withText("Привет")));
     }
 
 
     @Test
+    @Description("Вход в аккаунт не успешный")
+    @DisplayName("Поле логин пустое, поле пароль заполнено с нажатие на кнопку войти")
     public void PasswordTestError() {
         ViewInteraction testErrorPassword = onView(
                 anyOf(withHint("Password"), withHint("Пароль")));
@@ -223,6 +254,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Вход в аккаунт не успешный")
+    @DisplayName("Поле логин и поле пароль заполнено не верными данными для входа")
     public void LoginAndPasswordTestIncorrect() {
         ViewInteraction testIncorrectLogin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -246,6 +279,8 @@ public class AuthorizationTestNotValid {
 
 
     @Test
+    @Description("Вход в аккаунт не успешный")
+    @DisplayName("Поле логин и пароль пустые")
     public void LoginAndPasswordTestEmpty() {
         ViewInteraction testIncorrectLoginEmpty = onView(
                 anyOf(withHint("Login"), withHint("Логин")));

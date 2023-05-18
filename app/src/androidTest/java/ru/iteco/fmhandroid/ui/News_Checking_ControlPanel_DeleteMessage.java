@@ -1,5 +1,5 @@
 package ru.iteco.fmhandroid.ui;
-
+//Пункт в тест кейсе № 28
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -16,25 +16,29 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class News_Checking_ControlPanel_DeleteMessage {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("В разделе News проверяется удаление сообщения")
+    @Description("Удаление сообщения и проверка предупреждающих сообщений")
     public void news_Checking_ControlPanel_DeleteMessage() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -75,6 +79,8 @@ public class News_Checking_ControlPanel_DeleteMessage {
         textViewControlPanelAndStep1.check(matches(isDisplayed()));
         textViewControlPanelAndStep1.perform(pressKey(61), pressKey(61), pressKey(61), pressKey(61), pressKey(61),
                 pressKey(61), pressKey(61), pressKey(61), pressKey(66));
+
+
 
 
         ViewInteraction textViewCheck1 = onView(

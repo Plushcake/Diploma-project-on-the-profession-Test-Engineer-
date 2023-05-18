@@ -19,9 +19,8 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
@@ -29,15 +28,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsEditMessageChangeStatusOpen {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void Login() throws InterruptedException {
@@ -116,12 +118,13 @@ public class ClaimsEditMessageChangeStatusOpen {
     }
 
     @After
-    public void LogOutTest() {
+    public void LogOutTest() throws InterruptedException {
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));
         clickAuthorization.check(matches(isDisplayed()));
         clickAuthorization.perform(click());
 
+        Thread.sleep(2000);
 
         ViewInteraction textViewLogOutTest = onView(
                 anyOf(withText("Log out"), withText("Выйти")));
@@ -131,6 +134,8 @@ public class ClaimsEditMessageChangeStatusOpen {
 
 
     @Test
+    @DisplayName("Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем Cancel")
+    @Description("Работоспособность пункта Cancel")
     public void ClaimsEditMessageChangeStatusCancel() throws InterruptedException {
         Thread.sleep(2000);
         ViewInteraction clickRecyclerView = onView(
@@ -141,9 +146,10 @@ public class ClaimsEditMessageChangeStatusOpen {
                 allOf(withId(R.id.status_processing_image_button)));
         clickStatusButton.perform(click());
 
-        ViewInteraction clickStatusThrowOff = onView(
+        ViewInteraction clickThrowOff = onView(
                 anyOf(withText("Throw off"), withText("Сбросить")));
-        clickStatusThrowOff.perform(click());
+        clickThrowOff.check(matches(isDisplayed()));
+        clickThrowOff.perform(click());
 
         ViewInteraction checkTextCommentThrowOff = onView(
                 anyOf(withHint("Comment"), withHint("Комментарий")));
@@ -153,6 +159,10 @@ public class ClaimsEditMessageChangeStatusOpen {
         ViewInteraction clickSaves2 = onView(
                 allOf(withId(android.R.id.button1)));
         clickSaves2.perform(scrollTo(), click());
+
+        ViewInteraction checkStatusOpen = onView(
+                anyOf(withText("Open"), withText("Открыта")));
+        checkStatusOpen.check(matches(isDisplayed()));
 
         ViewInteraction clickButtonStatus = onView(
                 allOf(withId(R.id.status_processing_image_button)));
@@ -164,6 +174,11 @@ public class ClaimsEditMessageChangeStatusOpen {
         clickStatusCancel.check(matches(isDisplayed()));
         clickStatusCancel.perform(click());
 
+        Thread.sleep(2000);
+
+        ViewInteraction checkStatusCanceled = onView(
+                anyOf(withText("Canceled"), withText("Отменена")));
+        checkStatusCanceled.check(matches(isDisplayed()));
 
         ViewInteraction clickBack = onView(
                 allOf(withId(R.id.close_image_button)));
@@ -175,6 +190,8 @@ public class ClaimsEditMessageChangeStatusOpen {
     }
 
     @Test
+    @DisplayName("Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем Take to work")
+    @Description("Работоспособность пункта Take to work")
     public void ClaimsEditMessageChangeStatusTakeToWork() throws InterruptedException {
         Thread.sleep(2000);
         ViewInteraction clickRecyclerView = onView(
@@ -204,12 +221,19 @@ public class ClaimsEditMessageChangeStatusOpen {
         clickButtonStatus2.perform(scrollTo());
         clickButtonStatus2.check(matches(isDisplayed()));
         clickButtonStatus2.perform(click());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         ViewInteraction clickTakeToWork = onView(
                 anyOf(withText("take to work"), withText("В работу")));
         clickTakeToWork.check(matches(isDisplayed()));
         clickTakeToWork.perform(click());
+
+        Thread.sleep(1000);
+
+        ViewInteraction checkStatusInProgress = onView(
+                anyOf(withText("In progress"), withText("В работе")));
+        checkStatusInProgress.check(matches(isDisplayed()));
+
         Thread.sleep(1000);
 
         ViewInteraction clickStatus = onView(

@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проходимся по всем разделам.",
+    "start": 1684429646286,
+    "stop": 1684429669540,
+    "stage": "finished",
+    "description": "Прокликивание в Claims-е всех разделов",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "cbb14531-e3a6-4768-bdbe-8adda68f6809",
+    "historyId": "1b553ccc717606ce570096262d95fb45",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimsTest.claimsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1141)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

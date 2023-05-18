@@ -19,25 +19,29 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsCreatingClaimsTest {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("Раздел Claims. Создание Claims. Заполнение полей валидными значениями. Проверка предупреждающих сообщений")
+    @Description("Поля заполнены валидными значениями. Claims создается успешно.")
     public void claimsCreatingClaimsTest() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -137,6 +141,8 @@ public class ClaimsCreatingClaimsTest {
         ViewInteraction clickSaves2 = onView(
                 allOf(withId(android.R.id.button1)));
         clickSaves2.perform(scrollTo(), click());
+
+        Thread.sleep(1000);
 
         ViewInteraction clickStatusButton2 = onView(
                 allOf(withId(R.id.status_processing_image_button)));

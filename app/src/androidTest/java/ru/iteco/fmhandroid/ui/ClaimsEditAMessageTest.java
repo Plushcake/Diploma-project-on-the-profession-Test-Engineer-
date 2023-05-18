@@ -18,26 +18,35 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
-import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.LargeTest;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
+import androidx.test.espresso.ViewInteraction;
+import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsEditAMessageTest {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("Раздел Claims. Проверка редактирования сообщения")
     public void claimsEditAMessageTest() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -102,6 +111,7 @@ public class ClaimsEditAMessageTest {
 
         ViewInteraction clickButtonBack1 = onView(
                 allOf(withId(R.id.close_image_button)));
+        clickButtonBack1.perform(scrollTo());
         clickButtonBack1.check(matches(isDisplayed()));
         clickButtonBack1.perform(click());
 
@@ -109,8 +119,9 @@ public class ClaimsEditAMessageTest {
         ViewInteraction clickMessageOpen2 = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
         clickMessageOpen2.check(matches(isDisplayed()));
-        clickMessageOpen2.perform(actionOnItemAtPosition(1, click()));
+        clickMessageOpen2.perform(actionOnItemAtPosition(0, click()));
 
+        Thread.sleep(1000);
 
         ViewInteraction clickButtonStatus = onView(
                 allOf(withId(R.id.status_processing_image_button)));
@@ -166,7 +177,12 @@ public class ClaimsEditAMessageTest {
         Thread.sleep(2000);
 
         ViewInteraction clickCommentButton = onView(
-                allOf(withId(R.id.edit_comment_image_button)));
+                allOf(withId(R.id.edit_comment_image_button),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.claim_comments_list_recycler_view),
+                                        0),
+                                1)));
         clickCommentButton.perform(scrollTo());
         clickCommentButton.check(matches(isDisplayed()));
         clickCommentButton.perform(click());
@@ -180,6 +196,7 @@ public class ClaimsEditAMessageTest {
 
         ViewInteraction clickButtonBack3 = onView(
                 allOf(withId(R.id.close_image_button)));
+        clickButtonBack3.perform(scrollTo());
         clickButtonBack3.check(matches(isDisplayed()));
         clickButtonBack3.perform(click());
 
@@ -194,7 +211,25 @@ public class ClaimsEditAMessageTest {
         textViewLogOutTest.check(matches(isDisplayed()));
         textViewLogOutTest.perform(click());
 
+    }
 
+    private static Matcher<View> childAtPosition(
+            final Matcher<View> parentMatcher, final int position) {
+
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("Child at position " + position + " in parent ");
+                parentMatcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+        };
     }
 
 }

@@ -1,0 +1,53 @@
+{
+    "name": "Ввод в поле логин специальных символов",
+    "start": 1684410311173,
+    "stop": 1684410320360,
+    "stage": "finished",
+    "description": "Символы введены успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "cd7ad62e-3647-4fb8-bdcf-dbebda79fa49",
+    "historyId": "eb48bbeb70e34242d898704b37c97cdd",
+    "fullName": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid.LoginEditTextSpecialCharacters",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "testMethod",
+            "value": "LoginEditTextSpecialCharacters"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(461)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "name": "Поле логин пустое, поле пароль заполнено с нажатие на кнопку войти",
+    "start": 1684410302267,
+    "stop": 1684410311138,
+    "stage": "finished",
+    "description": "Вход в аккаунт не успешный",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a542297c-03e0-4f7f-9281-ab395afd69e5",
+    "historyId": "c65941133480b82e50a9e4e8302554d5",
+    "fullName": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid.PasswordEditTextNumber",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "testMethod",
+            "value": "PasswordEditTextNumber"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(461)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

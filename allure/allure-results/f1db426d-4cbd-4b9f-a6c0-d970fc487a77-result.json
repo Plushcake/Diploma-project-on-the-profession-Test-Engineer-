@@ -1,0 +1,53 @@
+{
+    "name": "Ввод в поле логин символы на латиницев",
+    "start": 1684410381609,
+    "stop": 1684410390206,
+    "stage": "finished",
+    "description": "Символы введены успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "f1db426d-4cbd-4b9f-a6c0-d970fc487a77",
+    "historyId": "916ea40dda9722e46310fb9450c3a562",
+    "fullName": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid.LoginEditTextLatin",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "testMethod",
+            "value": "LoginEditTextLatin"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(461)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

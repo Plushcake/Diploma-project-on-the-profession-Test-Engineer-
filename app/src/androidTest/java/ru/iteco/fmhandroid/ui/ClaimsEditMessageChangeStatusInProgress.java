@@ -3,6 +3,7 @@ package ru.iteco.fmhandroid.ui;
 //Пункт в тест кейсе № 14
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -19,9 +20,8 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
@@ -29,15 +29,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsEditMessageChangeStatusInProgress {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void Login() throws InterruptedException {
@@ -113,7 +116,6 @@ public class ClaimsEditMessageChangeStatusInProgress {
                 allOf(withId(R.id.save_button)));
         clickSave.perform(scrollTo(), click());
 
-        Thread.sleep(2000);
     }
 
     @After
@@ -122,7 +124,6 @@ public class ClaimsEditMessageChangeStatusInProgress {
                 allOf(withId(R.id.authorization_image_button)));
         clickAuthorization.perform(click());
 
-        Thread.sleep(1000);
 
         ViewInteraction textViewLogOutTest = onView(
                 anyOf(withText("Log out"), withText("Выйти")));
@@ -130,11 +131,17 @@ public class ClaimsEditMessageChangeStatusInProgress {
     }
 
     @Test
+    @DisplayName("Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем Throw off")
+    @Description("Работоспособность пункта Throw off")
     public void ClaimsEditMessageChangeStatusTrowOff() throws InterruptedException {
         ViewInteraction clickRecyclerView2 = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
         clickRecyclerView2.check(matches(isDisplayed()));
         clickRecyclerView2.perform(actionOnItemAtPosition(0, click()));
+
+        ViewInteraction checkInProgress = onView(
+                anyOf(withText("In progress"), withText("В работе")));
+        checkInProgress.check(matches(isDisplayed()));
 
         ViewInteraction clickButtonStatus3 = onView(
                 allOf(withId(R.id.status_processing_image_button)));
@@ -200,6 +207,11 @@ public class ClaimsEditMessageChangeStatusInProgress {
         clickOk2.check(matches(isDisplayed()));
         clickOk2.perform(scrollTo(), click());
 
+        ViewInteraction checkStatusOpen = onView(
+                anyOf(withText("Open"), withText("Открыта")));
+        checkStatusOpen.check(matches(isDisplayed()));
+
+
         ViewInteraction clickStatus = onView(
                 allOf(withId(R.id.status_processing_image_button)));
         clickStatus.check(matches(isDisplayed()));
@@ -215,11 +227,15 @@ public class ClaimsEditMessageChangeStatusInProgress {
         clickBack.check(matches(isDisplayed()));
         clickBack.perform(click());
 
+        pressBack();
+
         Thread.sleep(2000);
 
     }
 
     @Test
+    @DisplayName("Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем To execute")
+    @Description("Работоспособность пункта To execute")
     public void ClaimsEditMessageChangeStatusToExecute() throws InterruptedException {
         ViewInteraction clickRecyclerView2 = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
@@ -288,12 +304,12 @@ public class ClaimsEditMessageChangeStatusInProgress {
         clickOk3.check(matches(isDisplayed()));
         clickOk3.perform(scrollTo(), click());
 
-//        ViewInteraction clickBack = onView(
-//                allOf(withId(R.id.close_image_button)));
-//        clickBack.check(matches(isDisplayed()));
-//        clickBack.perform(click());
+        Thread.sleep(1000);
 
-        Thread.sleep(2000);
+        ViewInteraction checkStatusExecuted = onView(
+                anyOf(withText("Executed"), withText("Выполнена")));
+        checkStatusExecuted.check(matches(isDisplayed()));
+        Thread.sleep(3000);
 
     }
 

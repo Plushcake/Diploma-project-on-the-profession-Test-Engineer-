@@ -1,0 +1,53 @@
+{
+    "name": "Ввод в поле логин символы на кириллице",
+    "start": 1684410320442,
+    "stop": 1684410328419,
+    "stage": "finished",
+    "description": "Символы введены успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "32e8ff62-77af-48d5-ad12-67e5b68e09b0",
+    "historyId": "d1b215523d5d43a6c5f929d7be1acda3",
+    "fullName": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid.LoginEditTextCyrillic",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "testMethod",
+            "value": "LoginEditTextCyrillic"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(461)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

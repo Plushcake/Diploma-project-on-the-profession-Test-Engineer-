@@ -19,25 +19,29 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsCreatingClaimsNotValid {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("В разделе Claims. Создание Claims. Ввод не валидных значений в поля")
+    @Description("Введеные не валидные значения в поля обрабатываются успешно")
     public void claimsCreatingClaimsNotValid() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -74,7 +78,7 @@ public class ClaimsCreatingClaimsNotValid {
         ViewInteraction inputTextTitle = onView(
                 allOf(withId(R.id.title_edit_text)));
         inputTextTitle.perform(click());
-        inputTextTitle.perform(typeText("ПриветМир:123456781012345678101234567810123456781012345678101234567810"), closeSoftKeyboard());
+        inputTextTitle.perform(replaceText("ПриветМир:123456781012345678101234567810123456781012345678101234567810"), closeSoftKeyboard());
         inputTextTitle.check(matches(withText("ПриветМир:1234567810123456781012345678101234567810")));
 
         ViewInteraction clickExecutor = onView(

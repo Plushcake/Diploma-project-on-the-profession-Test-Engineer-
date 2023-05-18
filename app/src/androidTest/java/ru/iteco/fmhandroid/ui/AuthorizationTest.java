@@ -23,6 +23,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
@@ -34,8 +36,10 @@ public class AuthorizationTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
-
+    //Ввести в cmd команду allure serve
     @Test
+    @DisplayName("Проверка авторизации пользователя")
+    @Description("Вход в аккаунт успешный")
     public void EnterAuthorizationTest() throws InterruptedException {
         Thread.sleep(7000);
 

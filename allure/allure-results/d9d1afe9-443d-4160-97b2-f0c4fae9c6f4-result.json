@@ -1,0 +1,53 @@
+{
+    "name": "Ввод в поле логин цифр",
+    "start": 1684410398079,
+    "stop": 1684410406887,
+    "stage": "finished",
+    "description": "Цифры введены успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "d9d1afe9-443d-4160-97b2-f0c4fae9c6f4",
+    "historyId": "ad31bd39de209b142a7cfdbb0e56e06c",
+    "fullName": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid.LoginEditTextNumber",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "testMethod",
+            "value": "LoginEditTextNumber"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.AuthorizationTestNotValid"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(461)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

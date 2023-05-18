@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверяем в сообщении кнопку статус процесса. Статус To execute",
+    "start": 1684422051703,
+    "stop": 1684422104029,
+    "stage": "finished",
+    "description": "Статус сообщения успешно перешёл в To execute",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "b63b80fc-f7cd-400e-9af7-139bb3323dad",
+    "historyId": "bb4a91f8ea728b43505ef6d95590e162",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress.ClaimsEditMessageChangeStatusToExecute",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress"
+        },
+        {
+            "name": "testMethod",
+            "value": "ClaimsEditMessageChangeStatusToExecute"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(871)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

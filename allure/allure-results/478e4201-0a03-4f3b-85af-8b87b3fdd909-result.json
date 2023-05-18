@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем Throw off",
+    "start": 1684425817328,
+    "stop": 1684425864057,
+    "stage": "finished",
+    "description": "Работоспособность пункта Throw off",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "478e4201-0a03-4f3b-85af-8b87b3fdd909",
+    "historyId": "9a1274a88a9f0f15cb34be786295ff3f",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress.ClaimsEditMessageChangeStatusTrowOff",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress"
+        },
+        {
+            "name": "testMethod",
+            "value": "ClaimsEditMessageChangeStatusTrowOff"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsEditMessageChangeStatusInProgress"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(971)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

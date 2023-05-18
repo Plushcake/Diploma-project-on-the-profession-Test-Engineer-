@@ -19,7 +19,6 @@ import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -27,17 +26,22 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsAddCommentTest {
 
     @Rule
-    public ActivityTestRule<AppActivity> activityTestRule =
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("В разделе Claims проверяем Add comment")
+    @Description("В поле комментарий введены валидные значения")
     public void claimsAddCommentTest() throws InterruptedException {
         Thread.sleep(7000);
 

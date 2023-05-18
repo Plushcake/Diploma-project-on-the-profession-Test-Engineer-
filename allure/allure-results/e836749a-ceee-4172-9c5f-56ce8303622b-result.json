@@ -1,0 +1,53 @@
+{
+    "name": "Проверяем фильтрацию сообщений.",
+    "start": 1684428836200,
+    "stop": 1684428862303,
+    "stage": "finished",
+    "description": "Проверяем работоспособность каждого пункта.",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "e836749a-ceee-4172-9c5f-56ce8303622b",
+    "historyId": "39842f3913d394972acecd651b3e998c",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimsFilteringTest.claimsFilteringCheck",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsFilteringTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsFilteringCheck"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimsFilteringTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1086)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

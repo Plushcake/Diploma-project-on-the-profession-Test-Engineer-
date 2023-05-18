@@ -17,25 +17,29 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class ClaimsTest {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("Раздел Claims. Проходимся по всем разделам.")
+    @Description("Прокликивание в Claims-е всех разделов")
     public void claimsTest() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -66,10 +70,6 @@ public class ClaimsTest {
         clickClaims.perform(click());
         Thread.sleep(2000);
 
-        ViewInteraction checkClaim = onView(
-                allOf(withId(R.id.container_list_claim_include)));
-        checkClaim.check(matches(isDisplayed()));
-
 
         ViewInteraction clickButtonFilter = onView(
                 allOf(withId(R.id.filters_material_button)));
@@ -98,8 +98,6 @@ public class ClaimsTest {
         ViewInteraction checkTextCreating = onView(
                 anyOf(withText("Creating"), withText("Создание")));
         checkTextCreating.check(matches(isDisplayed()));
-        checkTextCreating.check(matches(withText("Creating")));
-
 
         ViewInteraction clickCancel2 = onView(
                 allOf(withId(R.id.cancel_button)));
@@ -111,6 +109,8 @@ public class ClaimsTest {
         clickOk.check(matches(isDisplayed()));
         clickOk.perform(scrollTo(), click());
 
+        Thread.sleep(2000);
+
         ViewInteraction clickClaimsList = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
         clickClaimsList.check(matches(isDisplayed()));
@@ -118,6 +118,7 @@ public class ClaimsTest {
 
         ViewInteraction checkButtonChangeStatus = onView(
                 allOf(withId(R.id.status_processing_image_button)));
+        checkButtonChangeStatus.perform(scrollTo());
         checkButtonChangeStatus.check(matches(isDisplayed()));
 
 

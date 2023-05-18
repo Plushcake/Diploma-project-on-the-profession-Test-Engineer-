@@ -24,9 +24,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -36,17 +35,21 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class MainTest {
 
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("Проверка раздела Main")
+    @io.qameta.allure.kotlin.Description("В разделе Main переходим между разделами")
     public void mainTest() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -216,6 +219,7 @@ public class MainTest {
 
         ViewInteraction imageButton = onView(
                 allOf(withId(R.id.status_processing_image_button)));
+        imageButton.perform(scrollTo());
         imageButton.check(matches(isDisplayed()));
 
 
