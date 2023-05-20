@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Control Panel. Проверка кнопое в сообщении.",
+    "start": 1684611204729,
+    "stop": 1684611238220,
+    "stage": "finished",
+    "description": "Проверка работоспособность кнопок в сообщении - переходы по разделам.",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "029cb39d-9189-458b-b212-0c4c649e930a",
+    "historyId": "d2429132c2418da69660c9d4d74b2531",
+    "fullName": "ru.iteco.fmhandroid.ui.News_CheckingControlPanelMessagesSection.news_CheckingControlPanelMessagesSection",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingControlPanelMessagesSection"
+        },
+        {
+            "name": "testMethod",
+            "value": "news_CheckingControlPanelMessagesSection"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingControlPanelMessagesSection"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(561)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

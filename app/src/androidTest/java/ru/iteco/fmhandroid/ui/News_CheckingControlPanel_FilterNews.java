@@ -1,11 +1,9 @@
 package ru.iteco.fmhandroid.ui;
-
 //Пункт в тест кейсе № 22
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -17,25 +15,32 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
+
 public class News_CheckingControlPanel_FilterNews {
 
+
     @Rule
-    public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Test
+    @DisplayName("проверяем поля в разделе Filter news")
+    @Description("Проверяем заполнение полей. Проверяем Чек боксы на работоспособность")
     public void news_ControlPanel_FilterNews() throws InterruptedException {
         Thread.sleep(7000);
 
@@ -86,77 +91,24 @@ public class News_CheckingControlPanel_FilterNews {
         clickFilterNews.check(matches(isDisplayed()));
         clickFilterNews.perform(click());
 
-        ViewInteraction inputCategory_1 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_1.perform(click());
-        Thread.sleep(1000);
-        inputCategory_1.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_1.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_2 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_2.perform(click());
-        Thread.sleep(1000);
-        inputCategory_2.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_2.perform(pressKey(20));
-        inputCategory_2.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_3 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_3.perform(click());
-        Thread.sleep(1000);
-        inputCategory_3.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_3.perform(pressKey(20), pressKey(20));
-        inputCategory_3.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_4 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_4.perform(click());
-        Thread.sleep(1000);
-        inputCategory_4.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_4.perform(pressKey(20), pressKey(20), pressKey(20));
-        inputCategory_4.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_5 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_5.perform(click());
-        Thread.sleep(1000);
-        inputCategory_5.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_5.perform(pressKey(20), pressKey(20), pressKey(20), pressKey(20));
-        inputCategory_5.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_6 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_6.perform(click());
-        Thread.sleep(1000);
-        inputCategory_6.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_6.perform(pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20));
-        inputCategory_6.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_7 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_7.perform(click());
-        Thread.sleep(1000);
-        inputCategory_7.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_7.perform(pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20));
-        inputCategory_7.perform(pressKey(66));
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_8 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_8.perform(click());
-        Thread.sleep(1000);
-        inputCategory_8.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_8.perform(pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20), pressKey(20));
-        inputCategory_8.perform(pressKey(66), closeSoftKeyboard());
-        Thread.sleep(1000);
-        ViewInteraction inputCategory_1_1 = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategory_1_1.perform(click());
-        Thread.sleep(1000);
-        inputCategory_1_1.perform(pressKey(20), pressKey(19), pressKey(19));
-        inputCategory_1_1.perform(pressKey(66), closeSoftKeyboard());
-        Thread.sleep(3000);
+        ViewInteraction checkText = onView(
+                anyOf(withText("Filter news"), withText("Фильтровать новости")));
+        checkText.check(matches(isDisplayed()));
 
+
+        //Перемещение по категории.
+
+        ViewInteraction clickCategory_1 = onView(
+                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
+        clickCategory_1.check(matches(isDisplayed()));
+        clickCategory_1.perform(click(), closeSoftKeyboard());
+
+        ViewInteraction MoveThroughCategory_1 =
+                onView(withText("Объявление"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
+        clickCategory_1.check(matches(withText("Объявление")));
+        Thread.sleep(1000);
 
         ViewInteraction clickData1 = onView(
                 allOf(withId(R.id.news_item_publish_date_start_text_input_edit_text)));
@@ -194,28 +146,40 @@ public class News_CheckingControlPanel_FilterNews {
         materialCheckBoxNotActive2.check(matches(isDisplayed()));
         materialCheckBoxNotActive2.perform(click());
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         ViewInteraction clickFilter = onView(
                 allOf(withId(R.id.filter_button)));
         clickFilter.check(matches(isDisplayed()));
         clickFilter.perform(click());
-        Thread.sleep(2000);
+
+        Thread.sleep(3000);
+
+        ViewInteraction checkText1 = onView(
+                anyOf(withText("Control panel"), withText("Панель \\n управления")));
+        checkText1.check(matches(isDisplayed()));
 
         ViewInteraction clickFilterNews2 = onView(
-                allOf(withId(R.id.filter_news_material_button)));
+                anyOf(withId(R.id.filter_news_material_button)));
         clickFilterNews2.check(matches(isDisplayed()));
         clickFilterNews2.perform(click());
 
         Thread.sleep(2000);
 
+        ViewInteraction checkText2 = onView(
+                anyOf(withText("Filter news"), withText("Фильтровать новости")));
+        checkText2.check(matches(isDisplayed()));
+
+
         ViewInteraction clickCancel = onView(
                 allOf(withId(R.id.cancel_button)));
         clickCancel.perform(click());
 
-        ViewInteraction checkControlPanel = onView(
+        ViewInteraction checkNews = onView(
                 anyOf(withText("Control panel"), withText("Панель \\n управления")));
-        checkControlPanel.check(matches(isDisplayed()));
+        checkNews.check(matches(isDisplayed()));
+
+        Thread.sleep(2000);
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));
@@ -228,6 +192,5 @@ public class News_CheckingControlPanel_FilterNews {
         textViewLogOutTest.check(matches(isDisplayed()));
         textViewLogOutTest.perform(click());
     }
-
 
 }

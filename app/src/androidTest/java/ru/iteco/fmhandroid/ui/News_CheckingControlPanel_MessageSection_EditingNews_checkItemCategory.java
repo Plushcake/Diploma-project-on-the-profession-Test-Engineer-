@@ -1,12 +1,13 @@
 package ru.iteco.fmhandroid.ui;
 
-//Пункт в тест кейсе № 20
+//Пункт в тест кейсе № 25
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -32,16 +33,16 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class News_CheckingFilterNews {
+public class News_CheckingControlPanel_MessageSection_EditingNews_checkItemCategory {
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Test
-    @DisplayName("Проверка раздела Filter News")
-    @Description("Проверка полей на работоспособность")
-    public void news_CheckingFilterNews() throws InterruptedException {
+    @DisplayName("Проверка поля Title в разделе Editing News")
+    @Description("Проверяем полe Title на работоспособность, выбор категорий.")
+    public void checkItemCategory() throws InterruptedException {
         Thread.sleep(7000);
 
         ViewInteraction EnteringLogin = onView(
@@ -55,6 +56,7 @@ public class News_CheckingFilterNews {
         ViewInteraction clickButton = onView(
                 allOf(withId(R.id.enter_button)));
         clickButton.perform(click());
+
 
         Thread.sleep(3000);
 
@@ -70,23 +72,32 @@ public class News_CheckingFilterNews {
         clickNews.perform(click());
         Thread.sleep(2000);
 
-        ViewInteraction clickFilterNews1 = onView(
-                allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews1.check(matches(isDisplayed()));
-        clickFilterNews1.perform(click());
+        ViewInteraction clickEditingNews = onView(
+                allOf(withId(R.id.edit_news_material_button)));
+        clickEditingNews.perform(click());
 
-        ViewInteraction checkTextView = onView(
-                allOf(withId(R.id.filter_news_title_text_view)));
-        checkTextView.check(matches(isDisplayed()));
+        ViewInteraction clickEditNewsListStep = onView(
+                anyOf(withText("Control panel"), withText("Панель \\n управления")));
+        clickEditNewsListStep.check(matches(isDisplayed()));
+        clickEditNewsListStep.perform(pressKey(61), pressKey(61), pressKey(61),
+                pressKey(61), pressKey(61), pressKey(61));
+        Thread.sleep(1000);
+        clickEditNewsListStep.perform(pressKey(61), pressKey(61), pressKey(61), pressKey(66));
+        Thread.sleep(2000);
 
-        ViewInteraction checkViewCategory = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        checkViewCategory.check(matches(isDisplayed()));
+        ViewInteraction checkTextEditing = onView(
+                anyOf(withText("Editing"), withText("Редактирование")));
+        checkTextEditing.check(matches(isDisplayed()));
 
         //Перемещение по категории.
 
+        ViewInteraction checkInputTitle = onView(
+                allOf(withId(R.id.news_item_title_text_input_edit_text)));
+        checkInputTitle.perform(clearText());
+
         ViewInteraction clickCategory_1 = onView(
                 allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
+        clickCategory_1.perform(clearText());
         clickCategory_1.check(matches(isDisplayed()));
         clickCategory_1.perform(click(), closeSoftKeyboard());
 
@@ -94,8 +105,8 @@ public class News_CheckingFilterNews {
                 onView(withText("Объявление"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_1.check(matches(withText("Объявление")));
-        Thread.sleep(1000);
+        checkInputTitle.check(matches(withText("Объявление")));
+
 
         ViewInteraction clickCategory_2 = onView(
                 allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
@@ -108,7 +119,7 @@ public class News_CheckingFilterNews {
                 onView(withText("День рождения"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_2.check(matches(withText("День рождения")));
+        checkInputTitle.check(matches(withText("День рождения")));
 
 
         ViewInteraction clickCategory_3 = onView(
@@ -116,13 +127,13 @@ public class News_CheckingFilterNews {
         clickCategory_3.check(matches(isDisplayed()));
         clickCategory_3.perform(clearText());
         clickCategory_3.perform(click(), closeSoftKeyboard());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         ViewInteraction MoveThroughCategory_3 =
                 onView(withText("Зарплата"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_3.check(matches(withText("Зарплата")));
+        checkInputTitle.check(matches(withText("Зарплата")));
 
 
         ViewInteraction clickCategory_4 = onView(
@@ -136,7 +147,7 @@ public class News_CheckingFilterNews {
                 onView(withText("Профсоюз"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_4.check(matches(withText("Профсоюз")));
+        checkInputTitle.check(matches(withText("Профсоюз")));
 
 
         ViewInteraction clickCategory_5 = onView(
@@ -144,13 +155,13 @@ public class News_CheckingFilterNews {
         clickCategory_5.check(matches(isDisplayed()));
         clickCategory_5.perform(clearText());
         clickCategory_5.perform(click(), closeSoftKeyboard());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         ViewInteraction MoveThroughCategory_5 =
                 onView(withText("Праздник"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_5.check(matches(withText("Праздник")));
+        checkInputTitle.check(matches(withText("Праздник")));
 
 
         ViewInteraction clickCategory_6 = onView(
@@ -164,7 +175,7 @@ public class News_CheckingFilterNews {
                 onView(withText("Массаж"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_6.check(matches(withText("Массаж")));
+        checkInputTitle.check(matches(withText("Массаж")));
 
 
         ViewInteraction clickCategory_7 = onView(
@@ -172,13 +183,13 @@ public class News_CheckingFilterNews {
         clickCategory_7.check(matches(isDisplayed()));
         clickCategory_7.perform(clearText());
         clickCategory_7.perform(click(), closeSoftKeyboard());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         ViewInteraction MoveThroughCategory_7 =
                 onView(withText("Благодарность"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_7.check(matches(withText("Благодарность")));
+        checkInputTitle.check(matches(withText("Благодарность")));
 
 
         ViewInteraction clickCategory_8 = onView(
@@ -192,36 +203,11 @@ public class News_CheckingFilterNews {
                 onView(withText("Нужна помощь"))
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
-        clickCategory_8.check(matches(withText("Нужна помощь")));
+        checkInputTitle.check(matches(withText("Нужна помощь")));
 
         Thread.sleep(2000);
 
-        ViewInteraction inputDate1 = onView(
-                allOf(withId(R.id.news_item_publish_date_start_text_input_edit_text)));
-        inputDate1.check(matches(isDisplayed()));
-        inputDate1.perform(replaceText("01.04.2023"));
-
-        ViewInteraction inputDate2 = onView(
-                allOf(withId(R.id.news_item_publish_date_end_text_input_edit_text)));
-        inputDate2.check(matches(isDisplayed()));
-        inputDate2.perform(replaceText("01.05.2023"));
-        Thread.sleep(2000);
-
-        ViewInteraction clickFilter = onView(
-                allOf(withId(R.id.filter_button)));
-        clickFilter.check(matches(isDisplayed()));
-        clickFilter.perform(click());
-        Thread.sleep(3000);
-
-        ViewInteraction clickFilterNews2 = onView(
-                allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews2.perform(click());
-
-        ViewInteraction clickCancel = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel.check(matches(isDisplayed()));
-        clickCancel.perform(click());
-
+        pressBack();
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));

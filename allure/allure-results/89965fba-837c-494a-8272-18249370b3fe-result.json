@@ -1,0 +1,56 @@
+{
+    "name": "Проверка полей в разделе Editing News, проверка кнопки cancel удаление сообщения",
+    "start": 1684610679056,
+    "stop": 1684610726631,
+    "stage": "finished",
+    "description": "Вводим в поля валидные значения. Проверка кнопки Cancel в разделе Editing News. Удаление сообщения.",
+    "descriptionHtml": null,
+    "status": "broken",
+    "statusDetails": {
+        "message": "Class 'org.hamcrest.StringDescription' does not implement interface 'java.lang.Iterable' in call to 'java.util.Iterator java.lang.Iterable.iterator()' (declaration of 'org.hamcrest.BaseDescription' appears in /data/app/ru.iteco.fmhandroid-0wxevEgD_GmujI6UyeuhWQ==/base.apk!classes16.dex)",
+        "trace": "java.lang.IncompatibleClassChangeError: Class 'org.hamcrest.StringDescription' does not implement interface 'java.lang.Iterable' in call to 'java.util.Iterator java.lang.Iterable.iterator()' (declaration of 'org.hamcrest.BaseDescription' appears in /data/app/ru.iteco.fmhandroid-0wxevEgD_GmujI6UyeuhWQ==/base.apk!classes16.dex)\n\tat org.hamcrest.BaseDescription.appendValueList(BaseDescription.java:81)\n\tat androidx.test.espresso.matcher.ViewMatchers.getMismatchDescriptionString(ViewMatchers.java:3)\n\tat androidx.test.espresso.matcher.ViewMatchers.assertThat(ViewMatchers.java:5)\n\tat androidx.test.espresso.assertion.ViewAssertions$MatchesViewAssertion.check(ViewAssertions.java:7)\n\tat androidx.test.espresso.ViewInteraction$SingleExecutionViewAssertion.check(ViewInteraction.java:2)\n\tat androidx.test.espresso.ViewInteraction$2.call(ViewInteraction.java:14)\n\tat androidx.test.espresso.ViewInteraction$2.call(ViewInteraction.java:1)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat android.os.Handler.handleCallback(Handler.java:883)\n\tat android.os.Handler.dispatchMessage(Handler.java:100)\n\tat android.os.Looper.loop(Looper.java:214)\n\tat android.app.ActivityThread.main(ActivityThread.java:7356)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)\n\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)\n"
+    },
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "89965fba-837c-494a-8272-18249370b3fe",
+    "historyId": "fe03bd6c27036e304ee21886a8398c39",
+    "fullName": "ru.iteco.fmhandroid.ui.News_CheckingControlPanel_MessageSection_EditingNews_CreateAndDelete.CreateAndDelete",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingControlPanel_MessageSection_EditingNews_CreateAndDelete"
+        },
+        {
+            "name": "testMethod",
+            "value": "CreateAndDelete"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingControlPanel_MessageSection_EditingNews_CreateAndDelete"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(526)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

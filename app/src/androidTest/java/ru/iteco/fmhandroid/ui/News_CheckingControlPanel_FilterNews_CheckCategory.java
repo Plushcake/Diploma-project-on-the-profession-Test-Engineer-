@@ -1,12 +1,11 @@
 package ru.iteco.fmhandroid.ui;
 
-//Пункт в тест кейсе № 20
+//Пункт в тест кейсе № 22
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -32,16 +31,16 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class News_CheckingFilterNews {
+public class News_CheckingControlPanel_FilterNews_CheckCategory {
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Test
-    @DisplayName("Проверка раздела Filter News")
-    @Description("Проверка полей на работоспособность")
-    public void news_CheckingFilterNews() throws InterruptedException {
+    @DisplayName("Проверка поля Category в разделе Filter News")
+    @Description("Проверяем категории на выбираемость")
+    public void news_ControlPanel_FilterNews() throws InterruptedException {
         Thread.sleep(7000);
 
         ViewInteraction EnteringLogin = onView(
@@ -55,6 +54,7 @@ public class News_CheckingFilterNews {
         ViewInteraction clickButton = onView(
                 allOf(withId(R.id.enter_button)));
         clickButton.perform(click());
+
 
         Thread.sleep(3000);
 
@@ -70,18 +70,30 @@ public class News_CheckingFilterNews {
         clickNews.perform(click());
         Thread.sleep(2000);
 
-        ViewInteraction clickFilterNews1 = onView(
+        ViewInteraction clickControlPanel = onView(
+                allOf(withId(R.id.edit_news_material_button)));
+        clickControlPanel.check(matches(isDisplayed()));
+        clickControlPanel.perform(click());
+
+        ViewInteraction clickSort1 = onView(
+                allOf(withId(R.id.sort_news_material_button)));
+        clickSort1.check(matches(isDisplayed()));
+        clickSort1.perform(click());
+
+        ViewInteraction clickSort2 = onView(
+                allOf(withId(R.id.sort_news_material_button)));
+        clickSort2.check(matches(isDisplayed()));
+        clickSort2.perform(click());
+
+        ViewInteraction clickFilterNews = onView(
                 allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews1.check(matches(isDisplayed()));
-        clickFilterNews1.perform(click());
+        clickFilterNews.check(matches(isDisplayed()));
+        clickFilterNews.perform(click());
 
-        ViewInteraction checkTextView = onView(
-                allOf(withId(R.id.filter_news_title_text_view)));
-        checkTextView.check(matches(isDisplayed()));
+        ViewInteraction checkText = onView(
+                anyOf(withText("Filter news"), withText("Фильтровать новости")));
+        checkText.check(matches(isDisplayed()));
 
-        ViewInteraction checkViewCategory = onView(
-                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        checkViewCategory.check(matches(isDisplayed()));
 
         //Перемещение по категории.
 
@@ -96,6 +108,7 @@ public class News_CheckingFilterNews {
                         .perform(click());
         clickCategory_1.check(matches(withText("Объявление")));
         Thread.sleep(1000);
+
 
         ViewInteraction clickCategory_2 = onView(
                 allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
@@ -193,35 +206,13 @@ public class News_CheckingFilterNews {
                         .inRoot(RootMatchers.isPlatformPopup())
                         .perform(click());
         clickCategory_8.check(matches(withText("Нужна помощь")));
-
         Thread.sleep(2000);
 
-        ViewInteraction inputDate1 = onView(
-                allOf(withId(R.id.news_item_publish_date_start_text_input_edit_text)));
-        inputDate1.check(matches(isDisplayed()));
-        inputDate1.perform(replaceText("01.04.2023"));
-
-        ViewInteraction inputDate2 = onView(
-                allOf(withId(R.id.news_item_publish_date_end_text_input_edit_text)));
-        inputDate2.check(matches(isDisplayed()));
-        inputDate2.perform(replaceText("01.05.2023"));
-        Thread.sleep(2000);
-
-        ViewInteraction clickFilter = onView(
-                allOf(withId(R.id.filter_button)));
-        clickFilter.check(matches(isDisplayed()));
-        clickFilter.perform(click());
-        Thread.sleep(3000);
-
-        ViewInteraction clickFilterNews2 = onView(
-                allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews2.perform(click());
-
-        ViewInteraction clickCancel = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel.check(matches(isDisplayed()));
+        ViewInteraction clickCancel =
+                onView(withId(R.id.cancel_button));
         clickCancel.perform(click());
 
+        Thread.sleep(1000);
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));
@@ -234,5 +225,6 @@ public class News_CheckingFilterNews {
         textViewLogOutTest.check(matches(isDisplayed()));
         textViewLogOutTest.perform(click());
     }
+
 
 }

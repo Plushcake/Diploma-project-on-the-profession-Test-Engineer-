@@ -1,0 +1,53 @@
+{
+    "name": "Проверка раздела ",
+    "start": 1684612327692,
+    "stop": 1684612365583,
+    "stage": "finished",
+    "description": "",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a9c83b25-96d9-498a-aac9-3e2cf282dac3",
+    "historyId": "c75481efafec29b4e4cb5c3fa98a9d08",
+    "fullName": "ru.iteco.fmhandroid.ui.News_CheckingTheNewsSectionTest.news_CheckingTheNewsSectionTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingTheNewsSectionTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "news_CheckingTheNewsSectionTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.News_CheckingTheNewsSectionTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(636)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

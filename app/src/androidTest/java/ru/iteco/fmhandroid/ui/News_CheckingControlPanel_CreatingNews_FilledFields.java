@@ -1,16 +1,15 @@
 package ru.iteco.fmhandroid.ui;
 
-//Пункт в тест кейсе № 24
+//Пункт в тест кейсе № 23
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressKey;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -19,6 +18,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -33,17 +33,16 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class News_CheckingControlPanelMessagesSection {
+public class News_CheckingControlPanel_CreatingNews_FilledFields {
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
-
     @Test
-    @DisplayName("Раздел Control Panel. Проверка кнопое в сообщении.")
-    @Description("Проверка работоспособность кнопок в сообщении - переходы по разделам.")
-    public void news_CheckingControlPanelMessagesSection() throws InterruptedException {
+    @DisplayName("Проверка полей в разделе Creating News")
+    @Description("Проверяем поля на работоспособность и ввод валидных значений.")
+    public void news_CheckingControlPanel_CreatingNews() throws InterruptedException {
         Thread.sleep(7000);
 
         ViewInteraction EnteringLogin = onView(
@@ -78,51 +77,61 @@ public class News_CheckingControlPanelMessagesSection {
         clickEditNews.check(matches(isDisplayed()));
         clickEditNews.perform(click());
 
-        ViewInteraction clickRecyclerView1 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerView1.perform(actionOnItemAtPosition(0, click()));
+        ViewInteraction clickAddNews = onView(
+                allOf(withId(R.id.add_news_image_view)));
+        clickAddNews.check(matches(isDisplayed()));
+        clickAddNews.perform(click());
 
-        Thread.sleep(1000);
-
-        ViewInteraction clickRecyclerView2 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerView2.perform(actionOnItemAtPosition(0, click()));
-
-
-        ViewInteraction clickDeleteNewsListStep = onView(
-                anyOf(withText("Control panel"), withText("Панель \\n управления")));
-        clickDeleteNewsListStep.check(matches(isDisplayed()));
-        clickDeleteNewsListStep.perform(pressKey(61), pressKey(61), pressKey(61),
-                pressKey(61), pressKey(61), pressKey(61));
-        Thread.sleep(1000);
-        clickDeleteNewsListStep.perform(pressKey(61), pressKey(61), pressKey(66));
+        ViewInteraction сheckInputTitle = onView(
+                allOf(withId(R.id.news_item_title_text_input_edit_text)));
+        сheckInputTitle.check(matches(isDisplayed()));
+        сheckInputTitle.perform(typeText("TitleTEST:1234567890!@#$%&*()31"), closeSoftKeyboard());
+        сheckInputTitle.check(matches(withText("TitleTEST:1234567890!@#$%&*()31")));
+        сheckInputTitle.perform(clearText());
         Thread.sleep(2000);
 
-        ViewInteraction textView = onView(
-                anyOf(withText("Are you sure you want to permanently delete the document? These changes cannot be reversed in the future."),
-                        withText("Вы уверены, что хотите безвозвратно удалить документ? Данные изменения нельзя будет отменить в будущем.")));
-        textView.check(matches(isDisplayed()));
+//Перемещение по категории.
 
-        ViewInteraction clickCancelMessage = onView(
-                allOf(withId(android.R.id.button2)));
-        clickCancelMessage.perform(scrollTo(), click());
+        ViewInteraction checkInputTitle1 = onView(
+                allOf(withId(R.id.news_item_title_text_input_edit_text)));
 
+        ViewInteraction clickCategory_1 = onView(
+                allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
+        clickCategory_1.check(matches(isDisplayed()));
+        clickCategory_1.perform(click(), closeSoftKeyboard());
+
+        ViewInteraction MoveThroughCategory_1 =
+                onView(withText("Объявление"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
+        clickCategory_1.check(matches(withText("Объявление")));
+
+
+        ViewInteraction checkPublicationDate = onView(
+                allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
+        checkPublicationDate.perform(replaceText("01.09.2023"));
+        checkPublicationDate.check(matches(withText("01.09.2023")));
+
+
+        ViewInteraction checkPublishTime = onView(
+                allOf(withId(R.id.news_item_publish_time_text_input_edit_text)));
+        checkPublishTime.perform(replaceText("15:00"));
+        checkPublishTime.check(matches(withText("15:00")));
+
+        ViewInteraction inputDescription = onView(
+                allOf(withId(R.id.news_item_description_text_input_edit_text)));
+        inputDescription.check(matches(isDisplayed()));
+        inputDescription.perform(typeText("Description:12345678910!@#$%^&*(~)36"), closeSoftKeyboard());
+        inputDescription.check(matches(withText("Description:12345678910!@#$%^&*(~)36")));
         Thread.sleep(2000);
 
-        ViewInteraction clickEditNewsListStep = onView(
-                anyOf(withText("Control panel"), withText("Панель \\n управления")));
-        clickEditNewsListStep.check(matches(isDisplayed()));
-        clickEditNewsListStep.perform(pressKey(61), pressKey(61), pressKey(61),
-                pressKey(61), pressKey(61), pressKey(61));
-        Thread.sleep(1000);
-        clickEditNewsListStep.perform(pressKey(61), pressKey(61), pressKey(61), pressKey(66));
+        ViewInteraction clickSaveCreatingNews = onView(
+                allOf(withId(R.id.save_button)));
+        clickSaveCreatingNews.perform(scrollTo());
+        clickSaveCreatingNews.check(matches(isDisplayed()));
+        clickSaveCreatingNews.perform(click());
+
         Thread.sleep(2000);
-
-        ViewInteraction checkTextEditing = onView(
-                anyOf(withText("Editing"), withText("Редактирование")));
-        checkTextEditing.check(matches(isDisplayed()));
-
-        pressBack();
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));
@@ -134,7 +143,7 @@ public class News_CheckingControlPanelMessagesSection {
                 anyOf(withText("Log out"), withText("Выйти")));
         textViewLogOutTest.check(matches(isDisplayed()));
         textViewLogOutTest.perform(click());
-
     }
 
 }
+

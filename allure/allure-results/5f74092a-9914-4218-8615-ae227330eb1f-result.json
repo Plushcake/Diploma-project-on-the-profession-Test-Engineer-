@@ -1,0 +1,53 @@
+{
+    "name": "Проверка раздела Creating News, ввод не валидных значений",
+    "start": 1684613715418,
+    "stop": 1684613783708,
+    "stage": "finished",
+    "description": "Ввод не валидных значений в поля",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "5f74092a-9914-4218-8615-ae227330eb1f",
+    "historyId": "e086a00f1631a375ac291f693693cf65",
+    "fullName": "ru.iteco.fmhandroid.ui.News_CreatingNewsNotValidInput.news_CreatingNewsNotValidInput",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.News_CreatingNewsNotValidInput"
+        },
+        {
+            "name": "testMethod",
+            "value": "news_CreatingNewsNotValidInput"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.News_CreatingNewsNotValidInput"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(336)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,14 +1,13 @@
 package ru.iteco.fmhandroid.ui;
 
-//Пункт в тест кейсе № 19
+//Пункт в тест кейсе № 23
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -31,17 +30,17 @@ import ru.iteco.fmhandroid.R;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class News_CheckingTheNewsSectionTest {
+
+public class News_CheckingControlPanel_CreatingNews_EmptyFields {
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Test
-    @DisplayName("Раздел News проверка кнопок")
-    @Description("В разделе News проверяем работоспособность кнопок и переход в разделы")
-
-    public void news_CheckingTheNewsSectionTest() throws InterruptedException {
+    @DisplayName("Проверка не заполненых полей в разделе Creating News")
+    @Description("В разделе Creating News проверка не заполненых полей. Проверка кнопки Cancel")
+    public void news_CheckingControlPanel_CreatingNews() throws InterruptedException {
         Thread.sleep(7000);
 
         ViewInteraction EnteringLogin = onView(
@@ -56,69 +55,76 @@ public class News_CheckingTheNewsSectionTest {
                 allOf(withId(R.id.enter_button)));
         clickButton.perform(click());
 
+
         Thread.sleep(3000);
 
-        ViewInteraction clickMain = onView(
+        ViewInteraction clickMainMenu = onView(
                 allOf(withId(R.id.main_menu_image_button)));
-        clickMain.check(matches(isDisplayed()));
-        clickMain.perform(click());
+        clickMainMenu.check(matches(isDisplayed()));
+        clickMainMenu.perform(click());
+        Thread.sleep(1000);
 
         ViewInteraction clickNews = onView(
                 anyOf(withText("News"), withText("Новости")));
         clickNews.check(matches(isDisplayed()));
         clickNews.perform(click());
-        Thread.sleep(3000);
-
-        ViewInteraction checkTextNews = onView(
-                anyOf(withText("News"), withText("Новости")));
-        checkTextNews.check(matches(isDisplayed()));
-
-        ViewInteraction clickRecyclerViewNews = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerViewNews.perform(actionOnItemAtPosition(0, click()));
         Thread.sleep(2000);
-        //Не закрывается вкладка.
-        ViewInteraction clickRecyclerViewNews2 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerViewNews2.perform(actionOnItemAtPosition(1, click()));
-
-        ViewInteraction clickSortNews1 = onView(
-                allOf(withId(R.id.sort_news_material_button)));
-        clickSortNews1.check(matches(isDisplayed()));
-        clickSortNews1.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickSortNews2 = onView(
-                allOf(withId(R.id.sort_news_material_button)));
-        clickSortNews2.check(matches(isDisplayed()));
-        clickSortNews2.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickFilterNews = onView(
-                allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews.check(matches(isDisplayed()));
-        clickFilterNews.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction checkFilterText = onView(
-                allOf(withId(R.id.filter_news_title_text_view)));
-        checkFilterText.check(matches(isDisplayed()));
-        Thread.sleep(2000);
-
-        pressBack();
 
         ViewInteraction clickEditNews = onView(
                 allOf(withId(R.id.edit_news_material_button)));
         clickEditNews.check(matches(isDisplayed()));
         clickEditNews.perform(click());
 
-        ViewInteraction checkNewsListRecycler = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        checkNewsListRecycler.check(matches(isDisplayed()));
+        ViewInteraction clickAddNews = onView(
+                allOf(withId(R.id.add_news_image_view)));
+        clickAddNews.check(matches(isDisplayed()));
+        clickAddNews.perform(click());
+
+        ViewInteraction clickSave = onView(
+                allOf(withId(R.id.save_button)));
+        clickSave.check(matches(isDisplayed()));
+        clickSave.perform(click());
+
+        ViewInteraction checkText = onView(
+                anyOf(withText("Creating"), withText("Создание")));
+        checkText.check(matches(isDisplayed()));
+        checkText.perform(click());
+
+
+        ViewInteraction clickCancelCreatingNews1 = onView(
+                allOf(withId(R.id.cancel_button)));
+        clickCancelCreatingNews1.perform(scrollTo());
+        clickCancelCreatingNews1.check(matches(isDisplayed()));
+        clickCancelCreatingNews1.perform(click());
         Thread.sleep(2000);
 
-        pressBack();
+        ViewInteraction clickCancelText = onView(
+                allOf(withId(android.R.id.button2)));
+        clickCancelText.perform(scrollTo(), click());
 
+        Thread.sleep(2000);
+        ViewInteraction clickCancelCreatingNews2 = onView(
+                allOf(withId(R.id.cancel_button)));
+        clickCancelCreatingNews2.check(matches(isDisplayed()));
+        clickCancelCreatingNews2.perform(scrollTo(), click());
+
+        ViewInteraction textCheck = onView(
+                anyOf(withText("The changes won't be saved, do you really want to log out?"),
+                        withText("Изменения не будут сохранены. Вы действительно хотите выйти?")));
+        textCheck.check(matches(isDisplayed()));
+        Thread.sleep(2000);
+
+        ViewInteraction clickOkText = onView(
+                allOf(withId(android.R.id.button1)));
+        clickOkText.check(matches(isDisplayed()));
+        clickOkText.perform(scrollTo(), click());
+
+
+        ViewInteraction checkViewControlPanel = onView(
+                anyOf(withText("Control panel"), withText("Панель \\n управления")));
+        checkViewControlPanel.check(matches(isDisplayed()));
+
+        Thread.sleep(2000);
 
         ViewInteraction clickAuthorization = onView(
                 allOf(withId(R.id.authorization_image_button)));
@@ -131,5 +137,6 @@ public class News_CheckingTheNewsSectionTest {
         textViewLogOutTest.check(matches(isDisplayed()));
         textViewLogOutTest.perform(click());
     }
-
 }
+
+
