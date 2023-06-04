@@ -1,5 +1,6 @@
 package ru.iteco.fmhandroid;
 
+
 import androidx.test.espresso.idling.CountingIdlingResource;
 
 public class EspressoIdlingResources {
@@ -15,4 +16,5 @@ public class EspressoIdlingResources {
             idlingResource.decrement();
         }
     }
+
 }

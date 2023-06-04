@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
 import ru.iteco.fmhandroid.auth.AppAuth
 import ru.iteco.fmhandroid.exceptions.AuthorizationException
 import ru.iteco.fmhandroid.exceptions.LostConnectException

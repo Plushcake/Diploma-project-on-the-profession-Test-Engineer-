@@ -105,6 +105,7 @@ public class ClaimsAddCommentTest {
 
         ViewInteraction clickStatusButton = onView(
                 allOf(withId(R.id.status_processing_image_button)));
+        clickStatusButton.perform(scrollTo());
         clickStatusButton.perform(click());
 
         ViewInteraction clickStatusThrowOff = onView(

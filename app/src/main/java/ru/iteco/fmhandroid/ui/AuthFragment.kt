@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
+import ru.iteco.fmhandroid.FakeLoadData
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.databinding.FragmentAuthBinding
 import ru.iteco.fmhandroid.viewmodel.AuthViewModel
@@ -22,7 +24,6 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         lifecycleScope.launch {
             viewModel.loginEvent.collectLatest {
                 findNavController().navigate(R.id.action_authFragment_to_mainFragment)
@@ -59,14 +60,13 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentAuthBinding.bind(view)
-
         with(binding.containerCustomAppBarIncludeOnFragmentMain) {
             mainMenuImageButton.visibility = View.GONE
             authorizationImageButton.visibility = View.GONE
             ourMissionImageButton.visibility = View.GONE
         }
+
 
         binding.enterButton.setOnClickListener {
             if (binding.loginTextInputLayout.editText?.text.isNullOrBlank() || binding.passwordTextInputLayout.editText?.text.isNullOrBlank()) {
@@ -80,11 +80,15 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                     binding.loginTextInputLayout.editText?.text.toString().trim(),
                     binding.passwordTextInputLayout.editText?.text.toString().trim()
                 )
+                FakeLoadData.fakeData()
             }
+
         }
+
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             activity?.finishAffinity()
         }
     }
+
 }

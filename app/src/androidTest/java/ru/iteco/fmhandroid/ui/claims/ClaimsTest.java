@@ -51,8 +51,8 @@ public class ClaimsTest {
                 anyOf(withText("Claims"), withText("Заявки")));
         clickClaims.check(matches(isDisplayed()));
         clickClaims.perform(click());
-        Thread.sleep(2000);
 
+        Thread.sleep(2000);
 
         ViewInteraction clickButtonFilter = onView(
                 allOf(withId(R.id.filters_material_button)));

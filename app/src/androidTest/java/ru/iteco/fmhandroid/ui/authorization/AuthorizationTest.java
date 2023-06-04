@@ -14,10 +14,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +28,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 
@@ -36,13 +40,21 @@ public class AuthorizationTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
     //Ввести в cmd команду allure serve
     @Test
     @DisplayName("Проверка авторизации пользователя")
-    @Description("Вход в аккаунт успешный")
+    @Description("Вход в аккаунт вылидными значениями")
     public void EnterAuthorizationTest() throws InterruptedException {
-        Thread.sleep(7000);
-
         ViewInteraction checkTextAuthorization = onView(
                 anyOf(withText("Authorization"), withText("Авторизация")));
         checkTextAuthorization.check(matches(isDisplayed()));
@@ -59,7 +71,6 @@ public class AuthorizationTest {
                 anyOf(withText("Sign in"), withText("Войти")));
         checkTextButtonSignIn.check(matches(isDisplayed()));
 
-        Thread.sleep(1000);
 
         ViewInteraction EnteringLogin = onView(
                 anyOf(withHint("Login"), withHint("Логин")));
@@ -78,8 +89,6 @@ public class AuthorizationTest {
         clickButton.check(matches(isDisplayed()));
         clickButton.perform(click());
 
-
-        Thread.sleep(3000);
 
 
         ViewInteraction textViewNews = onView(
