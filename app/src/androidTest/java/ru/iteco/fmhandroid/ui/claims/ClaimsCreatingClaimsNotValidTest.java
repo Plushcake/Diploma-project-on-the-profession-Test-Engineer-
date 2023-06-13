@@ -1,10 +1,11 @@
 package ru.iteco.fmhandroid.ui.claims;
 
-//Пункт в тест кейсе № 13
+//Пункт в тест кейсе № 16
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -17,6 +18,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -29,24 +31,23 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.pageObject.InputNewClaimSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class ClaimsAddCommentTest {
+public class ClaimsCreatingClaimsNotValidTest {
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
-    @Test
-    @DisplayName("В разделе Claims проверяем Add comment")
-    @Description("В поле комментарий введены валидные значения")
-    public void claimsAddCommentTest() throws InterruptedException {
-        new LogInSteps().logIn();
 
+    @Test
+    @DisplayName("В разделе Claims. Создание Claims. Ввод не валидных значений в поля")
+    @Description("Введеные не валидные значения в поля обрабатываются успешно")
+    public void claimsCreatingClaimsNotValid() throws InterruptedException {
+        new LogInSteps().logIn();
         ViewInteraction clickMainMenu = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMainMenu.check(matches(isDisplayed()));
@@ -62,50 +63,49 @@ public class ClaimsAddCommentTest {
                 allOf(withId(R.id.add_new_claim_material_button)));
         clickAdd.perform(click());
 
-        new InputNewClaimSteps().inputNewClaim();
+        ViewInteraction inputTextTitle = onView(
+                allOf(withId(R.id.title_edit_text)));
+        inputTextTitle.perform(click());
+        inputTextTitle.perform(replaceText("ПриветМир:123456781012345678101234567810123456781012345678101234567810"), closeSoftKeyboard());
+        inputTextTitle.check(matches(withText("ПриветМир:1234567810123456781012345678101234567810")));
 
-        ViewInteraction clickListOpen = onView(
-                allOf(withId(R.id.claim_list_recycler_view)));
-        clickListOpen.check(matches(isDisplayed()));
-        clickListOpen.perform(actionOnItemAtPosition(0, click()));
-
-        ViewInteraction clickAddComment = onView(
-                allOf(withId(R.id.add_comment_image_button)));
-        clickAddComment.perform(scrollTo());
-        clickAddComment.check(matches(isDisplayed()));
-        clickAddComment.perform(click());
+        ViewInteraction clickExecutor = onView(
+                allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
+        clickExecutor.check(matches(isDisplayed()));
+        clickExecutor.perform(click(), closeSoftKeyboard());
         Thread.sleep(2000);
 
-        ViewInteraction inputTextComment = onView(
-                anyOf(withHint("Comment"), withHint("Комментарий")));
-        inputTextComment.perform(click());
-        inputTextComment.perform(typeText("TestComment:150@#$%()&"), closeSoftKeyboard());
+        ViewInteraction selectFromTheList =
+                onView(withText("Ivanov Ivan Ivanovich"))
+                        .inRoot(RootMatchers.isPlatformPopup())
+                        .perform(click());
 
-        ViewInteraction checkTextComment = onView(
-                anyOf(withHint("Comment"), withHint("Комментарий")));
-        checkTextComment.check(matches(isDisplayed()));
-        checkTextComment.check(matches(withText("TestComment:150@#$%()&")));
+        ViewInteraction inputData = onView(
+                allOf(withId(R.id.date_in_plan_text_input_edit_text)));
+        inputData.perform(replaceText("15.11.1990"), closeSoftKeyboard());
 
-        ViewInteraction clickSaves = onView(
+        ViewInteraction inputTime = onView(
+                allOf(withId(R.id.time_in_plan_text_input_edit_text)));
+        inputTime.perform(replaceText("15:00"), closeSoftKeyboard());
+
+        ViewInteraction inputDescription = onView(
+                allOf(withId(R.id.description_edit_text)));
+        inputDescription.perform(click());
+        inputDescription.perform(replaceText("ПриветМир:12345678101234567810123456781012345678101234567810123456781072"), closeSoftKeyboard());
+        inputDescription.check(matches(withText("ПриветМир:12345678101234567810123456781012345678101234567810123456781072")));
+
+        ViewInteraction clickSave = onView(
                 allOf(withId(R.id.save_button)));
-        clickSaves.check(matches(isDisplayed()));
-        clickSaves.perform(scrollTo(), click());
+        clickSave.perform(scrollTo(), click());
+        Thread.sleep(2000);
 
-
-        ViewInteraction clickAddComment2 = onView(
-                allOf(withId(R.id.add_comment_image_button)));
-        clickAddComment2.perform(scrollTo());
-        clickAddComment2.check(matches(isDisplayed()));
-        clickAddComment2.perform(click());
-
-        ViewInteraction clickCancel = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel.check(matches(isDisplayed()));
-        clickCancel.perform(scrollTo(), click());
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.claim_list_recycler_view)));
+        recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         ViewInteraction clickStatusButton = onView(
                 allOf(withId(R.id.status_processing_image_button)));
-        clickStatusButton.perform(scrollTo());
+        clickStatusButton.check(matches(isDisplayed()));
         clickStatusButton.perform(click());
 
         ViewInteraction clickStatusThrowOff = onView(
@@ -130,13 +130,12 @@ public class ClaimsAddCommentTest {
                 anyOf(withText("Cancel"), withText("Отменить")));
         clickStatusCancel.perform(click());
 
-
         ViewInteraction clickBack = onView(
                 allOf(withId(R.id.close_image_button)));
+        clickBack.check(matches(isDisplayed()));
         clickBack.perform(click());
+        Thread.sleep(2000);
 
         new LogOutSteps().logOut();
     }
-
-
 }

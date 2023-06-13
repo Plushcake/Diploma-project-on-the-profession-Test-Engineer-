@@ -29,6 +29,8 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -41,34 +43,12 @@ public class MainMenuTest {
 
     @Before
     public void theLoginProcess() throws InterruptedException {
-        Thread.sleep(7000);
-
-        ViewInteraction EnteringLogin = onView(
-                anyOf(withHint("Login"), withHint("Логин")));
-        EnteringLogin.perform(typeText("login2"), closeSoftKeyboard());
-
-        ViewInteraction EnteringPassword = onView(
-                anyOf(withHint("Password"), withHint("Пароль")));
-        EnteringPassword.perform(typeText("password2"), closeSoftKeyboard());
-
-        ViewInteraction clickButton = onView(
-                allOf(withId(R.id.enter_button)));
-        clickButton.perform(click());
-
-        Thread.sleep(3000);
+        new LogInSteps().logIn();
     }
 
     @After
     public void logOut() {
-        ViewInteraction clickAuthorization = onView(
-                allOf(withId(R.id.authorization_image_button)));
-        clickAuthorization.check(matches(isDisplayed()));
-        clickAuthorization.perform(click());
-
-        ViewInteraction textViewLogOutTest = onView(
-                anyOf(withText("Log out"), withText("Выйти")));
-        textViewLogOutTest.check(matches(isDisplayed()));
-        textViewLogOutTest.perform(click());
+        new LogOutSteps().logOut();
     }
 
     @Test

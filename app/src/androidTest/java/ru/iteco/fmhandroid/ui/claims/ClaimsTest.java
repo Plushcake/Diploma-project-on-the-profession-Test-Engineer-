@@ -26,8 +26,8 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.data.LogIn;
-import ru.iteco.fmhandroid.ui.data.LogOut;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -41,7 +41,7 @@ public class ClaimsTest {
     @DisplayName("Раздел Claims. Проходимся по всем разделам.")
     @Description("Прокликивание в Claims-е всех разделов")
     public void claimsTest() throws InterruptedException {
-        new LogIn().logIn();
+        new LogInSteps().logIn();
         ViewInteraction clickMainMenu = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMainMenu.check(matches(isDisplayed()));
@@ -103,7 +103,7 @@ public class ClaimsTest {
                 allOf(withId(R.id.status_processing_image_button)));
         checkButtonChangeStatus.perform(scrollTo());
         checkButtonChangeStatus.check(matches(isDisplayed()));
-        new LogOut().logOut();
+        new LogOutSteps().logOut();
     }
 
 }

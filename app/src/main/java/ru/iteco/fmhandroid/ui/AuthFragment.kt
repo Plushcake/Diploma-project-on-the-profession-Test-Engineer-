@@ -36,6 +36,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                     R.string.error,
                     Toast.LENGTH_SHORT
                 ).show()
+                EspressoIdlingResources.decrement()
             }
         }
         lifecycleScope.launch {
@@ -45,6 +46,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                     R.string.wrong_login_or_password,
                     Toast.LENGTH_SHORT
                 ).show()
+                EspressoIdlingResources.decrement()
             }
         }
         lifecycleScope.launch {
@@ -54,6 +56,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                     R.string.lost_network_connection,
                     Toast.LENGTH_LONG
                 ).show()
+                EspressoIdlingResources.decrement()
             }
         }
     }
@@ -75,14 +78,14 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
                     R.string.empty_login_or_password,
                     Toast.LENGTH_SHORT
                 ).show()
+                EspressoIdlingResources.decrement()
             } else {
+                EspressoIdlingResources.increment()
                 viewModel.login(
                     binding.loginTextInputLayout.editText?.text.toString().trim(),
                     binding.passwordTextInputLayout.editText?.text.toString().trim()
                 )
-                FakeLoadData.fakeData()
             }
-
         }
 
 
@@ -90,5 +93,6 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
             activity?.finishAffinity()
         }
     }
+
 
 }

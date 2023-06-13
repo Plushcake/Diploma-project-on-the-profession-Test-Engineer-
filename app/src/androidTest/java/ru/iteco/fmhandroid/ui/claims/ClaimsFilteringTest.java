@@ -26,8 +26,8 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.data.LogIn;
-import ru.iteco.fmhandroid.ui.data.LogOut;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -41,7 +41,7 @@ public class ClaimsFilteringTest {
     @DisplayName("Проверяем фильтрацию сообщений.")
     @Description("Проверяем работоспособность каждого пункта.")
     public void claimsFilteringCheck() throws InterruptedException {
-        new LogIn().logIn();
+        new LogInSteps().logIn();
         ViewInteraction clickMain = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMain.check(matches(isDisplayed()));
@@ -126,7 +126,7 @@ public class ClaimsFilteringTest {
                 allOf(withId(R.id.claim_filter_cancel_material_button)));
         clickCancel.check(matches(isDisplayed()));
         clickCancel.perform(scrollTo(), click());
-        new LogOut().logOut();
+        new LogOutSteps().logOut();
     }
 
 }

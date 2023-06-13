@@ -28,9 +28,9 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.data.InputNewClaim;
-import ru.iteco.fmhandroid.ui.data.LogIn;
-import ru.iteco.fmhandroid.ui.data.LogOut;
+import ru.iteco.fmhandroid.ui.pageObject.InputNewClaimSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -44,7 +44,7 @@ public class ClaimsCreatingClaimsTest {
     @DisplayName("Раздел Claims. Создание Claims. Заполнение полей валидными значениями. Проверка предупреждающих сообщений")
     @Description("Поля заполнены валидными значениями. Claims создается успешно.")
     public void claimsCreatingClaimsTest() throws InterruptedException {
-        new LogIn().logIn();
+        new LogInSteps().logIn();
         ViewInteraction clickMainMenu = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMainMenu.check(matches(isDisplayed()));
@@ -61,7 +61,7 @@ public class ClaimsCreatingClaimsTest {
         clickButtonAddNewClaim1.check(matches(isDisplayed()));
         clickButtonAddNewClaim1.perform(click());
 
-        new InputNewClaim().inputNewClaim();
+        new InputNewClaimSteps().inputNewClaim();
 
         ViewInteraction clickRecyclerView = onView(
                 allOf(withId(R.id.claim_list_recycler_view)));
@@ -159,7 +159,7 @@ public class ClaimsCreatingClaimsTest {
 
         Thread.sleep(2000);
 
-        new LogOut().logOut();
+        new LogOutSteps().logOut();
 
     }
 

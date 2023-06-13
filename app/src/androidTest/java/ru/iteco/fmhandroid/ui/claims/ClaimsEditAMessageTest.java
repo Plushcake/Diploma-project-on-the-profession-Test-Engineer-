@@ -35,8 +35,8 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.data.LogIn;
-import ru.iteco.fmhandroid.ui.data.LogOut;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -49,7 +49,7 @@ public class ClaimsEditAMessageTest {
     @Test
     @DisplayName("Раздел Claims. Проверка редактирования сообщения")
     public void claimsEditAMessageTest() throws InterruptedException {
-        new LogIn().logIn();
+        new LogInSteps().logIn();
         ViewInteraction clickMainMenu = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMainMenu.check(matches(isDisplayed()));
@@ -186,7 +186,7 @@ public class ClaimsEditAMessageTest {
         clickButtonBack3.check(matches(isDisplayed()));
         clickButtonBack3.perform(click());
 
-        new LogOut().logOut();
+        new LogOutSteps().logOut();
     }
 
     private static Matcher<View> childAtPosition(

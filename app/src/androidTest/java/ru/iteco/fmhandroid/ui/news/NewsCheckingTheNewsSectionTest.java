@@ -26,8 +26,8 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.data.LogIn;
-import ru.iteco.fmhandroid.ui.data.LogOut;
+import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -42,7 +42,7 @@ public class NewsCheckingTheNewsSectionTest {
     @Description("В разделе News проверяем работоспособность кнопок и переход в разделы")
 
     public void newsCheckingTheNewsSectionTest() throws InterruptedException {
-        new LogIn().logIn();
+        new LogInSteps().logIn();
         ViewInteraction clickMain = onView(
                 allOf(withId(R.id.main_menu_image_button)));
         clickMain.check(matches(isDisplayed()));
@@ -98,7 +98,7 @@ public class NewsCheckingTheNewsSectionTest {
 
         pressBack();
 
-        new LogOut().logOut();
+        new LogOutSteps().logOut();
 
     }
 

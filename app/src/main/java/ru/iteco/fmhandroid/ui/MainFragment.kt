@@ -218,7 +218,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-
+        EspressoIdlingResources.decrement()
     }
 
     private fun showErrorToast(text: Int) {

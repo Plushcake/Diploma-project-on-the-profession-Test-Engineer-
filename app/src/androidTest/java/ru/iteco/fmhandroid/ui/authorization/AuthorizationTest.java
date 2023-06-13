@@ -31,6 +31,8 @@ import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -53,7 +55,7 @@ public class AuthorizationTest {
     //Ввести в cmd команду allure serve
     @Test
     @DisplayName("Проверка авторизации пользователя")
-    @Description("Вход в аккаунт вылидными значениями")
+    @Description("Вход в аккаунт с вылидными значениями")
     public void EnterAuthorizationTest() throws InterruptedException {
         ViewInteraction checkTextAuthorization = onView(
                 anyOf(withText("Authorization"), withText("Авторизация")));
@@ -84,28 +86,13 @@ public class AuthorizationTest {
         EnteringPassword.perform(typeText("password2"), closeSoftKeyboard());
         EnteringPassword.check(matches(withText("password2")));
 
-        ViewInteraction clickButton = onView(
-                allOf(withId(R.id.enter_button)));
-        clickButton.check(matches(isDisplayed()));
-        clickButton.perform(click());
-
-
+        new ButtonSteps().signIn();
 
         ViewInteraction textViewNews = onView(
                 allOf(withId(R.id.container_list_news_include_on_fragment_main)));
         textViewNews.check(matches(isDisplayed()));
         textViewNews.check(matches(withId(R.id.container_list_news_include_on_fragment_main)));
 
-
-        ViewInteraction clickAuthorization = onView(
-                allOf(withId(R.id.authorization_image_button)));
-        clickAuthorization.check(matches(isDisplayed()));
-        clickAuthorization.perform(click());
-
-
-        ViewInteraction textViewLogOutTest = onView(
-                allOf(withId(android.R.id.title)));
-        textViewLogOutTest.check(matches(isDisplayed()));
-        textViewLogOutTest.perform(click());
+        new LogOutSteps().logOut();
     }
 }
