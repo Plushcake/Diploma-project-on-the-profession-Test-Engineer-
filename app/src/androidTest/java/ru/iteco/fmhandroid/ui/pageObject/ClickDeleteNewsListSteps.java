@@ -11,7 +11,7 @@ import androidx.test.espresso.ViewInteraction;
 
 public class ClickDeleteNewsListSteps {
 
-    public void clickDeleteNewsListStep() throws InterruptedException {
+    public void clickDeleteNewsListStep()  {
         ViewInteraction clickDeleteNewsListStep = onView(
                 anyOf(withText("Control panel"), withText("Панель \\n управления")));
         clickDeleteNewsListStep.check(matches(isDisplayed()));

@@ -30,7 +30,7 @@ public class ButtonSteps {
         clickListOpen.perform(actionOnItemAtPosition(0, click()));
     }
 
-    //Нажатие на кнопку добавления комментария в разделе Claims в выбранном сообщении.
+    //Кнопка добавления комментария в разделе Claims, в выбранном сообщении.
     public void buttonAddCommentClaims() {
         ViewInteraction clickAddComment = onView(
                 allOf(withId(R.id.add_comment_image_button)));
@@ -38,11 +38,38 @@ public class ButtonSteps {
         clickAddComment.check(matches(isDisplayed()));
         clickAddComment.perform(click());
     }
-    //Нажатие на кнопку сохранения комментария в разделе Claims в выранном сообщении.
-    public void buttonSaveCommentClaims () {
+
+    //Кнопка смены статуса сообщения в разделе Claims, в выбранном сообщении.
+    public void buttonStatusClaims() {
+        ViewInteraction clickStatusButton = onView(
+                allOf(withId(R.id.status_processing_image_button)));
+        clickStatusButton.perform(scrollTo());
+        clickStatusButton.check(matches(isDisplayed()));
+        clickStatusButton.perform(click());
+    }
+
+    //Кнопка "Назад" в разделе Claims в выбранном собщении.
+    public void buttonClickBack() {
+        ViewInteraction clickBack = onView(
+                allOf(withId(R.id.close_image_button)));
+        clickBack.perform(scrollTo());
+        clickBack.perform(click());
+    }
+
+    //Кнопка сохранения комментария в разделе Claims в выбранном сообщении.
+    public void buttonSaveCommentClaims() {
         ViewInteraction clickSaves = onView(
                 allOf(withId(R.id.save_button)));
         clickSaves.check(matches(isDisplayed()));
         clickSaves.perform(scrollTo(), click());
     }
+
+    //Кнопка Creating Claims в разделе Claims.
+    public void buttonCreatingClaims() {
+        ViewInteraction clickAdd = onView(
+                allOf(withId(R.id.add_new_claim_material_button)));
+        clickAdd.check(matches(isDisplayed()));
+        clickAdd.perform(click());
+    }
+
 }

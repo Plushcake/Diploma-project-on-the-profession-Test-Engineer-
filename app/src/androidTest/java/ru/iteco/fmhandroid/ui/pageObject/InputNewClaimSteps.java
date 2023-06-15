@@ -18,7 +18,7 @@ import androidx.test.espresso.matcher.RootMatchers;
 import ru.iteco.fmhandroid.R;
 
 public class InputNewClaimSteps {
-    public void inputNewClaim() throws InterruptedException {
+    public void inputNewClaim() {
         ViewInteraction textInputTitle = onView(
                 allOf(withId(R.id.title_edit_text)));
         textInputTitle.check(matches(isDisplayed()));
@@ -29,7 +29,6 @@ public class InputNewClaimSteps {
                 allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
         clickExecutor.check(matches(isDisplayed()));
         clickExecutor.perform(click(), closeSoftKeyboard());
-        Thread.sleep(2000);
 
         ViewInteraction selectFromTheList =
                 onView(withText("Ivanov Ivan Ivanovich"))
@@ -60,6 +59,5 @@ public class InputNewClaimSteps {
                 allOf(withId(R.id.save_button)));
         clickSave.check(matches(isDisplayed()));
         clickSave.perform(scrollTo(), click());
-        Thread.sleep(2000);
     }
 }

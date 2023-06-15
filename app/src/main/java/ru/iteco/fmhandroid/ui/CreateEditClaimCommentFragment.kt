@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.databinding.FragmentCreateEditCommentBinding
 import ru.iteco.fmhandroid.dto.ClaimComment
@@ -98,7 +99,8 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
                 .setText(R.string.genitive_comment)
 
             binding.saveButton.setOnClickListener {
-                val newCommentDescription = binding.commentTextInputLayout.editText?.text.toString().trim()
+                val newCommentDescription =
+                    binding.commentTextInputLayout.editText?.text.toString().trim()
 
                 if (newCommentDescription.isNotBlank()) {
                     claimCardViewModel.createClaimComment(
@@ -121,6 +123,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
                 } else {
                     showErrorToast(R.string.toast_empty_field)
                 }
+
             }
         }
         binding.cancelButton.setOnClickListener {

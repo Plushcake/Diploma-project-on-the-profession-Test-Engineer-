@@ -46,13 +46,14 @@ public class ClaimsAddCommentNotValidTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+
     @Before
-    public void login() {
+    public void registerIdlingResources() {
         IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
     }
 
     @After
-    public void logOut() {
+    public void unregisterIdlingResources() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
     }
 
@@ -80,7 +81,6 @@ public class ClaimsAddCommentNotValidTest {
     @DisplayName("В разделе Claims проверка Add comment не валидными значениями. Латиница и цифры")
     @Description("Символы вводятся")
     public void claimsAddCommentTestMore50() {
-
         new LogInSteps().logIn();
         new GoToMainMenuSteps().goToClaims();
         new ButtonSteps().listRecyclerClaims();
@@ -101,7 +101,6 @@ public class ClaimsAddCommentNotValidTest {
     @DisplayName("В разделе Claims проверка Add comment не валидными значениями. Латиница и специальные символы")
     @Description("Символы вводятся")
     public void claimsAddCommentTestSpecialCharacter() {
-
         new LogInSteps().logIn();
         new GoToMainMenuSteps().goToClaims();
         new ButtonSteps().listRecyclerClaims();

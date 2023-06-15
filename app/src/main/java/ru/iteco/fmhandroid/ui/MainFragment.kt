@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.iteco.fmhandroid.EspressoIdlingResources
-import ru.iteco.fmhandroid.FakeLoadData
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimListAdapter
 import ru.iteco.fmhandroid.adapter.NewsListAdapter
@@ -87,6 +86,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.containerCustomAppBarIncludeOnFragmentMain.mainMenuImageButton.setOnClickListener {
             mainMenu.show()
         }
+        EspressoIdlingResources.decrement()
         mainMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_item_claims -> {
@@ -104,7 +104,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 else -> false
             }
         }
-
+        EspressoIdlingResources.decrement()
 
         val authorizationMenu = PopupMenu(
             context,
@@ -217,9 +217,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 binding.mainSwipeRefresh.isRefreshing = false
             }
         }
-
-        EspressoIdlingResources.decrement()
     }
+
 
     private fun showErrorToast(text: Int) {
         Toast.makeText(

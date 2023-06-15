@@ -321,8 +321,8 @@
 
                         <ImageButton
                             android:id="@+id/add_comment_image_button"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="22dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="@string/button_add_comment"
                             android:src="@drawable/ic_add"

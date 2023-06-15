@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimCommentListAdapter
 import ru.iteco.fmhandroid.adapter.OnClaimCommentItemClickListener
@@ -47,7 +48,6 @@ class OpenClaimFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         claimCardViewModel.init(claimId)
-
         lifecycleScope.launchWhenResumed {
             claimCardViewModel.openClaimCommentEvent.collect {
                 val action = OpenClaimFragmentDirections
@@ -275,7 +275,7 @@ class OpenClaimFragment : Fragment() {
         binding.statusProcessingImageButton.setOnClickListener {
             statusProcessingMenu.show()
         }
-
+        EspressoIdlingResources.increment()
         binding.addCommentImageButton.setOnClickListener {
             val action = OpenClaimFragmentDirections
                 .actionOpenClaimFragmentToCreateEditClaimCommentFragment(
@@ -284,6 +284,7 @@ class OpenClaimFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
+        EspressoIdlingResources.decrement()
 
         statusProcessingMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -420,5 +421,6 @@ class OpenClaimFragment : Fragment() {
                 }
             }
         }
+
     }
 }

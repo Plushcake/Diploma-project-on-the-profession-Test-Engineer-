@@ -14,6 +14,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimListAdapter
 import ru.iteco.fmhandroid.databinding.FragmentListClaimBinding
@@ -143,6 +144,7 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
             binding.claimListSwipeRefresh.isRefreshing = false
         }
 
+        EspressoIdlingResources.increment()
         binding.containerListClaimInclude.claimListRecyclerView.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.data.collectLatest { state ->
@@ -164,6 +166,7 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
             }
         }
 
+        EspressoIdlingResources.decrement()
         binding.containerListClaimInclude.filtersMaterialButton.setOnClickListener {
             val dialog = ClaimListFilteringDialogFragment()
             dialog.show(childFragmentManager, "custom")
@@ -178,5 +181,6 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
                 authViewModel.loadUserList()
             }
         }
+
     }
 }

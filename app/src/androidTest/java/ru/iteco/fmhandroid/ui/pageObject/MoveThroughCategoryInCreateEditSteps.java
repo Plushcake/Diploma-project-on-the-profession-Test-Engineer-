@@ -17,7 +17,7 @@ import ru.iteco.fmhandroid.R;
 
 public class MoveThroughCategoryInCreateEditSteps {
 
-    public void moveThroughCategoryInCreateEdit() throws InterruptedException {
+    public void moveThroughCategoryInCreateEdit() {
 
         ViewInteraction checkInputTitle = onView(
                 allOf(withId(R.id.news_item_title_text_input_edit_text)));
