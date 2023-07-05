@@ -13,10 +13,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +27,15 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
+import ru.iteco.fmhandroid.ui.pageObject.FilterSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
+import ru.iteco.fmhandroid.ui.pageObject.StatusProcessingImageClaimsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -37,67 +45,38 @@ public class ClaimsTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
     @Test
     @DisplayName("Раздел Claims. Проходимся по всем разделам.")
     @Description("Прокликивание в Claims-е всех разделов")
-    public void claimsTest() throws InterruptedException {
+    public void claimsTest() {
         new LogInSteps().logIn();
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-
-        ViewInteraction clickClaims = onView(
-                anyOf(withText("Claims"), withText("Заявки")));
-        clickClaims.check(matches(isDisplayed()));
-        clickClaims.perform(click());
-
-        Thread.sleep(2000);
-
-        ViewInteraction clickButtonFilter = onView(
-                allOf(withId(R.id.filters_material_button)));
-        clickButtonFilter.check(matches(isDisplayed()));
-        clickButtonFilter.perform(click());
+        new GoToMainMenuSteps().goToClaims();
+        new FilterSteps().buttonFilter();
 
         ViewInteraction checkTextFiltering = onView(
                 anyOf(withText("Filtering"), withText("Фильтрация")));
         checkTextFiltering.check(matches(isDisplayed()));
 
-
-        ViewInteraction clickCancel1 = onView(
-                allOf(withId(R.id.claim_filter_cancel_material_button)));
-        clickCancel1.check(matches(isDisplayed()));
-        clickCancel1.perform(scrollTo(), click());
-
-        ViewInteraction clickAddNewClaims = onView(
-                allOf(withId(R.id.add_new_claim_material_button)));
-        clickAddNewClaims.check(matches(isDisplayed()));
-        clickAddNewClaims.perform(click());
-
-
-        Thread.sleep(2000);
-
+        new FilterSteps().buttonCancel();
+        new ButtonSteps().buttonCreatingClaims();
 
         ViewInteraction checkTextCreating = onView(
                 anyOf(withText("Creating"), withText("Создание")));
         checkTextCreating.check(matches(isDisplayed()));
 
-        ViewInteraction clickCancel2 = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel2.check(matches(isDisplayed()));
-        clickCancel2.perform(scrollTo(), click());
-
-        ViewInteraction clickOk = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOk.check(matches(isDisplayed()));
-        clickOk.perform(scrollTo(), click());
-
-        Thread.sleep(2000);
-
-        ViewInteraction clickClaimsList = onView(
-                allOf(withId(R.id.claim_list_recycler_view)));
-        clickClaimsList.check(matches(isDisplayed()));
-        clickClaimsList.perform(actionOnItemAtPosition(0, click()));
+        new ButtonSteps().buttonCancelCreatingClaims();
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
+        new ButtonSteps().listRecyclerClaims();
 
         ViewInteraction checkButtonChangeStatus = onView(
                 allOf(withId(R.id.status_processing_image_button)));
@@ -105,5 +84,4 @@ public class ClaimsTest {
         checkButtonChangeStatus.check(matches(isDisplayed()));
         new LogOutSteps().logOut();
     }
-
 }

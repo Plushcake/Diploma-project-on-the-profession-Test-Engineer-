@@ -17,11 +17,14 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +32,15 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
+import ru.iteco.fmhandroid.ui.pageObject.InputNewClaimSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
+import ru.iteco.fmhandroid.ui.pageObject.StatusProcessingImageClaimsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -42,100 +50,34 @@ public class ClaimsCreatingClaimsNotValidTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
 
     @Test
     @DisplayName("В разделе Claims. Создание Claims. Ввод не валидных значений в поля")
-    @Description("Введеные не валидные значения в поля обрабатываются успешно")
-    public void claimsCreatingClaimsNotValid() throws InterruptedException {
+    @Description("Введеные не валидные значения в поля обрабатываются заданной логике, успешно")
+    public void claimsCreatingClaimsNotValid() {
         new LogInSteps().logIn();
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
+        new GoToMainMenuSteps().goToClaims();
+        new ButtonSteps().buttonCreatingClaims();
+        new InputNewClaimSteps().inputNewClaimNotValid();
+        new ButtonSteps().listRecyclerClaims();
+        new ButtonSteps().buttonStatusClaims();
+        new StatusProcessingImageClaimsSteps().statusThrowOff();
+        new StatusProcessingImageClaimsSteps().inputTextCommentThrowOff();
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
 
-        ViewInteraction clickClaims = onView(
-                anyOf(withText("Claims"), withText("Заявки")));
-        clickClaims.check(matches(isDisplayed()));
-        clickClaims.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickAdd = onView(
-                allOf(withId(R.id.add_new_claim_material_button)));
-        clickAdd.perform(click());
-
-        ViewInteraction inputTextTitle = onView(
-                allOf(withId(R.id.title_edit_text)));
-        inputTextTitle.perform(click());
-        inputTextTitle.perform(replaceText("ПриветМир:123456781012345678101234567810123456781012345678101234567810"), closeSoftKeyboard());
-        inputTextTitle.check(matches(withText("ПриветМир:1234567810123456781012345678101234567810")));
-
-        ViewInteraction clickExecutor = onView(
-                allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
-        clickExecutor.check(matches(isDisplayed()));
-        clickExecutor.perform(click(), closeSoftKeyboard());
-        Thread.sleep(2000);
-
-        ViewInteraction selectFromTheList =
-                onView(withText("Ivanov Ivan Ivanovich"))
-                        .inRoot(RootMatchers.isPlatformPopup())
-                        .perform(click());
-
-        ViewInteraction inputData = onView(
-                allOf(withId(R.id.date_in_plan_text_input_edit_text)));
-        inputData.perform(replaceText("15.11.1990"), closeSoftKeyboard());
-
-        ViewInteraction inputTime = onView(
-                allOf(withId(R.id.time_in_plan_text_input_edit_text)));
-        inputTime.perform(replaceText("15:00"), closeSoftKeyboard());
-
-        ViewInteraction inputDescription = onView(
-                allOf(withId(R.id.description_edit_text)));
-        inputDescription.perform(click());
-        inputDescription.perform(replaceText("ПриветМир:12345678101234567810123456781012345678101234567810123456781072"), closeSoftKeyboard());
-        inputDescription.check(matches(withText("ПриветМир:12345678101234567810123456781012345678101234567810123456781072")));
-
-        ViewInteraction clickSave = onView(
-                allOf(withId(R.id.save_button)));
-        clickSave.perform(scrollTo(), click());
-        Thread.sleep(2000);
-
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.claim_list_recycler_view)));
-        recyclerView.perform(actionOnItemAtPosition(0, click()));
-
-        ViewInteraction clickStatusButton = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        clickStatusButton.check(matches(isDisplayed()));
-        clickStatusButton.perform(click());
-
-        ViewInteraction clickStatusThrowOff = onView(
-                anyOf(withText("Throw off"), withText("Сбросить")));
-        clickStatusThrowOff.perform(click());
-
-        ViewInteraction checkTextCommentThrowOff = onView(
-                anyOf(withHint("Comment"), withHint("Комментарий")));
-        checkTextCommentThrowOff.check(matches(isDisplayed()));
-        checkTextCommentThrowOff.perform(typeText("Trow_Off_Test"));
-
-        ViewInteraction clickSaves2 = onView(
-                allOf(withId(android.R.id.button1)));
-        clickSaves2.perform(scrollTo(), click());
-
-        ViewInteraction clickStatusButton2 = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        clickStatusButton2.perform(scrollTo());
-        clickStatusButton2.perform(click());
-
-        ViewInteraction clickStatusCancel = onView(
-                anyOf(withText("Cancel"), withText("Отменить")));
-        clickStatusCancel.perform(click());
-
-        ViewInteraction clickBack = onView(
-                allOf(withId(R.id.close_image_button)));
-        clickBack.check(matches(isDisplayed()));
-        clickBack.perform(click());
-        Thread.sleep(2000);
-
+        new ButtonSteps().buttonStatusClaims();
+        new StatusProcessingImageClaimsSteps().statusCancel();
+        new ButtonSteps().buttonClickBack();
         new LogOutSteps().logOut();
     }
 }

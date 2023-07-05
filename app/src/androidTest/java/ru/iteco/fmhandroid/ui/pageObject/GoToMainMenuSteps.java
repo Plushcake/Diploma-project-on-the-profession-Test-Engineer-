@@ -27,4 +27,48 @@ public class GoToMainMenuSteps {
         clickClaims.check(matches(isDisplayed()));
         clickClaims.perform(click());
     }
+
+    public void goToNews() {
+        ViewInteraction clickMainMenu = onView(
+                allOf(withId(R.id.main_menu_image_button)));
+        clickMainMenu.check(matches(isDisplayed()));
+        clickMainMenu.perform(click());
+
+        ViewInteraction clickNews = onView(
+                anyOf(withText("News"), withText("Новости")));
+        clickNews.check(matches(isDisplayed()));
+        clickNews.perform(click());
+    }
+
+    public void goToAbout() {
+        ViewInteraction clickMainMenu = onView(
+                allOf(withId(R.id.main_menu_image_button)));
+        clickMainMenu.check(matches(isDisplayed()));
+        clickMainMenu.perform(click());
+
+        ViewInteraction clickAbout = onView(
+                anyOf(withText("About"), withText("О приложении")));
+        clickAbout.check(matches(isDisplayed()));
+        clickAbout.perform(click());
+    }
+
+    public void goToMain() {
+        ViewInteraction clickMainMenu = onView(
+                allOf(withId(R.id.main_menu_image_button)));
+        clickMainMenu.check(matches(isDisplayed()));
+        clickMainMenu.perform(click());
+
+        ViewInteraction clickMain = onView(
+                anyOf(withText("Main"), withText("Главная")));
+        clickMain.check(matches(isDisplayed()));
+        clickMain.perform(click());
+
+    }
+
+    public void clickButtonMainMenu() {
+        ViewInteraction mainMenu = onView(
+                allOf(withId(R.id.main_menu_image_button)));
+        mainMenu.check(matches(isDisplayed()));
+        mainMenu.perform(click());
+    }
 }

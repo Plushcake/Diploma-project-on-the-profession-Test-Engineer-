@@ -14,7 +14,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.iteco.fmhandroid.EspressoIdlingResources
-import ru.iteco.fmhandroid.FakeLoadData
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.api.UserApi
 import ru.iteco.fmhandroid.auth.AppAuth

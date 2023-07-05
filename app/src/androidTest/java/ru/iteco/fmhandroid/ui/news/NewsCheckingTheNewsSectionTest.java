@@ -4,9 +4,7 @@ package ru.iteco.fmhandroid.ui.news;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -26,6 +24,8 @@ import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
@@ -41,45 +41,21 @@ public class NewsCheckingTheNewsSectionTest {
     @DisplayName("Раздел News проверка кнопок")
     @Description("В разделе News проверяем работоспособность кнопок и переход в разделы")
 
-    public void newsCheckingTheNewsSectionTest() throws InterruptedException {
+    public void newsCheckingTheNewsSectionTest() {
         new LogInSteps().logIn();
-        ViewInteraction clickMain = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMain.check(matches(isDisplayed()));
-        clickMain.perform(click());
-
-        ViewInteraction clickNews = onView(
-                anyOf(withText("News"), withText("Новости")));
-        clickNews.check(matches(isDisplayed()));
-        clickNews.perform(click());
-
+        new GoToMainMenuSteps().goToNews();
 
         ViewInteraction checkTextNews = onView(
                 anyOf(withText("News"), withText("Новости")));
         checkTextNews.check(matches(isDisplayed()));
 
-        ViewInteraction clickRecyclerViewNews = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerViewNews.perform(actionOnItemAtPosition(0, click()));
+        new ButtonNewsSteps().recyclerViewNews();
+        new ButtonNewsSteps().recyclerViewNews();
 
-        ViewInteraction clickRecyclerViewNews2 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerViewNews2.perform(actionOnItemAtPosition(1, click()));
+        new ButtonNewsSteps().buttonSortNews();
+        new ButtonNewsSteps().buttonSortNews();
 
-        ViewInteraction clickSortNews1 = onView(
-                allOf(withId(R.id.sort_news_material_button)));
-        clickSortNews1.check(matches(isDisplayed()));
-        clickSortNews1.perform(click());
-
-        ViewInteraction clickSortNews2 = onView(
-                allOf(withId(R.id.sort_news_material_button)));
-        clickSortNews2.check(matches(isDisplayed()));
-        clickSortNews2.perform(click());
-
-        ViewInteraction clickFilterNews = onView(
-                allOf(withId(R.id.filter_news_material_button)));
-        clickFilterNews.check(matches(isDisplayed()));
-        clickFilterNews.perform(click());
+        new ButtonNewsSteps().buttonFilterNews();
 
         ViewInteraction checkFilterText = onView(
                 allOf(withId(R.id.filter_news_title_text_view)));
@@ -87,10 +63,7 @@ public class NewsCheckingTheNewsSectionTest {
 
         pressBack();
 
-        ViewInteraction clickEditNews = onView(
-                allOf(withId(R.id.edit_news_material_button)));
-        clickEditNews.check(matches(isDisplayed()));
-        clickEditNews.perform(click());
+        new ButtonNewsSteps().buttonEditNews();
 
         ViewInteraction checkNewsListRecycler = onView(
                 allOf(withId(R.id.news_list_recycler_view)));

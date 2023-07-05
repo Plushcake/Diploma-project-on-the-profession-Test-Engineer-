@@ -14,10 +14,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import com.google.android.gms.common.api.Status;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,11 +30,15 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.InputNewClaimSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
+import ru.iteco.fmhandroid.ui.pageObject.StatusProcessingImageClaimsSteps;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -39,72 +48,32 @@ public class ClaimsEditMessageChangeStatusInProgress2Test {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
     @Test
     @DisplayName("Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем To execute")
     @Description("Работоспособность пункта To execute")
-    public void ClaimsEditMessageChangeStatusToExecute() throws InterruptedException {
+    public void ClaimsEditMessageChangeStatusToExecute() {
 
         new LogInSteps().logIn();
-
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-
-        ViewInteraction clickClaims = onView(
-                anyOf(withText("Claims"), withText("Заявки")));
-        clickClaims.check(matches(isDisplayed()));
-        clickClaims.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickAddNew = onView(
-                allOf(withId(R.id.add_new_claim_material_button)));
-        clickAddNew.check(matches(isDisplayed()));
-        clickAddNew.perform(click());
-        Thread.sleep(1000);
-
-        new InputNewClaimSteps().inputNewClaim();
-
-        ViewInteraction clickRecyclerView2 = onView(
-                allOf(withId(R.id.claim_list_recycler_view)));
-        clickRecyclerView2.check(matches(isDisplayed()));
-        clickRecyclerView2.perform(actionOnItemAtPosition(0, click()));
-        Thread.sleep(2000);
-
-        ViewInteraction clickStatus2 = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        clickStatus2.perform(scrollTo());
-        clickStatus2.check(matches(isDisplayed()));
-        clickStatus2.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickToExecute2 = onView(
-                anyOf(withText("To execute"), withText("Исполнить")));
-        clickToExecute2.check(matches(isDisplayed()));
-        clickToExecute2.perform(click());
-
-        ViewInteraction clickOk2 = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOk2.check(matches(isDisplayed()));
-        clickOk2.perform(scrollTo(), click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickCancel2 = onView(
-                allOf(withId(android.R.id.button2)));
-        clickCancel2.check(matches(isDisplayed()));
-        clickCancel2.perform(scrollTo(), click());
-
-        ViewInteraction clickStatus3 = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        clickStatus3.perform(scrollTo());
-        clickStatus3.check(matches(isDisplayed()));
-        clickStatus3.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickToExecute3 = onView(
-                anyOf(withText("To execute"), withText("Исполнить")));
-        clickToExecute3.check(matches(isDisplayed()));
-        clickToExecute3.perform(click());
+        new GoToMainMenuSteps().goToClaims();
+        new ButtonSteps().buttonCreatingClaims();
+        new InputNewClaimSteps().inputNewClaimValid();
+        new ButtonSteps().listRecyclerClaims();
+        new ButtonSteps().buttonStatusClaims();
+        new StatusProcessingImageClaimsSteps().statusToExecute();
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
+        new StatusProcessingImageClaimsSteps().buttonCancelComment();
+        new ButtonSteps().buttonStatusClaims();
+        new StatusProcessingImageClaimsSteps().statusToExecute();
 
         ViewInteraction inputTextTestExecute = onView(
                 allOf(withId(R.id.editText)));
@@ -113,16 +82,11 @@ public class ClaimsEditMessageChangeStatusInProgress2Test {
         inputTextTestExecute.perform(typeText("TestExecute:1234567890qwertyuiopasdfghjkl;zxcvbnmWdR_55"), closeSoftKeyboard());
         inputTextTestExecute.check(matches(withText("TestExecute:1234567890qwertyuiopasdfghjkl;zxcvbnmWdR_55")));
 
-        ViewInteraction clickOk3 = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOk3.check(matches(isDisplayed()));
-        clickOk3.perform(scrollTo(), click());
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
 
         ViewInteraction checkStatusExecuted = onView(
                 anyOf(withText("Executed"), withText("Выполнена")));
         checkStatusExecuted.check(matches(isDisplayed()));
-
-        Thread.sleep(2000);
 
         new LogOutSteps().logOut();
     }

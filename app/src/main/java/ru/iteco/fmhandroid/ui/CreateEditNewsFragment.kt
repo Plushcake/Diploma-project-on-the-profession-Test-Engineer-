@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.EspressoIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.databinding.FragmentCreateEditNewsBinding
 import ru.iteco.fmhandroid.dto.News
@@ -139,6 +140,7 @@ class CreateEditNewsFragment : Fragment(R.layout.fragment_create_edit_news) {
                 dialog.setMessage(R.string.cancellation)
                     .setPositiveButton(R.string.fragment_positive_button) { alertDialog, _ ->
                         alertDialog.dismiss()
+                        EspressoIdlingResources.increment()// Подтверждение выхода. Переход в раздел News Control Panel.
                         findNavController().navigateUp()
                     }
                     .setNegativeButton(R.string.cancel) { alertDialog, _ ->
@@ -262,6 +264,7 @@ class CreateEditNewsFragment : Fragment(R.layout.fragment_create_edit_news) {
     }
 
     private fun fillNewsItem() {
+        EspressoIdlingResources.increment()//Сохранение результата и переход в раздел NewsControlPanel.
         with(binding) {
             val news = args.newsItemArg
             if (news != null) {

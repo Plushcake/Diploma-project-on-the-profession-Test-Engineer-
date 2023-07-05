@@ -3,6 +3,7 @@ package ru.iteco.fmhandroid.ui.claims;
 //Пункт в тест кейсе № 13
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
@@ -62,11 +63,11 @@ public class ClaimsAddCommentTest {
     @Test
     @DisplayName("В разделе Claims проверяем Add comment")
     @Description("В поле комментарий введены валидные значения")
-    public void claimsAddCommentTest() throws InterruptedException {
+    public void claimsAddCommentTest()  {
         new LogInSteps().logIn();
         new GoToMainMenuSteps().goToClaims();
         new ButtonSteps().buttonCreatingClaims();
-        new InputNewClaimSteps().inputNewClaim();
+        new InputNewClaimSteps().inputNewClaimValid();
         new ButtonSteps().listRecyclerClaims();
         new ButtonSteps().buttonAddCommentClaims();
 
@@ -74,37 +75,22 @@ public class ClaimsAddCommentTest {
                 anyOf(withHint("Comment"), withHint("Комментарий")));
         inputTextComment.perform(click());
         inputTextComment.perform(typeText("TestComment:150@#$%()&"), closeSoftKeyboard());
-
-        ViewInteraction checkTextComment = onView(
-                anyOf(withHint("Comment"), withHint("Комментарий")));
-        checkTextComment.check(matches(isDisplayed()));
-        checkTextComment.check(matches(withText("TestComment:150@#$%()&")));
+        inputTextComment.check(matches(withText("TestComment:150@#$%()&")));
 
         new ButtonSteps().buttonSaveCommentClaims();
+
         new ButtonSteps().buttonAddCommentClaims();
-
-        ViewInteraction clickCancel = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel.check(matches(isDisplayed()));
-        clickCancel.perform(scrollTo(), click());
-
+        new ButtonSteps().buttonCancelInAddCommentClaims();
         new ButtonSteps().buttonStatusClaims();
         new StatusProcessingImageClaimsSteps().statusThrowOff();
-
-        ViewInteraction checkTextCommentThrowOff = onView(
-                anyOf(withHint("Comment"), withHint("Комментарий")));
-        checkTextCommentThrowOff.check(matches(isDisplayed()));
-        checkTextCommentThrowOff.perform(typeText("Trow_Off_Test"));
-
-        ViewInteraction clickSaves2 = onView(
-                allOf(withId(android.R.id.button1)));
-        clickSaves2.perform(scrollTo(), click());
-
-        new ButtonSteps().buttonClickBack();
-        new ButtonSteps().listRecyclerClaims();
+        new StatusProcessingImageClaimsSteps().inputTextCommentThrowOff();
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
+//        new ButtonSteps().buttonClickBack();
+//        new ButtonSteps().listRecyclerClaims();
+        new ButtonSteps().buttonStatusClaims();
+        pressBack();
         new ButtonSteps().buttonStatusClaims();
         new StatusProcessingImageClaimsSteps().statusCancel();
-        new ButtonSteps().buttonClickBack();
         new LogOutSteps().logOut();
     }
 

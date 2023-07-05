@@ -74,6 +74,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     @SuppressLint("Recycle")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        EspressoIdlingResources.decrement()
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
         val mainMenu = PopupMenu(
@@ -86,8 +87,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.containerCustomAppBarIncludeOnFragmentMain.mainMenuImageButton.setOnClickListener {
             mainMenu.show()
         }
-        EspressoIdlingResources.decrement()
         mainMenu.setOnMenuItemClickListener {
+            EspressoIdlingResources.increment()
             when (it.itemId) {
                 R.id.menu_item_claims -> {
                     findNavController().navigate(R.id.action_mainFragment_to_claimListFragment)
@@ -104,7 +105,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 else -> false
             }
         }
-        EspressoIdlingResources.decrement()
 
         val authorizationMenu = PopupMenu(
             context,
@@ -217,6 +217,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 binding.mainSwipeRefresh.isRefreshing = false
             }
         }
+
     }
 
 

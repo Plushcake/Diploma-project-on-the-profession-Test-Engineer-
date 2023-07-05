@@ -2,19 +2,18 @@ package ru.iteco.fmhandroid.ui.news;
 //Пункт в тест кейсе № 25
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +21,13 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
+
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
 import ru.iteco.fmhandroid.ui.pageObject.ClickDeleteNewsListSteps;
 import ru.iteco.fmhandroid.ui.pageObject.ClickEditNewsListSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
@@ -37,60 +39,37 @@ public class NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest 
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
+
     @Test
     @DisplayName("Проверка кнопки cancel удаление сообщения")
     @Description("Проверка кнопки Cancel в разделе Editing News. Удаление сообщения.")
-    public void DeleteMessage() throws InterruptedException {
+    public void DeleteMessage() {
         new LogInSteps().logIn();
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickNews = onView(
-                anyOf(withText("News"), withText("Новости")));
-        clickNews.check(matches(isDisplayed()));
-        clickNews.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickEditingNews = onView(
-                allOf(withId(R.id.edit_news_material_button)));
-        clickEditingNews.check(matches(isDisplayed()));
-        clickEditingNews.perform(click());
-
-        Thread.sleep(2000);
+        new GoToMainMenuSteps().goToNews();
+        new ButtonNewsSteps().buttonEditNews();
 
         new ClickEditNewsListSteps().clickEditNewsListStep();
 
-        ViewInteraction clickCancelEditing = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancelEditing.check(matches(isDisplayed()));
-        clickCancelEditing.perform(scrollTo(), click());
-
-        ViewInteraction clickCancelMessage = onView(
-                allOf(withId(android.R.id.button2)));
-        clickCancelMessage.check(matches(isDisplayed()));
-        clickCancelMessage.perform(scrollTo(), click());
-
-        ViewInteraction clickCancelEditing2 = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancelEditing2.check(matches(isDisplayed()));
-        clickCancelEditing2.perform(scrollTo(), click());
+        new ButtonNewsSteps().buttonCancelNews();
+        new ButtonNewsSteps().buttonCancelAlert();
+        new ButtonNewsSteps().buttonCancelNews();
 
         ViewInteraction checkTextMessage = onView(
                 anyOf(withText("The changes won't be saved, do you really want to log out?"),
                         withText("Изменения не будут сохранены. Вы действительно хотите выйти?")));
         checkTextMessage.check(matches(isDisplayed()));
 
-        Thread.sleep(2000);
-
-        ViewInteraction clickOkMessage = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOkMessage.check(matches(isDisplayed()));
-        clickOkMessage.perform(scrollTo(), click());
-
-        Thread.sleep(1000);
+        new ButtonNewsSteps().buttonOkAlert();
 
         new ClickDeleteNewsListSteps().clickDeleteNewsListStep();
 
@@ -99,14 +78,7 @@ public class NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest 
                         withText("Вы уверены, что хотите безвозвратно удалить документ? Данные изменения нельзя будет отменить в будущем.")));
         checkMessageDelete.check(matches(isDisplayed()));
 
-        Thread.sleep(2000);
-
-        ViewInteraction clickCancelMessageDelete = onView(
-                allOf(withId(android.R.id.button2)));
-        clickCancelMessageDelete.check(matches(isDisplayed()));
-        clickCancelMessageDelete.perform(scrollTo(), click());
-
-        Thread.sleep(1000);
+        new ButtonNewsSteps().buttonCancelAlert();
 
         new ClickDeleteNewsListSteps().clickDeleteNewsListStep();
 
@@ -115,14 +87,7 @@ public class NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest 
                         withText("Вы уверены, что хотите безвозвратно удалить документ? Данные изменения нельзя будет отменить в будущем.")));
         checkMessageDelete2.check(matches(isDisplayed()));
 
-        Thread.sleep(2000);
-
-        ViewInteraction clickOkMessageDelete = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOkMessageDelete.check(matches(isDisplayed()));
-        clickOkMessageDelete.perform(scrollTo(), click());
-
-        Thread.sleep(3000);
+        new ButtonNewsSteps().buttonOkAlert();
 
         new LogOutSteps().logOut();
     }

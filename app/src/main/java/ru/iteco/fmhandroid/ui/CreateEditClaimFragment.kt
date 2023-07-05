@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.test.espresso.Espresso
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -236,6 +237,7 @@ class CreateEditClaimFragment : Fragment(R.layout.fragment_create_edit_claim) {
     }
 
     private fun fillClaim() {
+        EspressoIdlingResources.increment()
         with(binding) {
             val fullClaim = args.argClaim
             if (fullClaim != null) {

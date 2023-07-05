@@ -65,6 +65,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
             authorizationImageButton.visibility = View.GONE
             ourMissionImageButton.visibility = View.GONE
             trademarkImageView.visibility = View.GONE
+            EspressoIdlingResources.decrement()
         }
 
         if (comment != null) {
@@ -78,6 +79,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
             binding.commentTextInputLayout.editText?.setText(comment.description)
 
             binding.saveButton.setOnClickListener {
+                EspressoIdlingResources.increment()
                 val newCommentDescription = binding.commentTextInputLayout.editText?.text.toString()
                 if (newCommentDescription.isNotBlank()) {
                     claimCardViewModel.updateClaimComment(
@@ -99,6 +101,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
                 .setText(R.string.genitive_comment)
 
             binding.saveButton.setOnClickListener {
+                EspressoIdlingResources.increment()
                 val newCommentDescription =
                     binding.commentTextInputLayout.editText?.text.toString().trim()
 
@@ -127,6 +130,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
             }
         }
         binding.cancelButton.setOnClickListener {
+            EspressoIdlingResources.increment()
             findNavController().navigateUp()
         }
     }

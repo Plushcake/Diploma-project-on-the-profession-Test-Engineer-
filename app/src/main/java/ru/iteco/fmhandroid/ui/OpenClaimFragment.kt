@@ -130,7 +130,9 @@ class OpenClaimFragment : Fragment() {
         authorizationMenu.inflate(R.menu.authorization)
 
         binding.containerCustomAppBarIncludeOnFragmentOpenClaim.authorizationImageButton.setOnClickListener {
+            EspressoIdlingResources.increment()//Кнопка Авторизация. Log Out.
             authorizationMenu.show()
+            EspressoIdlingResources.decrement()
         }
 
         authorizationMenu.setOnMenuItemClickListener {
@@ -202,6 +204,7 @@ class OpenClaimFragment : Fragment() {
                 }
             }
         }
+
     }
 
     private fun renderingContentOfClaim(fullClaim: FullClaim) {
@@ -215,6 +218,7 @@ class OpenClaimFragment : Fragment() {
         binding.createDataTextView.text = Utils.formatDate(fullClaim.claim.createDate)
         binding.createTimeTextView.text = Utils.formatTime(fullClaim.claim.createDate)
         binding.statusLabelTextView.text = displayingStatusOfClaim(fullClaim.claim.status)
+        EspressoIdlingResources.decrement()//Инкремент ожидания отображения статуса.
 
         statusMenuVisibility(
             fullClaim.claim.status,
@@ -256,18 +260,19 @@ class OpenClaimFragment : Fragment() {
             Claim.Status.OPEN -> {
                 statusProcessingMenu.menu.findItem(R.id.cancel_list_item).isEnabled =
                     claimCardViewModel.currentUser.id == fullClaim.claim.creatorId
+                EspressoIdlingResources.decrement()
             }
             Claim.Status.IN_PROGRESS -> {
                 if (claimCardViewModel.currentUser.id != fullClaim.claim.executorId) {
                     binding.statusProcessingImageButton.setImageResource(R.drawable.ic_status_processing_non_clickable)
                     statusProcessingMenu.menu.clear()
                 }
+                EspressoIdlingResources.decrement()// Инкремент находится в Create Edit Claim Comment, кнопка сохранения.
             }
             Claim.Status.CANCELLED -> {
             }
             else -> returnTransition
         }
-
         binding.closeImageButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -275,8 +280,9 @@ class OpenClaimFragment : Fragment() {
         binding.statusProcessingImageButton.setOnClickListener {
             statusProcessingMenu.show()
         }
-        EspressoIdlingResources.increment()
+
         binding.addCommentImageButton.setOnClickListener {
+            EspressoIdlingResources.increment()//Кнопка добавить Комментарий.
             val action = OpenClaimFragmentDirections
                 .actionOpenClaimFragmentToCreateEditClaimCommentFragment(
                     argComment = null,
@@ -284,7 +290,6 @@ class OpenClaimFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
-        EspressoIdlingResources.decrement()
 
         statusProcessingMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -299,6 +304,7 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.cancel_list_item -> {
+                    EspressoIdlingResources.increment()//Ожидание отображения статуса.
                     claimCardViewModel.changeClaimStatus(
                         fullClaim.claim.id!!,
                         Claim.Status.CANCELLED,
@@ -309,6 +315,7 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.throw_off_list_item -> {
+                    EspressoIdlingResources.increment()//Ввод символов в комментарий.
                     val view = requireActivity().layoutInflater.inflate(
                         R.layout.fragment_dialog_comment_create,
                         null
@@ -319,6 +326,7 @@ class OpenClaimFragment : Fragment() {
                         .setPositiveButton(android.R.string.ok, null)
                         .setNegativeButton(android.R.string.cancel, null)
                         .create()
+                    EspressoIdlingResources.decrement()
 
                     dialog.setOnShowListener {
                         val buttonOk: Button =
@@ -331,6 +339,7 @@ class OpenClaimFragment : Fragment() {
                             if (text.isBlank()) {
                                 showErrorToast(R.string.toast_empty_field)
                             } else {
+                                EspressoIdlingResources.increment()//Ожидание отображения статуса.
                                 claimCardViewModel.changeClaimStatus(
                                     fullClaim.claim.id!!,
                                     Claim.Status.OPEN,
@@ -364,6 +373,7 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.executes_list_item -> {
+                    EspressoIdlingResources.increment()//Ввод символов в комментарий.
                     val view = requireActivity().layoutInflater.inflate(
                         R.layout.fragment_dialog_comment_create,
                         null
@@ -374,6 +384,7 @@ class OpenClaimFragment : Fragment() {
                         .setPositiveButton(android.R.string.ok, null)
                         .setNegativeButton(android.R.string.cancel, null)
                         .create()
+                    EspressoIdlingResources.decrement()
 
                     dialog.setOnShowListener {
                         val buttonOk: Button =

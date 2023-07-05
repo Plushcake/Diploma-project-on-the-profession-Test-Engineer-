@@ -12,10 +12,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +26,10 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 import ru.iteco.fmhandroid.ui.pageObject.MoveThroughCategoryInCreateEditSteps;
@@ -38,40 +43,27 @@ public class NewsCheckingControlPanelCreatingNewsCheckCategoryTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
     @Test
     @DisplayName("Проверка поле Category разделе Creating News")
     @Description("Проверяем поле Category. Проверяем работоспособность выбора категорий")
-    public void newsCheckingControlPanelCreatingNews() throws InterruptedException {
+    public void newsCheckingControlPanelCreatingNews() {
         new LogInSteps().logIn();
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickNews = onView(
-                anyOf(withText("News"), withText("Новости")));
-        clickNews.check(matches(isDisplayed()));
-        clickNews.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickEditNews = onView(
-                allOf(withId(R.id.edit_news_material_button)));
-        clickEditNews.check(matches(isDisplayed()));
-        clickEditNews.perform(click());
-
-        ViewInteraction clickAddNews = onView(
-                allOf(withId(R.id.add_news_image_view)));
-        clickAddNews.check(matches(isDisplayed()));
-        clickAddNews.perform(click());
-
+        new GoToMainMenuSteps().goToNews();
+        new ButtonNewsSteps().buttonEditNews();
+        new ButtonNewsSteps().buttonAddNews();
         new MoveThroughCategoryInCreateEditSteps().moveThroughCategoryInCreateEdit();
-
         pressBack();
-
-        new LogOutSteps()
-                .logOut();
-
+        new LogOutSteps().logOut();
     }
 
 }

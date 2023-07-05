@@ -4,20 +4,18 @@ package ru.iteco.fmhandroid.ui.news;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +23,12 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
 import ru.iteco.fmhandroid.ui.pageObject.ClickDeleteNewsListSteps;
 import ru.iteco.fmhandroid.ui.pageObject.ClickEditNewsListSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
@@ -40,51 +40,34 @@ public class NewsCheckingControlPanelMessagesSectionTest {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
+
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+
     @Test
     @DisplayName("Раздел Control Panel. Проверка кнопок в сообщении.")
     @Description("Проверка работоспособность кнопок в сообщении - переходы по разделам.")
-    public void newsCheckingControlPanelMessagesSection() throws InterruptedException {
+    public void newsCheckingControlPanelMessagesSection() {
         new LogInSteps().logIn();
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickNews = onView(
-                anyOf(withText("News"), withText("Новости")));
-        clickNews.check(matches(isDisplayed()));
-        clickNews.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction clickEditNews = onView(
-                allOf(withId(R.id.edit_news_material_button)));
-        clickEditNews.check(matches(isDisplayed()));
-        clickEditNews.perform(click());
-
-        ViewInteraction clickRecyclerView1 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerView1.perform(actionOnItemAtPosition(0, click()));
-
-        Thread.sleep(1000);
-
-        ViewInteraction clickRecyclerView2 = onView(
-                allOf(withId(R.id.news_list_recycler_view)));
-        clickRecyclerView2.perform(actionOnItemAtPosition(0, click()));
-
+        new GoToMainMenuSteps().goToNews();
+        new ButtonNewsSteps().buttonEditNews();
+        new ButtonNewsSteps().recyclerViewNews();
+        new ButtonNewsSteps().recyclerViewNews();
 
         new ClickDeleteNewsListSteps().clickDeleteNewsListStep();
 
-        ViewInteraction textView = onView(
+        ViewInteraction textCheckView = onView(
                 anyOf(withText("Are you sure you want to permanently delete the document? These changes cannot be reversed in the future."),
                         withText("Вы уверены, что хотите безвозвратно удалить документ? Данные изменения нельзя будет отменить в будущем.")));
-        textView.check(matches(isDisplayed()));
+        textCheckView.check(matches(isDisplayed()));
 
-        ViewInteraction clickCancelMessage = onView(
-                allOf(withId(android.R.id.button2)));
-        clickCancelMessage.perform(scrollTo(), click());
-
-        Thread.sleep(2000);
+        new ButtonNewsSteps().buttonCancelAlert();
 
         new ClickEditNewsListSteps().clickEditNewsListStep();
 

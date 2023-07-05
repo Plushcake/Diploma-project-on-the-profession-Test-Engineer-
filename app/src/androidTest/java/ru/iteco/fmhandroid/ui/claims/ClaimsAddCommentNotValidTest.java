@@ -50,6 +50,11 @@ public class ClaimsAddCommentNotValidTest {
     @Before
     public void registerIdlingResources() {
         IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+
+        new LogInSteps().logIn();
+        new GoToMainMenuSteps().goToClaims();
+        new ButtonSteps().listRecyclerClaims();
+        new ButtonSteps().buttonAddCommentClaims();
     }
 
     @After
@@ -61,14 +66,13 @@ public class ClaimsAddCommentNotValidTest {
     @DisplayName("В разделе Claims проверка Add comment не валидными значениями. Кириллица, цифры и спец символы.")
     @Description("Символы вводятся")
     public void claimsAddCommentTestCyrillic() {
-        new LogInSteps().logIn();
-        new GoToMainMenuSteps().goToClaims();
-        new ButtonSteps().listRecyclerClaims();
-        new ButtonSteps().buttonAddCommentClaims();
+//        new LogInSteps().logIn();
+//        new GoToMainMenuSteps().goToClaims();
+//        new ButtonSteps().listRecyclerClaims();
+//        new ButtonSteps().buttonAddCommentClaims();
 
         ViewInteraction inputTextComment = onView(
                 anyOf(withHint("Comment"), withHint("Комментарий")));
-        inputTextComment.check((matches(isDisplayed())));
         inputTextComment.perform(click());
         inputTextComment.perform(replaceText("ТестКомментария:1234567890И!@#$%^&*(-+)"), closeSoftKeyboard());
         inputTextComment.check(matches(withText("ТестКомментария:1234567890И!@#$%^&*(-+)")));
@@ -81,16 +85,15 @@ public class ClaimsAddCommentNotValidTest {
     @DisplayName("В разделе Claims проверка Add comment не валидными значениями. Латиница и цифры")
     @Description("Символы вводятся")
     public void claimsAddCommentTestMore50() {
-        new LogInSteps().logIn();
-        new GoToMainMenuSteps().goToClaims();
-        new ButtonSteps().listRecyclerClaims();
-        new ButtonSteps().buttonAddCommentClaims();
+//        new LogInSteps().logIn();
+//        new GoToMainMenuSteps().goToClaims();
+//        new ButtonSteps().listRecyclerClaims();
+//        new ButtonSteps().buttonAddCommentClaims();
 
         ViewInteraction inputTextComment = onView(
                 anyOf(withHint("Comment"), withHint("Комментарий")));
-        inputTextComment.check((matches(isDisplayed())));
         inputTextComment.perform(click());
-        inputTextComment.perform(typeText("Comment:1234567890qwertyuiopasdfghjklzxcvbnmpoiuytrew55"), closeSoftKeyboard());
+        inputTextComment.perform(replaceText("Comment:1234567890qwertyuiopasdfghjklzxcvbnmpoiuytrew55"), closeSoftKeyboard());
         inputTextComment.check(matches(withText("Comment:1234567890qwertyuiopasdfghjklzxcvbnmpoiuytrew55")));
 
         new ButtonSteps().buttonSaveCommentClaims();
@@ -101,14 +104,13 @@ public class ClaimsAddCommentNotValidTest {
     @DisplayName("В разделе Claims проверка Add comment не валидными значениями. Латиница и специальные символы")
     @Description("Символы вводятся")
     public void claimsAddCommentTestSpecialCharacter() {
-        new LogInSteps().logIn();
-        new GoToMainMenuSteps().goToClaims();
-        new ButtonSteps().listRecyclerClaims();
-        new ButtonSteps().buttonAddCommentClaims();
+//        new LogInSteps().logIn();
+//        new GoToMainMenuSteps().goToClaims();
+//        new ButtonSteps().listRecyclerClaims();
+//        new ButtonSteps().buttonAddCommentClaims();
 
         ViewInteraction inputTextComment = onView(
                 anyOf(withHint("Comment"), withHint("Комментарий")));
-        inputTextComment.check((matches(isDisplayed())));
         inputTextComment.perform(click());
         inputTextComment.perform(typeText("Comment:!@#$%^&*(-+=_/.)"), closeSoftKeyboard());
         inputTextComment.check(matches(withText("Comment:!@#$%^&*(-+=_/.)")));

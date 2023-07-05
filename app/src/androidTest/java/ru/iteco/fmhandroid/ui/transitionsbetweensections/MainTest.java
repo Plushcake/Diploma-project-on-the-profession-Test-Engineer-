@@ -3,33 +3,19 @@ package ru.iteco.fmhandroid.ui.transitionsbetweensections;
 //Пункт в тест кейсе № 7
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
-import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.is;
 
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.After;
 import org.junit.Before;
@@ -39,8 +25,13 @@ import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonMainSteps;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
+import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
+import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogInSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 
@@ -53,104 +44,40 @@ public class MainTest {
             new ActivityTestRule<>(AppActivity.class);
 
     @Before
-    public void theLoginProcess() throws InterruptedException {
-        new LogInSteps().logIn();
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
     }
 
     @After
-    public void logOut() {
-        new LogOutSteps().logOut();
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
     }
 
     @Test
     @DisplayName("Проверка раздела Main")
     @io.qameta.allure.kotlin.Description("В разделе Main переходим между разделами")
-    public void mainTest() throws InterruptedException {
-        ViewInteraction checkTextNews1 = onView(
+    public void mainTest() {
+        new LogInSteps().logIn();
+
+        ViewInteraction checkTextNews = onView(
                 allOf(withId(R.id.container_list_news_include_on_fragment_main)));
-        checkTextNews1.check(matches(isDisplayed()));
+        checkTextNews.check(matches(isDisplayed()));
 
-        ViewInteraction clickButton1 = onView(
-                allOf(withId(R.id.expand_material_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.container_list_news_include_on_fragment_main),
-                                        0),
-                                4)));
-        clickButton1.check(matches(isDisplayed()));
-        clickButton1.perform(click());
+        new ButtonMainSteps().containerListNews();
+        new ButtonMainSteps().containerListNews();
+        new ButtonNewsSteps().recyclerViewNews();
 
-        ViewInteraction clickButton2 = onView(
-                allOf(withId(R.id.expand_material_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.container_list_news_include_on_fragment_main),
-                                        0),
-                                4)));
-        clickButton2.check(matches(isDisplayed()));
-        clickButton2.perform(click());
+        new ButtonMainSteps().newsListRecycler();
+        new ButtonMainSteps().newsListRecycler();
 
+        new ButtonMainSteps().buttonAllNews();
+        ;
+        new GoToMainMenuSteps().goToMain();
 
-        ViewInteraction recyclerViewList = onView(
-                allOf(withId(R.id.news_list_recycler_view),
-                        childAtPosition(
-                                withId(R.id.all_news_cards_block_constraint_layout),
-                                0)));
-        recyclerViewList.check(matches(isDisplayed()));
-        recyclerViewList.perform(actionOnItemAtPosition(0, click()));
+        new ButtonMainSteps().containerListClaims();
+        new ButtonMainSteps().containerListClaims();
 
-        ViewInteraction recyclerView2 = onView(
-                allOf(withId(R.id.news_list_recycler_view),
-                        childAtPosition(
-                                withId(R.id.all_news_cards_block_constraint_layout),
-                                0)));
-        recyclerView2.check(matches(isDisplayed()));
-        recyclerView2.perform(actionOnItemAtPosition(0, click()));
-
-
-        ViewInteraction clickAllNews = onView((withId(R.id.all_news_text_view)));
-        clickAllNews.check(matches(isDisplayed()));
-        clickAllNews.perform(click());
-
-        ViewInteraction checkTextNews2 = onView(
-                allOf(withId(R.id.container_list_news_include)));
-        checkTextNews2.check(matches(isDisplayed()));
-
-        ViewInteraction clickMainMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMainMenu.check(matches(isDisplayed()));
-        clickMainMenu.perform(click());
-
-        ViewInteraction clickTitleMenu1 = onView(
-                anyOf(withText("Main"), withText("Главная")));
-        clickTitleMenu1.check(matches(isDisplayed()));
-        clickTitleMenu1.perform(click());
-
-
-        ViewInteraction clickClaims1List = onView(
-                allOf(withId(R.id.expand_material_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.container_list_claim_include_on_fragment_main),
-                                        0),
-                                3)));
-        clickClaims1List.check(matches(isDisplayed()));
-        clickClaims1List.perform(click());
-
-        ViewInteraction clickClaims2List = onView(
-                allOf(withId(R.id.expand_material_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.container_list_claim_include_on_fragment_main),
-                                        0),
-                                3)));
-        clickClaims2List.check(matches(isDisplayed()));
-        clickClaims2List.perform(click());
-
-        ViewInteraction materialButton6 = onView(
-                allOf(withId(R.id.add_new_claim_material_button)));
-        materialButton6.perform(click());
-
+        new ButtonSteps().buttonCreatingClaims();
 
         ViewInteraction checkCreatingClaims = onView(
                 allOf(withId(R.id.custom_app_bar_title_text_view),
@@ -158,85 +85,24 @@ public class MainTest {
                                 withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))))));
         checkCreatingClaims.check(matches(isDisplayed()));
 
-        ViewInteraction clickCancel = onView(
-                allOf(withId(R.id.cancel_button)));
-        clickCancel.check(matches(isDisplayed()));
-        clickCancel.perform(scrollTo(), click());
+        new ButtonSteps().buttonCancelCreatingClaims();
 
-        ViewInteraction clickOk = onView(
-                allOf(withId(android.R.id.button1)));
-        clickOk.check(matches(isDisplayed()));
-        clickOk.perform(scrollTo(), click());
+        new ButtonSteps().buttonOkAlert();
 
-        ViewInteraction clickButton3 = onView(
-                allOf(withId(R.id.expand_material_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.container_list_news_include_on_fragment_main),
-                                        0),
-                                4)));
-        clickButton3.check(matches(isDisplayed()));
-        clickButton3.perform(click());
-        Thread.sleep(1000);
-
-        ViewInteraction clickAllClaims = onView(
-                allOf(withId(R.id.all_claims_text_view),
-                        childAtPosition(
-                                allOf(withId(R.id.container_list_claim_include_on_fragment_main),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.LinearLayout")),
-                                                1)),
-                                1)));
-        clickAllClaims.check(matches(isDisplayed()));
-        clickAllClaims.perform(click());
+        new ButtonMainSteps().containerListNews();
+        new ButtonMainSteps().buttonAllClaims();
 
         ViewInteraction checkEditClaims = onView(
                 allOf(withId(R.id.container_list_claim_include)));
         checkEditClaims.check(matches(isDisplayed()));
 
-        ViewInteraction clickMaimMenu = onView(
-                allOf(withId(R.id.main_menu_image_button)));
-        clickMaimMenu.check(matches(isDisplayed()));
-        clickMaimMenu.perform(click());
+        new GoToMainMenuSteps().goToMain();
+        new ButtonMainSteps().containerListNews();
+        new ButtonMainSteps().claimsListRecycler();
 
-        ViewInteraction clickTitleMenu2 = onView(
-                anyOf(withText("Main"), withText("Главная")));
-        clickTitleMenu2.check(matches(isDisplayed()));
-        clickTitleMenu2.perform(click());
-        Thread.sleep(2000);
-
-        ViewInteraction recyclerClaims = onView(
-                allOf(withId(R.id.claim_list_recycler_view),
-                        childAtPosition(
-                                withId(R.id.all_claims_cards_block_constraint_layout),
-                                4)));
-        recyclerClaims.check(matches(isDisplayed()));
-        recyclerClaims.perform(actionOnItemAtPosition(0, click()));
-        Thread.sleep(2000);
-
-        ViewInteraction imageButton = onView(
-                allOf(withId(R.id.status_processing_image_button)));
-        imageButton.perform(scrollTo());
-        imageButton.check(matches(isDisplayed()));
+        new ButtonSteps().buttonClickBack();
+        new LogOutSteps().logOut();
 
     }
 
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
-    }
 }

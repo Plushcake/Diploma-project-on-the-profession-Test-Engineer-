@@ -30,13 +30,21 @@ public class ButtonSteps {
         clickListOpen.perform(actionOnItemAtPosition(0, click()));
     }
 
-    //Кнопка добавления комментария в разделе Claims, в выбранном сообщении.
+    //Кнопка добавления комментария в разделе Claims, в выбранном сообщении (Add Comment).
     public void buttonAddCommentClaims() {
         ViewInteraction clickAddComment = onView(
                 allOf(withId(R.id.add_comment_image_button)));
         clickAddComment.perform(scrollTo());
         clickAddComment.check(matches(isDisplayed()));
         clickAddComment.perform(click());
+    }
+
+    //Кнопка Cancel в разделе добавить комментарий (Add Comment).
+    public void buttonCancelInAddCommentClaims() {
+        ViewInteraction clickCancelInAddCommentClaims = onView(
+                allOf(withId(R.id.cancel_button)));
+        clickCancelInAddCommentClaims.check(matches(isDisplayed()));
+        clickCancelInAddCommentClaims.perform(scrollTo(), click());
     }
 
     //Кнопка смены статуса сообщения в разделе Claims, в выбранном сообщении.
@@ -53,6 +61,7 @@ public class ButtonSteps {
         ViewInteraction clickBack = onView(
                 allOf(withId(R.id.close_image_button)));
         clickBack.perform(scrollTo());
+        clickBack.check(matches(isDisplayed()));
         clickBack.perform(click());
     }
 
@@ -66,10 +75,48 @@ public class ButtonSteps {
 
     //Кнопка Creating Claims в разделе Claims.
     public void buttonCreatingClaims() {
-        ViewInteraction clickAdd = onView(
+        ViewInteraction clickAddNewClaims = onView(
                 allOf(withId(R.id.add_new_claim_material_button)));
-        clickAdd.check(matches(isDisplayed()));
-        clickAdd.perform(click());
+        clickAddNewClaims.check(matches(isDisplayed()));
+        clickAddNewClaims.perform(click());
+    }
+
+    //Кнопка Cancel в разделе Creating Claims.
+    public void buttonCancelCreatingClaims() {
+        ViewInteraction clickCancel = onView(
+                allOf(withId(R.id.cancel_button)));
+        clickCancel.check(matches(isDisplayed()));
+        clickCancel.perform(scrollTo(), click());
+    }
+
+    //Кнопка Editing Claims. Переход в разделе Editing Claims
+    public void buttonEditingClaims() {
+        ViewInteraction clickButtonEditClaims = onView(
+                allOf(withId(R.id.edit_processing_image_button)));
+        clickButtonEditClaims.perform(scrollTo());
+        clickButtonEditClaims.check(matches(isDisplayed()));
+        clickButtonEditClaims.perform(click());
+    }
+
+    //Выбор сообщения в разделе Love Is All
+    public void listRecyclerOurMission() {
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.our_mission_item_list_recycler_view)));
+        recyclerView.perform(actionOnItemAtPosition(0, click()));
+    }
+
+    public void buttonOkAlert() {
+        ViewInteraction clickOkMessage = onView(
+                allOf(withId(android.R.id.button1)));
+        clickOkMessage.check(matches(isDisplayed()));
+        clickOkMessage.perform(scrollTo(), click());
+    }
+
+    public void buttonCancelAlert() {
+        ViewInteraction clickCancelMessage = onView(
+                allOf(withId(android.R.id.button2)));
+        clickCancelMessage.check(matches(isDisplayed()));
+        clickCancelMessage.perform(scrollTo(), click());
     }
 
 }
