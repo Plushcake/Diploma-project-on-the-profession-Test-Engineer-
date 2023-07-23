@@ -6,7 +6,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -26,7 +25,7 @@ public class InputNewNewsSteps {
                 allOf(withId(R.id.news_item_title_text_input_edit_text)));
         inputTitle.check(matches(isDisplayed()));
         inputTitle.perform(clearText());
-        inputTitle.perform(typeText("TitleTEST:1234567890!@#$%&*()31"), closeSoftKeyboard());//closeSoftKeyboard оставлен если будет замена на typeText.
+        inputTitle.perform(replaceText("TitleTEST:1234567890!@#$%&*()31"), closeSoftKeyboard());
         inputTitle.check(matches(withText("TitleTEST:1234567890!@#$%&*()31")));
         inputTitle.perform(clearText());
 
@@ -92,9 +91,9 @@ public class InputNewNewsSteps {
 
     //Ввод не валидных значений в разделе Creating Edit News.
     public void inputCreatingNewsComplexNotValid() {
-        ViewInteraction checkTextCreating1 = onView(
+        ViewInteraction checkTextCreating = onView(
                 anyOf(withText("Creating"), withText("Создание")));
-        checkTextCreating1.check(matches(isDisplayed()));
+        checkTextCreating.check(matches(isDisplayed()));
 
         ViewInteraction inputCategory2 = onView(
                 allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
@@ -117,8 +116,8 @@ public class InputNewNewsSteps {
 
         ViewInteraction inputDescription = onView(
                 allOf(withId(R.id.news_item_description_text_input_edit_text)));
-        inputDescription.perform(replaceText("Description//010101010101010101010101010101010100101010100101010101010101010101"), closeSoftKeyboard());
-        inputDescription.check(matches(withText("Description//010101010101010101010101010101010100101010100101010101010101010101")));
+        inputDescription.perform(replaceText("DescriptionOne//010101010101010101010101010101010100101010100101010101010101010101"), closeSoftKeyboard());
+        inputDescription.check(matches(withText("DescriptionOne//010101010101010101010101010101010100101010100101010101010101010101")));
 
         new ButtonNewsSteps().buttonSaveNews();
 
@@ -133,21 +132,19 @@ public class InputNewNewsSteps {
         inputPublishTime.perform(replaceText("15:00"));
 
         new ButtonNewsSteps().buttonSaveNews();
+        new ButtonNewsSteps().buttonCancelNews();
+        new ButtonNewsSteps().buttonOkAlert();
+        new ButtonNewsSteps().buttonAddNews();
 
         ViewInteraction inputCategoryFull = onView(
                 allOf(withId(R.id.news_item_category_text_auto_complete_text_view)));
-        inputCategoryFull.perform(replaceText("Category_Категория//010101010101010101010101010101010100101010100101010101010101010101"), closeSoftKeyboard());
+        inputCategoryFull.perform(replaceText("Category_Категория//010101010101010101010101010101010100101010100101010101010101010101"));
         inputCategoryFull.check(matches(withText("Category_Категория//010101010101010101010101010101010100101010100101010101010101010101")));
 
         ViewInteraction inputTitleFull = onView(
                 allOf(withId(R.id.news_item_title_text_input_edit_text)));
-        inputTitleFull.perform(replaceText("Title//010101010101010101010101010101010100101010100101010101010101010101"), closeSoftKeyboard());
+        inputTitleFull.perform(replaceText("Title//010101010101010101010101010101010100101010100101010101010101010101"));
         inputTitleFull.check(matches(withText("Title//010101010101010101010101010101010100101010100101010101010101010101")));
-
-        ViewInteraction inputDescriptionFull = onView(
-                allOf(withId(R.id.news_item_description_text_input_edit_text)));
-        inputDescriptionFull.perform(replaceText("Description//010101010101010101010101010101010100101010100101010101010101010101"), closeSoftKeyboard());
-        inputDescriptionFull.check(matches(withText("Description//010101010101010101010101010101010100101010100101010101010101010101")));
 
         ViewInteraction inputPublishDateFull = onView(
                 allOf(withId(R.id.news_item_publish_date_text_input_edit_text)));
@@ -155,9 +152,16 @@ public class InputNewNewsSteps {
 
         ViewInteraction inputPublishTimeFull = onView(
                 allOf(withId(R.id.news_item_publish_time_text_input_edit_text)));
-        inputPublishTimeFull.perform(replaceText("15:00"));
+        inputPublishTimeFull.perform(replaceText("18:00"));
+
+        ViewInteraction inputDescriptionFull = onView(
+                allOf(withId(R.id.news_item_description_text_input_edit_text)));
+        inputDescriptionFull.perform(replaceText("DescriptionTwo//010101010101010101010101010101010100101010100101010101010101010101"));
+        inputDescriptionFull.check(matches(withText("DescriptionTwo//010101010101010101010101010101010100101010100101010101010101010101")));
 
         new ButtonNewsSteps().buttonSaveNews();
+        new ButtonNewsSteps().buttonCancelNews();
+        new ButtonNewsSteps().buttonOkAlert();
 
     }
 
@@ -255,9 +259,9 @@ public class InputNewNewsSteps {
 
         new ButtonNewsSteps().buttonSaveNews();
 
-        ViewInteraction textCheckEditing3 = onView(
+        ViewInteraction textCheckEditing = onView(
                 anyOf(withText("Editing"), withText("Редактирование")));
-        textCheckEditing3.check(matches(isDisplayed()));
+        textCheckEditing.check(matches(isDisplayed()));
 
         inputDescription3.perform(clearText());
 

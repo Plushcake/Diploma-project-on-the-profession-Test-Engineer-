@@ -48,11 +48,13 @@ class CreateEditNewsFragment : Fragment(R.layout.fragment_create_edit_news) {
         lifecycleScope.launch {
             viewModel.saveNewsItemExceptionEvent.collect {
                 showErrorToast(R.string.error_saving)
+                EspressoIdlingResources.decrement()//Декремент сохранения сообщения с данной ошибкой.
             }
         }
         lifecycleScope.launch {
             viewModel.editNewsItemExceptionEvent.collect {
                 showErrorToast(R.string.error_saving)
+                EspressoIdlingResources.decrement()//Декремент сохранения сообщения с данной ошибкой.
             }
         }
         lifecycleScope.launch {

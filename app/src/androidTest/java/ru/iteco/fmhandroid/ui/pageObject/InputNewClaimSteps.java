@@ -9,9 +9,11 @@ import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.RootMatchers;
@@ -176,5 +178,23 @@ public class InputNewClaimSteps {
                 allOf(withId(R.id.save_button)));
         clickSave.check(matches(isDisplayed()));
         clickSave.perform(scrollTo(), click());
+    }
+
+    public void inputComment() {
+        ViewInteraction inputTextComment = onView(
+                anyOf(withHint("Comment"), withHint("Комментарий")));
+        inputTextComment.perform(click());
+        inputTextComment.perform(replaceText("TestComment:150@#$%()&"));
+        inputTextComment.check(matches(withText("TestComment:150@#$%()&")));
+
+    }
+
+    public void inputCommentStatus() {
+        ViewInteraction inputTextCommentThrowOff = onView(
+                allOf(withId(R.id.editText)));
+        inputTextCommentThrowOff.check(matches(isDisplayed()));
+        inputTextCommentThrowOff.perform(click());
+        inputTextCommentThrowOff.perform(typeText("Test:1235098!@#$%^&()Qasdrftgyhjuiklop;mnbvcxz<>*=-%_55"), closeSoftKeyboard());
+        inputTextCommentThrowOff.check(matches(withText("Test:1235098!@#$%^&()Qasdrftgyhjuiklop;mnbvcxz<>*=-%_55")));
     }
 }

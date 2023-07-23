@@ -119,4 +119,11 @@ public class ButtonSteps {
         clickCancelMessage.perform(scrollTo(), click());
     }
 
+    //Поле выбора даты в создании/редактирование. Раздел Claims.
+    public void dateInPlanTextInput() {
+        ViewInteraction dateInPlanTextInput = onView(
+                allOf(withId(R.id.date_in_plan_text_input_edit_text)));
+        dateInPlanTextInput.perform(click());
+    }
+
 }
