@@ -3,10 +3,14 @@ package ru.iteco.fmhandroid.ui.pageObject;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
@@ -22,6 +26,7 @@ import androidx.test.espresso.ViewInteraction;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 
 public class DateAndTimeSteps {
     //Клик по стрелке в право. Переключение месяца.
@@ -72,6 +77,90 @@ public class DateAndTimeSteps {
                                 1)))
                 .atPosition(1);
         listOfYears.perform(scrollTo(), click());
+    }
+
+    //Смена вида часов, на ввод цифр.
+    public void switchToTextInputMode() {
+        ViewInteraction switchToTextInputMode = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatImageButton")), withContentDescription("Switch to text input mode for the time input."),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        4),
+                                0),
+                        isDisplayed()));
+        switchToTextInputMode.perform(click());
+    }
+
+    //Смена вида часов, на циферблат.
+    public void switchToTextClockMode() {
+        ViewInteraction switchToTextClockMode = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatImageButton")), withContentDescription("Switch to clock mode for the time input."),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        4),
+                                0),
+                        isDisplayed()));
+        switchToTextClockMode.perform(click());
+    }
+
+
+
+    //Установка времени в часах.
+    public void settingTimes() {
+        ViewInteraction settingTimes = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatEditText")),
+                        childAtPosition(
+                                allOf(withClassName(is("android.widget.RelativeLayout")),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.TextInputTimePickerView")),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        settingTimes.perform(replaceText("15"), closeSoftKeyboard());
+    }
+
+    //Установка времени в минутах.
+    public void settingMinutes() {
+        ViewInteraction settingMinutes = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatEditText")),
+                        childAtPosition(
+                                allOf(withClassName(is("android.widget.RelativeLayout")),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.TextInputTimePickerView")),
+                                                1)),
+                                3),
+                        isDisplayed()));
+        settingMinutes.perform(replaceText("25"), closeSoftKeyboard());
+    }
+
+    //Установка времени в часах. Не валидные значения.
+    public void settingTimesNotValid() {
+        ViewInteraction settingTimesNotValid = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatEditText")),
+                        childAtPosition(
+                                allOf(withClassName(is("android.widget.RelativeLayout")),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.TextInputTimePickerView")),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        settingTimesNotValid.perform(replaceText("25"), closeSoftKeyboard());
+    }
+
+    //Установка времени в минутах. Не валидные значения.
+    public void settingMinutesNotValid() {
+        ViewInteraction settingMinutesNotValid = onView(
+                allOf(withClassName(is("androidx.appcompat.widget.AppCompatEditText")),
+                        childAtPosition(
+                                allOf(withClassName(is("android.widget.RelativeLayout")),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.TextInputTimePickerView")),
+                                                1)),
+                                3),
+                        isDisplayed()));
+        settingMinutesNotValid.perform(replaceText("61"), closeSoftKeyboard());
     }
 
     private static Matcher<View> childAtPosition(

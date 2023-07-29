@@ -126,4 +126,11 @@ public class ButtonSteps {
         dateInPlanTextInput.perform(click());
     }
 
+    //Поле выбора времени в создании/редактирование. Раздел Claims
+    public void timeInPlanTextInput() {
+        ViewInteraction timeInPlanTextInput = onView(
+                allOf(withId(R.id.time_in_plan_text_input_edit_text)));
+        timeInPlanTextInput.perform(click());
+    }
+
 }

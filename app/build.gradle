@@ -48,7 +48,6 @@ android {
 }
 
 dependencies {
-    //implementation 'junit:junit:4.12'
     def retrofit_version = "2.9.0"
     def retrofit_gson_version = "2.9.0"
     def okhttp_logging_version = "4.9.2"
@@ -113,6 +112,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation 'io.qameta.allure:allure-kotlin-android:2.4.0'
 
-
+    //UIAutomator
+    androidTestImplementation 'androidx.test:core-ktx:1.4.0'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.5'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation 'org.hamcrest:hamcrest-integration:1.3'
 
 }

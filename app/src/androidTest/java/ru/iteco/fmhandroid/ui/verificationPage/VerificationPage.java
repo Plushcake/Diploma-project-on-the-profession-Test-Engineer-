@@ -7,11 +7,17 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anyOf;
 
+import android.view.View;
+
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.core.AllOf;
+import org.hamcrest.core.IsInstanceOf;
 
 import ru.iteco.fmhandroid.R;
 
@@ -200,5 +206,39 @@ public class VerificationPage {
                 allOf(withId(R.id.status_processing_image_button)));
         checkButtonChangeStatus.perform(scrollTo());
         checkButtonChangeStatus.check(matches(isDisplayed()));
+    }
+
+    //Проверка предупреждающего сообщения Enter a valid time. В разделе Время и Дата.
+    public void checkTextAlert() {
+        ViewInteraction checkTextAlert = onView(
+                allOf(IsInstanceOf.<View>instanceOf(android.widget.TextView.class), withText("Enter a valid time"),
+                        withParent(allOf(IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class),
+                                withParent(IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class)))),
+                        isDisplayed()));
+        checkTextAlert.check(matches(withText("Enter a valid time")));
+    }
+
+    //Проверка текста. Set time. В разделе Время и Дата.
+    public void checkText() {
+        ViewInteraction textView = onView(
+                allOf(IsInstanceOf.<View>instanceOf(android.widget.TextView.class), withText("Set time"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.TimePicker.class))),
+                        isDisplayed()));
+        textView.check(matches(withText("Set time")));
+    }
+
+    //Проверям ID элемента About Privacy Policy, в разделе About.
+    public void idCheckAboutPrivacyPolicy() {
+        ViewInteraction textCheckPrivacy = onView(
+                AllOf.allOf(withId(R.id.about_privacy_policy_label_text_view)));
+        textCheckPrivacy.check(matches(isDisplayed()));
+    }
+
+    //Проверям ID элемента About Terms of Use, в разделе About.
+    public void idCheckAboutTermsOfUse() {
+        ViewInteraction textCheckTerms = onView(
+                AllOf.allOf(withId(R.id.about_terms_of_use_label_text_view)));
+        textCheckTerms.check(matches(isDisplayed()));
+
     }
 }
