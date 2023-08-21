@@ -1,0 +1,53 @@
+{
+    "name": "Ввод валидных значений в поля час и минуты в режиме input mode",
+    "start": 1692655338042,
+    "stop": 1692655350119,
+    "stage": "finished",
+    "description": "Проверяем поля на ввод значений",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a160dd2d-b62c-4a31-bc5d-b344d6557609",
+    "historyId": "48c361a0baeb3203659115c9e75df7c3",
+    "fullName": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeTest.inputTimeInputModeTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "inputTimeInputModeTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2526)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

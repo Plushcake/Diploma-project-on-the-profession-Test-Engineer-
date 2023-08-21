@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Сообщение. Статус процесса Throw off и To execute ввод не валидных згачений.  ",
+    "start": 1692643722491,
+    "stop": 1692643747225,
+    "stage": "finished",
+    "description": "Ввод не валидных значений в поля для комментариев",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "d2f5f161-da51-46c1-80dd-d9c3d2835e8d",
+    "historyId": "5c9c7ab96c093ac0b3805c6301505c9b",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.EditTheMessageGearDocumentNotValidTest.editTheMessageGearDocumentNotValid",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.EditTheMessageGearDocumentNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "editTheMessageGearDocumentNotValid"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.EditTheMessageGearDocumentNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2001)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "name": "Проверка перехода между основными разделами.",
+    "start": 1692655415791,
+    "stop": 1692655428647,
+    "stage": "finished",
+    "description": "Переход по разделам Main, Claims, News, About",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "163ea837-685d-44d9-a0a6-a4642e4b6c81",
+    "historyId": "f62ff9a491b7641c6197e8afb9594f76",
+    "fullName": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainMenuTest.mainMenuCheck",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainMenuTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainMenuCheck"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainMenuTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2536)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

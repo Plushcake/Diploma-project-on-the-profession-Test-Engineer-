@@ -1,0 +1,53 @@
+{
+    "name": "Проверка кнопки cancel удаление сообщения",
+    "start": 1692644315606,
+    "stop": 1692644332110,
+    "stage": "finished",
+    "description": "Проверка кнопки Cancel в разделе Editing News. Удаление сообщения.",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "3e7d7cfe-81de-4196-858c-1872e8e7a726",
+    "historyId": "c7956c9913432b9cba61bfcda956f01",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest.DeleteMessage",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "DeleteMessage"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsDeleteMessageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2061)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

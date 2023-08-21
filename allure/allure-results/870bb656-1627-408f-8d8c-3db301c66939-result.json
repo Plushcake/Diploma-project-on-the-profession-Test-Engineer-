@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем Take to work",
+    "start": 1692643512118,
+    "stop": 1692643534287,
+    "stage": "finished",
+    "description": "Работоспособность пункта Take to work",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "870bb656-1627-408f-8d8c-3db301c66939",
+    "historyId": "b0e44f36478a47408c6d1b07706cd6b",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusOpen2Test.ClaimsEditMessageChangeStatusTakeToWork",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusOpen2Test"
+        },
+        {
+            "name": "testMethod",
+            "value": "ClaimsEditMessageChangeStatusTakeToWork"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusOpen2Test"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1971)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

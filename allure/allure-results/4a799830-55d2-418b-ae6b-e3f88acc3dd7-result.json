@@ -1,0 +1,53 @@
+{
+    "name": "Раздел News проверка кнопок",
+    "start": 1692644504999,
+    "stop": 1692644517562,
+    "stage": "finished",
+    "description": "В разделе News проверяем работоспособность кнопок и переход в разделы",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "4a799830-55d2-418b-ae6b-e3f88acc3dd7",
+    "historyId": "726c24f59b6813e0f117d147f9754e2e",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingTheNewsSectionTest.newsCheckingTheNewsSectionTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingTheNewsSectionTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsCheckingTheNewsSectionTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingTheNewsSectionTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2086)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

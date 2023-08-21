@@ -1,0 +1,53 @@
+{
+    "name": "Проверка раздела Love Is All",
+    "start": 1692655385435,
+    "stop": 1692655394729,
+    "stage": "finished",
+    "description": "Проверяем успешный переход в раздел",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a77d1e5b-dcd8-4b8f-acec-71b6a344af34",
+    "historyId": "930177d4fc8ffd457a31ff3aa949ef48",
+    "fullName": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.LoveIsAllTest.loveIsAllTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.LoveIsAllTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "loveIsAllTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.LoveIsAllTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2531)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

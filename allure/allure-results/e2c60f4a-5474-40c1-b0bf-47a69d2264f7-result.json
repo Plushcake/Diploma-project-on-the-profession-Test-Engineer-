@@ -1,0 +1,53 @@
+{
+    "name": "Ввод не валидных значений в поле время в режиме input mode",
+    "start": 1692655295385,
+    "stop": 1692655307657,
+    "stage": "finished",
+    "description": "Проверяем вывод предупреждающего сообщения",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "e2c60f4a-5474-40c1-b0bf-47a69d2264f7",
+    "historyId": "98cc3a26e2ffd78a589e7f5c18b3df74",
+    "fullName": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeNotValidTest.inputNotValidTimeTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "inputNotValidTimeTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2511)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

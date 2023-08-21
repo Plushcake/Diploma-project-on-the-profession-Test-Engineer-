@@ -60,7 +60,7 @@ public class AuthorizationTest {
     @Test
     @DisplayName("Проверка авторизации пользователя")
     @Description("Вход в аккаунт с вылидными значениями")
-    public void EnterAuthorizationTest() {
+    public void enterAuthorizationTest() {
 
         new VerificationPage().checkViewTextAuthorization();
 

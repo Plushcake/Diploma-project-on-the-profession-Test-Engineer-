@@ -1,0 +1,53 @@
+{
+    "name": "В разделе Claims проверяем Add comment",
+    "start": 1692107462758,
+    "stop": 1692107482315,
+    "stage": "finished",
+    "description": "В поле комментарий введены валидные значения",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "9f466b69-d9e6-4b2a-8d9d-f05e3040245e",
+    "historyId": "9da79e50c137fe893a388175674b250d",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentTest.claimsAddCommentTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsAddCommentTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1251)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

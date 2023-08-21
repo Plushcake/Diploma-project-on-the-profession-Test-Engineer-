@@ -1,6 +1,8 @@
 package ru.iteco.fmhandroid.ui.claimsTest;
 //Пункт в тест кейсе № 14
 
+import static androidx.test.espresso.Espresso.pressBack;
+
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.filters.LargeTest;
@@ -69,6 +71,7 @@ public class ClaimsEditMessageChangeStatusInProgress2Test {
         new InputNewClaimSteps().inputCommentStatus();
         new StatusProcessingImageClaimsSteps().buttonSaveComment();
         new VerificationPage().checkStatusExecuted();
+        pressBack();
         new LogOutSteps().logOut();
     }
 }

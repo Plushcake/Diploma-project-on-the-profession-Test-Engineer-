@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверка редактирования сообщения",
+    "start": 1692640795078,
+    "stop": 1692640812957,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "760075dd-f1fc-4288-ad42-dc6fd803ba2e",
+    "historyId": "a5c36979f8e9c5e024111b445ae2b6c0",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditAMessageTest.claimsEditAMessageTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditAMessageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsEditAMessageTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditAMessageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1776)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

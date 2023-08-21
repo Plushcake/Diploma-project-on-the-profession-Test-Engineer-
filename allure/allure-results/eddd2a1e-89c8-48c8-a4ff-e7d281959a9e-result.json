@@ -1,0 +1,53 @@
+{
+    "name": "Ввод в поле логин случайных подобранных цифр",
+    "start": 1692208368859,
+    "stop": 1692208376606,
+    "stage": "finished",
+    "description": "Случайные цифры введены успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "eddd2a1e-89c8-48c8-a4ff-e7d281959a9e",
+    "historyId": "bfa4c875424704881ff3fb6ab5bb77ca",
+    "fullName": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest.loginEditTextRandomNumber",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "loginEditTextRandomNumber"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1301)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

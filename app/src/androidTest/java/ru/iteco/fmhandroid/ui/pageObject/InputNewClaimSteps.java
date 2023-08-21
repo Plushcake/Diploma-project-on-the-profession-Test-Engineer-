@@ -194,7 +194,7 @@ public class InputNewClaimSteps {
                 allOf(withId(R.id.editText)));
         inputTextCommentThrowOff.check(matches(isDisplayed()));
         inputTextCommentThrowOff.perform(click());
-        inputTextCommentThrowOff.perform(typeText("Test:1235098!@#$%^&()Qasdrftgyhjuiklop;mnbvcxz<>*=-%_55"), closeSoftKeyboard());
+        inputTextCommentThrowOff.perform(replaceText("Test:1235098!@#$%^&()Qasdrftgyhjuiklop;mnbvcxz<>*=-%_55"), closeSoftKeyboard());
         inputTextCommentThrowOff.check(matches(withText("Test:1235098!@#$%^&()Qasdrftgyhjuiklop;mnbvcxz<>*=-%_55")));
     }
 }

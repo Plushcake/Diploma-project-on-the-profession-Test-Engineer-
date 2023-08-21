@@ -1,0 +1,53 @@
+{
+    "name": "Проверка раздела Main",
+    "start": 1692655438618,
+    "stop": 1692655455745,
+    "stage": "finished",
+    "description": "В разделе Main переходим между разделами",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "732648b4-4f1d-4acd-803f-f3f8081f968f",
+    "historyId": "530c852863c9b586d8155d98e3ca4ad4",
+    "fullName": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainTest.mainTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.transitionsbetweensectionsTest.MainTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2541)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

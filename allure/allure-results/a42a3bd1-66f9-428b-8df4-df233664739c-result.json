@@ -1,0 +1,53 @@
+{
+    "name": "В разделе Claims. Создание Claims. Ввод не валидных значений в поля",
+    "start": 1692639988194,
+    "stop": 1692640004698,
+    "stage": "finished",
+    "description": "Введеные не валидные значения в поля обрабатываются заданной логике, успешно",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a42a3bd1-66f9-428b-8df4-df233664739c",
+    "historyId": "2578462de0570429b68f35b7cd4ca693",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsCreatingClaimsNotValidTest.claimsCreatingClaimsNotValid",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsCreatingClaimsNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsCreatingClaimsNotValid"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsCreatingClaimsNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1690)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

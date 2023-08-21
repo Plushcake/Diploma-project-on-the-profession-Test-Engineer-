@@ -1,0 +1,53 @@
+{
+    "name": "Проверка авторизации пользователя",
+    "start": 1692638083371,
+    "stop": 1692638091482,
+    "stage": "finished",
+    "description": "Вход в аккаунт с вылидными значениями",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "33f05320-40d2-4b49-bd7a-770ced8b95b7",
+    "historyId": "30979d0d4856a640fd3aeec9a058aab2",
+    "fullName": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationTest.enterAuthorizationTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "enterAuthorizationTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1650)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

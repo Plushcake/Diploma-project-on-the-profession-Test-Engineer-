@@ -1,0 +1,53 @@
+{
+    "name": "Проверка не заполненых полей в разделе Creating News",
+    "start": 1692644070070,
+    "stop": 1692644084702,
+    "stage": "finished",
+    "description": "В разделе Creating News проверка не заполненых полей. Проверка кнопки Cancel",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "999b9866-b11f-4e98-9710-60f6c436e7ea",
+    "historyId": "def96b5fc99a978e0a4bfb6c8313fd60",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelCreatingNewsEmptyFieldsTest.newsCheckingControlPanelCreatingNews",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelCreatingNewsEmptyFieldsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsCheckingControlPanelCreatingNews"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelCreatingNewsEmptyFieldsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2026)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

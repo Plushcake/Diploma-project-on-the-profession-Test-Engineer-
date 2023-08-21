@@ -1,0 +1,53 @@
+{
+    "name": "В разделе установки даты проверяем работоспособность кнопки Ok",
+    "start": 1692655158903,
+    "stop": 1692655169855,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "372077e9-c8fe-4cfc-a324-7758a48c836c",
+    "historyId": "243affabaef2b9a95ca5c3f67580d55e",
+    "fullName": "ru.iteco.fmhandroid.ui.timecalendarTest.DateButtonTest.testTheOkButton",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.DateButtonTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "testTheOkButton"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.DateButtonTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2496)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

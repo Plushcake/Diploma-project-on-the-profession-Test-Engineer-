@@ -1,0 +1,53 @@
+{
+    "name": "Раздел Claims. Проверяем в сообщении кнопку статус процесса. Проверяем To execute",
+    "start": 1692642129706,
+    "stop": 1692642146466,
+    "stage": "finished",
+    "description": "Работоспособность пункта To execute",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "ecfe0cd6-1faa-40c8-93de-8a25f3e752fa",
+    "historyId": "b4978ffe5fa79a0dc3ff393ba62cdaf1",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusInProgress2Test.ClaimsEditMessageChangeStatusToExecute",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusInProgress2Test"
+        },
+        {
+            "name": "testMethod",
+            "value": "ClaimsEditMessageChangeStatusToExecute"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsEditMessageChangeStatusInProgress2Test"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1866)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "name": "Ввод в поле логин случайных подобранных цифр",
+    "start": 1692208303887,
+    "stop": 1692208312093,
+    "stage": "finished",
+    "description": "Случайные цифры введены успешно",
+    "descriptionHtml": null,
+    "status": "broken",
+    "statusDetails": {
+        "message": "Error performing 'single click - At Coordinates: 540, 1165 and precision: 16, 16' on view '(view.getId() is <2131231039/ru.iteco.fmhandroid:id/enter_button>)'.",
+        "trace": "androidx.test.espresso.PerformException: Error performing 'single click - At Coordinates: 540, 1165 and precision: 16, 16' on view '(view.getId() is <2131231039/ru.iteco.fmhandroid:id/enter_button>)'.\n\tat androidx.test.espresso.PerformException$Builder.build(PerformException.java:1)\n\tat androidx.test.espresso.base.PerformExceptionHandler.handleSafely(PerformExceptionHandler.java:8)\n\tat androidx.test.espresso.base.PerformExceptionHandler.handleSafely(PerformExceptionHandler.java:9)\n\tat androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:4)\n\tat androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:5)\n\tat androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)\n\tat androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)\n\tat androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:8)\n\tat ru.iteco.fmhandroid.ui.pageObject.ButtonSteps.signIn(ButtonSteps.java:22)\n\tat ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest.loginEditTextRandomNumber(AuthorizationNotValidTest.java:75)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat androidx.test.internal.runner.junit4.statement.RunBefores.evaluate(RunBefores.java:80)\n\tat androidx.test.internal.runner.junit4.statement.RunAfters.evaluate(RunAfters.java:61)\n\tat androidx.test.rule.ActivityTestRule$ActivityStatement.evaluate(ActivityTestRule.java:549)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat androidx.test.ext.junit.runners.AndroidJUnit4.run(AndroidJUnit4.java:162)\n\tat io.qameta.allure.android.runners.AllureAndroidJUnit4.run(AllureAndroidJUnitRunners.kt:29)\n\tat org.junit.runners.Suite.runChild(Suite.java:128)\n\tat org.junit.runners.Suite.runChild(Suite.java:27)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:115)\n\tat androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:67)\n\tat androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:58)\n\tat androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:446)\n\tat android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2189)\nCaused by: androidx.test.espresso.PerformException: Error performing 'Send down motion event' on view 'unknown'.\n\tat androidx.test.espresso.PerformException$Builder.build(PerformException.java:1)\n\tat androidx.test.espresso.action.MotionEvents.sendDown(MotionEvents.java:27)\n\tat androidx.test.espresso.action.Tap.sendSingleTap(Tap.java:4)\n\tat androidx.test.espresso.action.Tap.-$$Nest$smsendSingleTap(Unknown Source:0)\n\tat androidx.test.espresso.action.Tap$1.sendTap(Tap.java:3)\n\tat androidx.test.espresso.action.GeneralClickAction.perform(GeneralClickAction.java:6)\n\tat androidx.test.espresso.ViewInteraction$SingleExecutionViewAction.perform(ViewInteraction.java:2)\n\tat androidx.test.espresso.ViewInteraction.doPerform(ViewInteraction.java:25)\n\tat androidx.test.espresso.ViewInteraction.-$$Nest$mdoPerform(Unknown Source:0)\n\tat androidx.test.espresso.ViewInteraction$1.call(ViewInteraction.java:7)\n\tat androidx.test.espresso.ViewInteraction$1.call(ViewInteraction.java:1)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat android.os.Handler.handleCallback(Handler.java:883)\n\tat android.os.Handler.dispatchMessage(Handler.java:100)\n\tat android.os.Looper.loop(Looper.java:214)\n\tat android.app.ActivityThread.main(ActivityThread.java:7356)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)\n\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)\nCaused by: androidx.test.espresso.InjectEventSecurityException: Check if Espresso is clicking outside the app (system dialog, navigation bar if edge-to-edge is enabled, etc.).\n\tat androidx.test.espresso.base.InputManagerEventInjectionStrategy.innerInjectMotionEvent(InputManagerEventInjectionStrategy.java:17)\n\tat androidx.test.espresso.base.InputManagerEventInjectionStrategy.innerInjectMotionEvent(InputManagerEventInjectionStrategy.java:15)\n\tat androidx.test.espresso.base.InputManagerEventInjectionStrategy.injectMotionEvent(InputManagerEventInjectionStrategy.java:1)\n\tat androidx.test.espresso.base.EventInjector.injectMotionEvent(EventInjector.java:1)\n\tat androidx.test.espresso.base.UiControllerImpl$3.call(UiControllerImpl.java:1)\n\tat androidx.test.espresso.base.UiControllerImpl$3.call(UiControllerImpl.java:2)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:462)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)\n\tat java.lang.Thread.run(Thread.java:919)\nCaused by: java.lang.SecurityException: Injecting to another application requires INJECT_EVENTS permission\n\tat android.os.Parcel.createException(Parcel.java:2071)\n\tat android.os.Parcel.readException(Parcel.java:2039)\n\tat android.os.Parcel.readException(Parcel.java:1987)\n\tat android.hardware.input.IInputManager$Stub$Proxy.injectInputEvent(IInputManager.java:859)\n\tat android.hardware.input.InputManager.injectInputEvent(InputManager.java:886)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat androidx.test.espresso.base.InputManagerEventInjectionStrategy.innerInjectMotionEvent(InputManagerEventInjectionStrategy.java:6)\n\t... 11 more\nCaused by: android.os.RemoteException: Remote stack trace:\n\tat com.android.server.input.InputManagerService.injectInputEventInternal(InputManagerService.java:641)\n\tat com.android.server.input.InputManagerService.injectInputEvent(InputManagerService.java:615)\n\tat android.hardware.input.IInputManager$Stub.onTransact(IInputManager.java:392)\n\tat android.os.Binder.execTransactInternal(Binder.java:1021)\n\tat android.os.Binder.execTransact(Binder.java:994)\n\n"
+    },
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "f9d5ed2b-411b-416d-9856-4bafcb7ab1cb",
+    "historyId": "bfa4c875424704881ff3fb6ab5bb77ca",
+    "fullName": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest.loginEditTextRandomNumber",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "loginEditTextRandomNumber"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.authorizationTest.AuthorizationNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1295)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

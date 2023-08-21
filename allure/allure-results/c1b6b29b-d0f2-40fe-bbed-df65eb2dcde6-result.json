@@ -1,0 +1,53 @@
+{
+    "name": "Проверка поля Title в разделе Editing News",
+    "start": 1692644235782,
+    "stop": 1692644276563,
+    "stage": "finished",
+    "description": "Проверяем полe Title и выбор категорий в поле Category.",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "c1b6b29b-d0f2-40fe-bbed-df65eb2dcde6",
+    "historyId": "c51dde83978462895ad90e2c84f54783",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsCheckItemCategoryTest.checkItemCategory",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsCheckItemCategoryTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "checkItemCategory"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelMessageSectionEditingNewsCheckItemCategoryTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2051)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

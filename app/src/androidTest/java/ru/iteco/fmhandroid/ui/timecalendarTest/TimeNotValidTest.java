@@ -14,6 +14,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.EspressoIdlingResources;
@@ -26,7 +27,7 @@ import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 import ru.iteco.fmhandroid.ui.verificationPage.VerificationPage;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class TimeNotValidTest {
 
     @Rule

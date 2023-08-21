@@ -2,19 +2,8 @@ package ru.iteco.fmhandroid.ui.claimsTest;
 
 //Пункт в тест кейсе № 10
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anyOf;
-
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -74,6 +63,7 @@ public class ClaimsCreatingClaimsTest {
         new StatusProcessingImageClaimsSteps().statusThrowOff();
         new StatusProcessingImageClaimsSteps().buttonSaveComment();
         new StatusProcessingImageClaimsSteps().inputTextCommentThrowOff();
+        new StatusProcessingImageClaimsSteps().buttonSaveComment();
         new ButtonSteps().buttonStatusClaims();
         new StatusProcessingImageClaimsSteps().statusCancel();
         new ButtonSteps().buttonClickBack();

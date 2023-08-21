@@ -1,0 +1,53 @@
+{
+    "name": "Проверяем раздел Control Panel.",
+    "start": 1692644433918,
+    "stop": 1692644452037,
+    "stage": "finished",
+    "description": "В разделе Control Panel проверяем переходы в подразделы",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "194a774c-01cb-4ea2-bb8d-eed0e6793275",
+    "historyId": "dc4594d5d6c1a14e0ab6faad65839eb7",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelTest.newsCheckingControlPanel",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsCheckingControlPanel"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2076)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

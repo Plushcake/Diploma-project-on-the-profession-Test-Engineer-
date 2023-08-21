@@ -21,7 +21,6 @@ import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
-import ru.iteco.fmhandroid.ui.pageObject.ClickEditNewsListSteps;
 import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 import ru.iteco.fmhandroid.ui.pageObject.MoveThroughCategoryInCreateEditSteps;
@@ -58,7 +57,7 @@ public class NewsCheckingControlPanelMessageSectionEditingNewsCheckItemCategoryT
         new DataHelper().logIn();
         new GoToMainMenuSteps().goToNews();
         new ButtonNewsSteps().buttonEditNews();
-        new ClickEditNewsListSteps().clickEditNews();
+        new DataHelper().clickEditNews();
         new VerificationPage().checkTextEditing();
         new MoveThroughCategoryInCreateEditSteps().moveThroughCategoryInCreateEdit();
         pressBack();

@@ -1,0 +1,53 @@
+{
+    "name": "В разделе установки/изменения даты проверяем изменение года, месяца и дня, случайными данными.",
+    "start": 1692655218005,
+    "stop": 1692655226592,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "0d2b886f-1bcd-4571-9414-9ad374370992",
+    "historyId": "c393ea5ec535fff7d0b72826324e0490",
+    "fullName": "ru.iteco.fmhandroid.ui.timecalendarTest.DateCalendarTest.testRandomChangeOfDay",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.DateCalendarTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "testRandomChangeOfDay"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.DateCalendarTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2501)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

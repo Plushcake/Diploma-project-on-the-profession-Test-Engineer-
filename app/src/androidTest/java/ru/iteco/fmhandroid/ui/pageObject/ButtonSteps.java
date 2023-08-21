@@ -9,7 +9,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import ru.iteco.fmhandroid.R;
 
@@ -131,6 +139,39 @@ public class ButtonSteps {
         ViewInteraction timeInPlanTextInput = onView(
                 allOf(withId(R.id.time_in_plan_text_input_edit_text)));
         timeInPlanTextInput.perform(click());
+    }
+
+    //Нажимаем на комментарий для его редактирования. Раздел Claims.
+    public void claimCommentsListRecycler() {
+        ViewInteraction clickCommentButton = onView(
+                allOf(withId(R.id.edit_comment_image_button),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.claim_comments_list_recycler_view),
+                                        0),
+                                1)));
+        clickCommentButton.perform(scrollTo());
+        clickCommentButton.check(matches(isDisplayed()));
+        clickCommentButton.perform(click());
+    }
+
+    private static Matcher<View> childAtPosition(
+            final Matcher<View> parentMatcher, final int position) {
+
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("Child at position " + position + " in parent ");
+                parentMatcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+        };
     }
 
 }

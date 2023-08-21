@@ -1,0 +1,53 @@
+{
+    "name": "Нажимаем на кнопку отмены в режиме input mode",
+    "start": 1692655259476,
+    "stop": 1692655268879,
+    "stage": "finished",
+    "description": "Проверяем работоспособность кнопки ok",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "94491e69-f7a1-4f49-8b74-4643e6c11b7a",
+    "historyId": "945a6910b26d448086f75d8987800c4b",
+    "fullName": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeButtonTest.buttonCancelTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeButtonTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "buttonCancelTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.timecalendarTest.TimeButtonTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2506)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "name": "Проверяем поля в разделе Filter news",
+    "start": 1692644207959,
+    "stop": 1692644223829,
+    "stage": "finished",
+    "description": "Проверяем заполнение полей. Проверяем Чек боксы на работоспособность",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "2f6a2e2d-bb2c-45e8-9e02-3bc8c1fb7f2c",
+    "historyId": "48a71a923abef717d8d422c7ce4f9779",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsTest.newsControlPanelFilterNews",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsControlPanelFilterNews"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2046)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

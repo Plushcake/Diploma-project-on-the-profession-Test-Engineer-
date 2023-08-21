@@ -1,0 +1,53 @@
+{
+    "name": "В разделе News проверяется удаление сообщения",
+    "start": 1692644131660,
+    "stop": 1692644143701,
+    "stage": "finished",
+    "description": "Удаление сообщения и проверка предупреждающих сообщений",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "b00167ea-b7ed-41c5-a117-8993d237def8",
+    "historyId": "63dfeba3fbe9739897ec50cfbc0f2dfc",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelDeleteMessageTest.newsCheckingControlPanelDeleteMessage",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelDeleteMessageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsCheckingControlPanelDeleteMessage"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelDeleteMessageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2036)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "name": "В разделе Claims проверка Add comment не валидными значениями. Латиница и цифры",
+    "start": 1692639916200,
+    "stop": 1692639925569,
+    "stage": "finished",
+    "description": "Символы вводятся",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "ce296670-9d6a-4cdc-abc4-1c032c34acc3",
+    "historyId": "996079cc0aef6e234262d343955b352c",
+    "fullName": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentNotValidTest.claimsAddCommentTestMore50",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentNotValidTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "claimsAddCommentTestMore50"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.claimsTest.ClaimsAddCommentNotValidTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(1682)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}

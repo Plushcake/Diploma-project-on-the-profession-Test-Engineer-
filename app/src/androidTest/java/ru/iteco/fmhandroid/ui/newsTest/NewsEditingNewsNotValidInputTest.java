@@ -20,7 +20,6 @@ import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.pageObject.ButtonNewsSteps;
-import ru.iteco.fmhandroid.ui.pageObject.ClickEditNewsListSteps;
 import ru.iteco.fmhandroid.ui.pageObject.GoToMainMenuSteps;
 import ru.iteco.fmhandroid.ui.pageObject.InputNewNewsSteps;
 import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
@@ -57,8 +56,7 @@ public class NewsEditingNewsNotValidInputTest {
         new DataHelper().logIn();
         new GoToMainMenuSteps().goToNews();
         new ButtonNewsSteps().buttonEditNews();
-        new ClickEditNewsListSteps().clickEditNews();
-
+        new DataHelper().clickEditNews();
         new InputNewNewsSteps().inputEditingNewsNotValidComplex();
         new ButtonNewsSteps().buttonCancelNews();
         new ButtonNewsSteps().buttonOkAlert();

@@ -12,6 +12,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.EspressoIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
@@ -23,7 +25,7 @@ import ru.iteco.fmhandroid.ui.pageObject.LogOutSteps;
 import ru.iteco.fmhandroid.ui.verificationPage.VerificationPage;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class AboutTest {
 
     @Rule
@@ -48,6 +50,7 @@ public class AboutTest {
 
     @Test
     @DisplayName("В разделе About проверяем переход по ссылке, Privacy Policy.")
+    @Description("Переход по ссылке на сторонний ресурс Privacy Policy. Окрывается в браузере.")
     public void aboutPrivacyPolicyTest() {
         new DataHelper().logIn();
         new GoToMainMenuSteps().goToAbout();
@@ -61,6 +64,7 @@ public class AboutTest {
 
     @Test
     @DisplayName("В разделе About проверяем переход по ссылке, Terms Of Use.")
+    @Description("Переход по ссылке на сторонний ресурс Terms Of Use. Открывается в браузере.")
     public void aboutTermsOfUseTest() {
         new DataHelper().logIn();
         new GoToMainMenuSteps().goToAbout();
@@ -73,6 +77,7 @@ public class AboutTest {
 
     @Test
     @DisplayName("В разделе About проверяем кнопку, назад.")
+    @Description("После нажатия кнопки назад, переходим в раздел Main")
     public void checkButtonBack() {
         new DataHelper().logIn();
         new GoToMainMenuSteps().goToAbout();

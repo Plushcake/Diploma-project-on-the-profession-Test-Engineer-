@@ -104,4 +104,5 @@ public class StatusProcessingImageClaimsSteps {
         clickStatusCancel.check(matches(isDisplayed()));
         clickStatusCancel.perform(click());
     }
+
 }

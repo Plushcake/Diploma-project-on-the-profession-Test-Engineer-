@@ -1,0 +1,53 @@
+{
+    "name": "Проверка поля Category в разделе Filter News",
+    "start": 1692644154818,
+    "stop": 1692644182075,
+    "stage": "finished",
+    "description": "Проверяем категории на выбираемость",
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "99957a96-4110-4374-a10f-ebadee992a80",
+    "historyId": "32eda2cdf53518e3e201da955555195b",
+    "fullName": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsCheckCategoryTest.newsControlPanelFilterNews",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui.newsTest"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsCheckCategoryTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsControlPanelFilterNews"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.newsTest.NewsCheckingControlPanelFilterNewsCheckCategoryTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(2041)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        }
+    ]
+}
