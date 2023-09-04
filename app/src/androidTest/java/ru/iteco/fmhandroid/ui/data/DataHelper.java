@@ -1,14 +1,11 @@
 package ru.iteco.fmhandroid.ui.data;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
-import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
@@ -35,7 +32,6 @@ import org.hamcrest.Matchers;
 import java.util.Locale;
 
 import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.pageObject.ButtonSteps;
 
 public class DataHelper {
 
@@ -194,4 +190,55 @@ public class DataHelper {
         editTextCyrillic.perform(replaceText(passwordTextCyrillic), closeSoftKeyboard());
         editTextCyrillic.check(matches(withText(passwordTextCyrillic)));
     }
+
+    //Ввод в поле Пароль случайных специальных символов.
+    public void loginEditTextSpecialCharacters() {
+        ViewInteraction textInputEditTextSpecialCharacters = onView(
+                anyOf(withHint("Login"), withHint("Логин")));
+        textInputEditTextSpecialCharacters.check(matches(isDisplayed()));
+        textInputEditTextSpecialCharacters.perform(typeText("!@#$%^&*()"), closeSoftKeyboard());
+        textInputEditTextSpecialCharacters.check(matches(withText("!@#$%^&*()")));
+    }
+
+    public void passwordEditTextSpecialCharacters() {
+        ViewInteraction textInputEditTextSpecialCharacters = onView(
+                anyOf(withHint("Password"), withHint("Пароль")));
+        textInputEditTextSpecialCharacters.check(matches(isDisplayed()));
+        textInputEditTextSpecialCharacters.perform(typeText("!@#$%^&*()"), closeSoftKeyboard());
+        textInputEditTextSpecialCharacters.check(matches(withText("!@#$%^&*()")));
+    }
+
+    //Ввод в поле логин символы на латинице, цифр и специальных символов.
+    public void loginEditTextMoreThan30Characters() {
+        ViewInteraction textInputEditTextMoreThan30Characters = onView(
+                anyOf(withHint("Login"), withHint("Логин")));
+        textInputEditTextMoreThan30Characters.check(matches(isDisplayed()));
+        textInputEditTextMoreThan30Characters.perform(typeText("hello@555*ops^9876%cool#plush&eclair"), closeSoftKeyboard());
+        textInputEditTextMoreThan30Characters.check(matches(withText("hello@555*ops^9876%cool#plush&eclair")));
+    }
+
+    //Ввод в поле пароль символы на латинице, специальные символы и цифры.
+    public void passwordEditTextMoreThan30Characters() {
+        ViewInteraction textInputEditTextMoreThan30Characters = onView(
+                anyOf(withHint("Password"), withHint("Пароль")));
+        textInputEditTextMoreThan30Characters.check(matches(isDisplayed()));
+        textInputEditTextMoreThan30Characters.perform(typeText("hello@555*ops^9876%cool#plush&eclair"), closeSoftKeyboard());
+        textInputEditTextMoreThan30Characters.check(matches(withText("hello@555*ops^9876%cool#plush&eclair")));
+    }
+
+    //Поле логин и пароль пустые
+    public void loginAndPasswordTestEmpty() {
+        ViewInteraction testIncorrectLoginEmpty = onView(
+                anyOf(withHint("Login"), withHint("Логин")));
+        testIncorrectLoginEmpty.check(matches(isDisplayed()));
+        testIncorrectLoginEmpty.perform(typeText(""), closeSoftKeyboard());
+        testIncorrectLoginEmpty.check(matches(withText("")));
+
+        ViewInteraction testIncorrectPasswordEmpty = onView(
+                anyOf(withHint("Password"), withHint("Пароль")));
+        testIncorrectPasswordEmpty.check(matches(isDisplayed()));
+        testIncorrectPasswordEmpty.perform(typeText(""), closeSoftKeyboard());
+        testIncorrectPasswordEmpty.check(matches(withText("")));
+    }
+
 }
